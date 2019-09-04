@@ -1,0 +1,24 @@
+%header.header
+  %nav.global-nav
+    .side_bar
+      .side_contents
+        .contents
+  #js-hamburger.hamburger
+    %span.hamburger__line.hamburger__line--1
+    %span.hamburger__line.hamburger__line--2
+    %span.hamburger__line.hamburger__line--3
+  #js-black-bg.black-bg
+  :javascript
+    function toggleNav() {
+      var body = document.body;
+      var hamburger = document.getElementById('js-hamburger');
+      var blackBg = document.getElementById('js-black-bg');
+
+      hamburger.addEventListener('click', function() {
+        body.classList.toggle('nav-open');
+      });
+      blackBg.addEventListener('click', function() {
+        body.classList.remove('nav-open');
+      });
+      }
+    toggleNav();
