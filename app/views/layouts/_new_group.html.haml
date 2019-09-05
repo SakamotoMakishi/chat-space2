@@ -1,0 +1,10 @@
+.js-modal__btn グループテスト
+.js-modal__bg
+.js-modal__main
+  .new_post
+    .new_post__contents
+      .new_post__contents__form
+        = form_with url: "/groups#create", method: :post do |f|
+          = f.submit 'チャットする', class: "submit"
+  %p.js-modal__btn--close close
+  %p.js-modal__btn--close--fix
