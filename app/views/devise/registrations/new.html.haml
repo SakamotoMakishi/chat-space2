@@ -6,6 +6,11 @@
     %br/
     = f.text_field :nickname
   .field
+    = f.label :avatar
+    %br/
+    #img_field{onclick: "$('#file').click()"}
+    = f.file_field :avatar,class: "image_input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+  .field
     = f.label :email
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"

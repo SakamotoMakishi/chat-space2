@@ -1,0 +1,14 @@
+.js-modal__btn メッセージテスト
+.js-modal__bg
+.js-modal__main
+  .new_post
+    .new_post__contents
+      .new_post__contents__form
+        = form_with url: "/message#create", method: :post do |f|
+          #img_field{onclick: "$('#file').click()"}
+            = f.file_field :image,class: "image_input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+          = f.text_field :title
+          = f.text_area  :text, class: "textbox"
+          = f.submit '投稿するぞ', class: "submit"
+  %p.js-modal__btn--close close
+  %p.js-modal__btn--close--fix

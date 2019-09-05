@@ -1,4 +1,10 @@
 = render 'layouts/header'
-= render 'layouts/post_message'
-= render 'layouts/new_post'
-= link_to '会員登録',new_user_registration_path
+.all_user
+  .all_user__contents
+    - @user.each do |user|
+      .all_user__contents__link
+        .contents
+          .user_image
+            = image_tag user.avatar,crass:"user_avatar",style: "width: 200px;height:200px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+          .user_name
+            = "#{user.nickname}"
