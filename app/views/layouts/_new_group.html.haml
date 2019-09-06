@@ -4,7 +4,9 @@
   .new_post
     .new_post__contents
       .new_post__contents__form
-        = form_with url: "/groups#create", method: :post do |f|
+        = form_with model: @group do |f|
+          = f.text_field :name
+          = f.collection_check_boxes :user_ids, User.all, :id, :nickname
           = f.submit 'チャットする', class: "submit"
   %p.js-modal__btn--close close
   %p.js-modal__btn--close--fix
