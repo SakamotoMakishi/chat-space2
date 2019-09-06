@@ -76,3 +76,4 @@ gem 'mini_magick'
 gem 'gon'
 gem 'rails-i18n'
 gem 'devise'
+gem "aws-sdk-s3", require: false
