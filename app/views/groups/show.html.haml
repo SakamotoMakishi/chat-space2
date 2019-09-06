@@ -1,7 +1,9 @@
 = render 'layouts/header'
+= render 'layouts/new_message'
 .user_page
   .user_page__left
     - @group.users.each do |user|
       = "#{user.nickname}"
       = image_tag avatar(user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-= render 'layouts/new_message'
+  .user_page__right
+    = render partial: "layouts/message", collection: @messages

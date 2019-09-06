@@ -55,3 +55,37 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
+$(function(){
+  function messageHTML(message){
+    var image = message.image ? `<img src= ${message.image} >` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
+    var message_text = message.content ? `${message.content}` : "";  // 同上 三項演算子
+    var html = ``
+    return html;
+  }
+  $('#new_message').on('submit',function(e){
+    e.preventDefault();     //submitされた処理を止める。
+    var message = new FormData(this);
+    var url = $(this).attr('action');
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: message,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(message){
+      var html = messageHTML(message);  //messageHTMLを変数でappendに渡す。↓
+      $('.message_list').append(html)     //変数を受け取る。↑
+      $('#new_message')[0].reset();  //text送信後入力した値を消す。
+      $('.message_list').animate({ scrollTop: $('.message_list')[0].scrollHeight});  //メッセージ入力後スクロールで一番下まで戻す。
+      return false
+    })
+    .fail(function(){
+      alert('メッサージを入力してください');
+    })
+    .always(function(){ //リロードせずにSENDボタンを推せる
+      $('.submit').prop('disabled', false);
+    })
+  });
+})

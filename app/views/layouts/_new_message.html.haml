@@ -1,10 +1,12 @@
-.js-modal__btn メッセージテスト
+.js-modal__btn
+  %span.far.fa-comment
+    %text.far.fa-edit
 .js-modal__bg
 .js-modal__main
   .new_message
     .new_message__contents
       .new_message__contents__form
-        = form_with url: "/message#create", method: :post do |f|
+        = form_with model: [@group,@message], method: :post do |f|
           #img_field{onclick: "$('#file').click()"}
           .form_image
             = f.file_field :image,class: "image_input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
