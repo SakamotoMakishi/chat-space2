@@ -1,0 +1,28 @@
+= render 'layouts/header'
+.user_page
+  .user_page__left
+    = "#{@user.nickname}"
+    = image_tag avatar(@user),style: "width: 150px;height:150px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+    %ul.user_page__left__link
+      %li.user_page__left__link__list
+        = form_with model: @group, local: true  do |f|
+          %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
+          = f.hidden_field :name, value: "トークルーム"
+          = f.submit 'チャットする', class: "submit"
+      %li.user_page__left__link__list
+        = link_to "トーク"
+      %li.user_page__left__link__list
+        = link_to "トーク"
+  .user_page__right
+    .user_page__right__title
+      = "#{@user.nickname}さんの投稿一覧"
+    .user_page__right__contents
+      - @posts.each do |post|
+        .user_page__right__contents__list
+          .user_page__right__contents__list__title
+            = "#{post.title}"
+          .user_page__right__contents__list__text
+            = "#{post.text}"
+          .user_page__right__contents__list__image
+            - if post.image.attached?
+              = image_tag post.image,class: "post_image"

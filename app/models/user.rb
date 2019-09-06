@@ -10,7 +10,8 @@ class User < ApplicationRecord
     validates :password_confirmation
   end
   has_one_attached :avatar
+  has_many :members
   has_many :groups, through: :members
   has_many :messages
-  has_many :members
+  has_many :posts
 end

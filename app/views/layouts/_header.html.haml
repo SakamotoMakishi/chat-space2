@@ -3,6 +3,8 @@
     .side_bar
       .side_contents
         .contents
+          = current_user.nickname
+          = image_tag avatar(current_user),style: "width: 150px;height:150px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
   #js-hamburger.hamburger
     %span.hamburger__line.hamburger__line--1
     %span.hamburger__line.hamburger__line--2

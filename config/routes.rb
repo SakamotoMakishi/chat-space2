@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :posts
-  resources :messages
-  resources :groups
+  resources :groups do
+    resources :messages
+  end
 end

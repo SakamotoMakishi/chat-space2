@@ -1,0 +1,92 @@
+.new_message{
+  width: 100%;
+  height: 100px;
+  &__contents{
+    &__form{
+      float: right;
+      width: 98%;
+      #img_field {
+        border-radius:10px;
+        float: left;
+        font-size: 13px;
+        margin-top: 0px;
+        padding: 5px 8px;
+        border: solid 1px gainsboro;
+        color: #666;
+        padding: 0;
+        cursor: pointer;
+        width: 150px;
+        height: 100px;
+        background-image:url(http://www.marksign.net/wp-content/uploads/2016/05/camera.jpg);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-color: #fff;
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: 0.3s ease-out;
+        z-index: 10;
+        .avatar_preview{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      #img_field:hover {
+        background-color: rgb(252, 251, 248);
+        transition: 0.3s ease-out;
+        opacity: 0.5;
+      }
+      #img_field:hover i {
+        transition: 0.3s ease-out;
+        display: block;
+        color: #fff;
+      }
+    }
+    .form_image{
+      display: none;
+    }
+    .form_text{
+      .textbox{
+        float:left;
+        width: 78%;
+        height: 75px;
+        font-size:20px; 
+        margin-top:10px;
+        margin-left:30px;
+        border-radius:10px;
+        border: solid 1px gainsboro;
+        box-shadow: 0 2px 6px rgba(81, 82, 82, 0.16);
+        -webkit-appearance: none;
+      }
+      .textbox:focus {
+        border: 2px solid rgba(73, 73, 73, 0.32);
+        outline: none;
+      }
+    }
+    .form_submit{
+      clear: both;
+      float: right;
+      position: relative;
+      bottom: 86px;
+      .submit{
+        display       : inline-block;
+        border-radius : 5%;          /* 角丸       */
+        font-size     : 13pt;        /* 文字サイズ */
+        text-align    : center;      /* 文字位置   */
+        cursor        : pointer;     /* カーソル   */
+        padding       : 24px 24px;   /* 余白       */
+        background    : #26c1ff;     /* 背景色     */
+        color         : #ffffff;     /* 文字色     */
+        line-height   : 1em;         /* 1行の高さ  */
+        transition    : .3s;         /* なめらか変化 */
+        box-shadow    : 4px 4px 2px #666666;  /* 影の設定 */
+        border        : 2px solid #277aff;
+      }
+      .submit:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+        color         : #189bf1;     /* 背景色     */
+        background    : #ffffff;     /* 文字色     */
+      }
+    }
+  }
+}
