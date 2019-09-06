@@ -1,0 +1,41 @@
+.message{"data-message-id": "#{message.id}"}
+  - if message.user.id == current_user.id
+    .message_current_user
+      .message__user
+        .message__user__avatar
+          = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+        .message__user__name
+          = message.user.nickname
+      .message__content
+        %text.message__content__tri
+          &#9700;
+        .message__content__text
+          - if message.content.present?
+            = message.content
+        .message__content__image
+          = image_tag message.image ,class:"content_image" if message.image.attached?
+      .message__check
+        -if message.checked == true
+          既読
+        -elsif message.checked == false
+          未読
+      %text.message__time
+        = message.created_at.strftime("%Y/%m/%d %H:%M")
+        %i.fas.fa-trash-alt.js-modal-open
+  - else
+    .message_group_user
+      .message__user
+        .message__user__avatar
+          = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+        .message__user__name
+          = message.user.nickname
+      .message__content
+        %text.message__content__tri
+          &#9701;
+        .message__content__text
+          - if message.content.present?
+            = message.content
+        .message__content__image
+          = image_tag message.image ,class:"content_image" if message.image.attached?
+      .message__time
+        = message.created_at.strftime("%Y/%m/%d %H:%M")

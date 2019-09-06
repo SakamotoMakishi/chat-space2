@@ -1,0 +1,120 @@
+.message{
+  margin-top: 20px;
+  .message_current_user{
+    float: right;
+    clear: both;
+    display: block;
+    .message__user{
+      &__name{
+        font-size:12px;
+        font-family: Arial, Helvetica, sans-serif;
+        float: right;
+        position: relative;
+        top:80px;
+        left:60px;
+      }
+      &__avatar{
+        float: right;
+      }
+    }
+    .message__time{
+      max-width: 200px;
+      font-size: 13px;
+      position: relative;
+      bottom: 100px;
+      left:450px;
+      color: rgb(149, 149, 149);
+      .fas{
+        font-size: 20px;
+        color: rgb(149, 149, 149);
+        font-weight:bold;
+        margin-left:10px;
+        cursor: pointer;
+      }
+    }
+    .message__content{
+      background: rgb(203, 252, 255);
+      box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
+      width: 600px;
+      height:100%;
+      padding: 5px 40px 40px 40px;
+      border-radius: 30px;
+      margin-right: 100px;
+      margin-bottom: 70px; 
+      &__tri{
+        font-size:25px;
+        position: relative;
+        right: -636px;
+        top: 20px;
+        color: rgb(203, 252, 255);
+      }
+      &__text{
+        margin-bottom:10px; 
+      }
+      &__image{
+        .content_image{
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+    .message__check{
+      float: left;
+      position: relative;
+      right:50px;
+      bottom:95px;
+      color: rgb(110, 110, 110);
+      font-weight:bold; 
+    }
+  }
+  .message_group_user{
+    float: left;
+    clear: both;
+    display: block;
+    .message__user{
+      &__name{
+        font-size:12px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-left: 10px;
+        margin-top:10px; 
+      }
+      &__avatar{
+        
+      }
+    }
+    .message__time{
+      color: rgb(149, 149, 149);
+      font-size: 13px;
+      float:right;
+      position: relative;
+      bottom: 105px;
+    }
+    .message__content{
+      background: rgb(203, 252, 255);
+      box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
+      width: 600px;
+      height:100%;
+      padding: 5px 40px 40px 40px;
+      border-radius: 30px;
+      position: relative;
+      left: 100px;
+      bottom: 80px;
+      &__tri{
+        font-size:25px;
+        position: relative;
+        right: 60px;
+        top: 20px;
+        color: rgb(203, 252, 255);
+      }
+      &__text{
+        margin-bottom:10px; 
+      }
+      &__image{
+        .content_image{
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
