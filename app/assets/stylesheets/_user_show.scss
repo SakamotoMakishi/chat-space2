@@ -5,7 +5,7 @@
   &__left{
     width: calc(100% - 80%);
     padding: 30px 10px 0 10px;
-    height: 105vh;
+    height: 110vh;
     float: left;
     background:rgb(217, 254, 255);
     &__link{
@@ -20,7 +20,7 @@
     float: right;
     height: 100vh;
     overflow: scroll;
-    padding: 50px 50px 0 50px;
+    padding: 50px;
     &__title{
       text-align: left;
       font-size:20px;

@@ -32,6 +32,21 @@
         cursor: pointer;
       }
     }
+    .message__time11{
+      max-width: 200px;
+      font-size: 13px;
+      position: relative;
+      bottom: -18px;
+      left: 442px;
+      color: #959595;
+      .fas{
+        font-size: 20px;
+        color: rgb(149, 149, 149);
+        font-weight:bold;
+        margin-left:10px;
+        cursor: pointer;
+      }
+    }
     .message__content{
       background: rgb(203, 252, 255);
       box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);

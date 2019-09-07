@@ -73,7 +73,6 @@ gem "jquery-rails"
 gem 'font-awesome-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'mini_magick'
-gem 'gon'
 gem 'rails-i18n'
 gem 'devise'
 gem "aws-sdk-s3", require: false

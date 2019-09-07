@@ -3,7 +3,14 @@ class MessagesController < ApplicationController
   
   def create
     @message = @group.messages.new(message_params)
-    @message.save
+    if @message.save
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json
+      end
+    else
+      redirect_to root_path
+    end
   end
   
   private

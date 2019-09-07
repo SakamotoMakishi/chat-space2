@@ -6,7 +6,7 @@
   .new_message
     .new_message__contents
       .new_message__contents__form
-        = form_with model: [@group,@message], method: :post do |f|
+        = form_for [@group,@message] do |f|
           #img_field{onclick: "$('#file').click()"}
           .form_image
             = f.file_field :image,class: "image_input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
