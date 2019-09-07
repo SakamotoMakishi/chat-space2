@@ -91,7 +91,8 @@ $(function(){
                 </div>
                 `
     return html;
-    }else{
+    }
+    else if(message.user_id !== message.current_user){
     var image = message.image ? `<img class="content_image" src="${message.image}">` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="message_group_user">
@@ -105,7 +106,7 @@ $(function(){
                     </div>
                     <div class="message__content">
                       <text class="message__content__tri">
-                      ◤
+                      ◥
                       </text>
                       <div class="message__content__text">
                       ${message.content}
@@ -114,11 +115,8 @@ $(function(){
                       ${image}
                     </div>
                     </div>
-                    <div class="message__check">
-                    </div>
-                    <text class="message__time11">
+                    <text class="message__time22">
                       ${message.date}
-                    <i class="fas fa-trash-alt js-modal-open"></i>
                     </text>
                     </div>
                 </div>
