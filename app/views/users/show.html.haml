@@ -10,7 +10,7 @@
           = f.hidden_field :name, value: "トークルーム"
           = f.submit 'チャットする', class: "submit"
       %li.user_page__left__link__list
-        = link_to "トーク"
+        = render "layouts/relationships"
       %li.user_page__left__link__list
         = link_to "トーク"
   .user_page__right

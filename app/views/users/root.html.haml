@@ -1,9 +1,34 @@
 = render 'layouts/header'
-= render 'layouts/post_message'
-= render 'layouts/new_post'
-= render 'layouts/new_group'
-= link_to '会員登録',new_user_registration_path
-= link_to "ログアウト",destroy_user_session_path , method: :delete
-= link_to 'ユーザー一覧',users_path
-- current_user.groups.each do |group|
-  = link_to "#{group.name}/#{group.id}", group_messages_path(group)
+.root_page
+  .root_page__left
+    = render 'layouts/post_message'
+    = form_with url: "/posts#create", method: :post do |f|
+      -# #img_field{onclick: "$('#file').click()"}
+      = f.file_field :image,class: "image_input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+      = f.text_field :title
+      = f.text_area  :text, class: "textbox"
+      = f.submit '投稿する', class: "submit"
+    = link_to "ログアウト",destroy_user_session_path , method: :delete
+    = link_to '会員登録',new_user_registration_path
+    = link_to 'ユーザー一覧',users_path
+    - current_user.groups.each do |group|
+      = link_to "#{group.name}/#{group.id}", group_messages_path(group)
+  .root_page__right
+    - @posts.each do |post|
+      .root_page__right__contents__list
+        = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
+          = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+        .root_page__right__contents__list__nickname
+          = "#{post.user.nickname}"
+        %text.root_page__right__contents__list__time
+          = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
+        .root_page__right__contents__list__title
+          = "#{post.title}"
+        %text.root_page__right__contents__list__text
+          = "#{post.text}"
+        .root_page__right__contents__list__image
+          = image_tag post.image if post.image.attached?
+        .root_page__right__contents__list__like
+          = render 'likes/like', post: post
+        .root_page__right__contents__list__comment
+          
