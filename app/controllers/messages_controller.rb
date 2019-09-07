@@ -10,7 +10,10 @@ class MessagesController < ApplicationController
   def create
     @message = @group.messages.new(message_params)
     if @message.save
-        redirect_to group_messages_path(@group)
+        respond_to do |format|
+          format.html { redirect_to group_messages_path(@group) } 
+          format.json
+        end
     else
       redirect_to root_path
     end
