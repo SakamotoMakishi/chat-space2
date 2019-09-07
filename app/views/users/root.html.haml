@@ -6,4 +6,4 @@
 = link_to "ログアウト",destroy_user_session_path , method: :delete
 = link_to 'ユーザー一覧',users_path
 - current_user.groups.each do |group|
-  = link_to "#{group.name}/#{group.id}",group_path(group)
+  = link_to "#{group.name}/#{group.id}", group_messages_path(group)

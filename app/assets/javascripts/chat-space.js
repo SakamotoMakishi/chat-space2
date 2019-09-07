@@ -117,4 +117,27 @@ $(function(){
       $('.submit').prop('disabled', false);
     })
   });
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){  //現在いるグループにしか入力を影響させないための記述
+  var reloadMessages = function(){
+    var last_message_id = $('.message:last').data('message-id');//カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
+      $.ajax({
+        url: "api/messages",//ルーティングを記述rake route参照
+        type: 'GET',  //ルーティングを記述      rake route参照
+        dataType: 'json',
+        data: {last_id: last_message_id}   //dataオプションでリクエストに値を含める
+      })
+      .done(function(messages){
+        var insertHTML = '';//追加するHTMLの入れ物を作る
+          messages.forEach(function(message){//配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+          insertHTML = messageHTML(message);//メッセージが入ったHTMLを取得
+          $('.user_page__right').append(insertHTML);//メッセージを追加
+          $('.user_page__right').animate({ scrollTop: $('.user_page__right')[0].scrollHeight});
+        })
+      })
+      .fail(function() {
+        alert('自動更新失敗しました');
+      })
+    }
+  setInterval(reloadMessages, 3000);
+}
 })
