@@ -53,8 +53,8 @@ $(function(){
       };
     })(file);
     reader.readAsDataURL(file);
-//   });
-// });
+  });
+});
 // $(function(){
 //   function messageHTML(message){
 //     var image = message.image ? `<img src= ${message.image} >` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
