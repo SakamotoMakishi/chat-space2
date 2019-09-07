@@ -14,6 +14,20 @@
  *= require_self
  */
 /*モーダル用*/
+.js-animation{
+  // アニメーション設定
+  animation-name:fade-in3;
+  animation-duration:0.5s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング //アニメーション開始させる時間
+  animation-iteration-count:1; //繰り返し回数
+  animation-direction:normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; //アニメーション後のスタイルをどうするか
+}
+// アニメーション
+@keyframes fade-in3 {
+  0% {opacity: 0; transform: translate3d(0,20px,0);}
+  100% {opacity: 1; transform: translate3d(0,0,0);}
+}
 .js-modal__bg {
   width:100%;
   height: 100vh;
@@ -114,7 +128,7 @@ animation: SlideDown .5s ease-in-out forwards;
     bottom: 0;
     font-size:100px; 
     z-index: 5;
-    margin-left: 200px;
+    margin-left: 35px;
     text{
       font-size: 32px;
       display: block;
