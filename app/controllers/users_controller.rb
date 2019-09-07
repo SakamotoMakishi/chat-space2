@@ -2,19 +2,19 @@ class UsersController < ApplicationController
 
   def root
     @members = current_user.groups
+    @followre = current_user.followings
+    @followre.ids << current_user.id
+    @posts = Post.with_attached_image.where(user_id: @followre.ids).order("created_at DESC")
   end
 
   def index
-    @user = User.all
-    @users = User.all.where.not(id: current_user.id)
-    @group = Group.new
-    @group.users << current_user
+    @user = User.with_attached_avatar.where.not(id: current_user.id)
   end
 
   def show
     @group = Group.new
-    @user = User.find(params[:id])
-    @posts = @user.posts
+    @user = User.with_attached_avatar.find(params[:id])
+    @posts = @user.posts.with_attached_image
   end
 
 end

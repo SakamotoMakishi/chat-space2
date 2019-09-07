@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#root'
+  post   '/like/:post_id' => 'likes#like',   as: 'like'
+  delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
   resources :users do
     collection do
       get :root
     end
   end
-  resources :posts
+  resources :relationships, only: [:create, :destroy]
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :groups do
     resources :messages
     namespace :api do

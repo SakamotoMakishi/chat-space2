@@ -3,8 +3,8 @@ class GroupsController < ApplicationController
   def show
     @message = Message.new
     @group = Group.find(params[:id])
-    @member = Group.find(params[:id]).members
-    @messages = @group.messages
+    @member = Group.with_attached_avatar.find(params[:id]).members
+    @messages = @group.messages.with_attached_image
   end
 
   def create
