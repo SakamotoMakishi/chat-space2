@@ -5,5 +5,5 @@
     - @group.users.each do |user|
       = "#{user.nickname}"
       = image_tag avatar(user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-  .user_page__right
+  .user_page__right#auto_scroll
     = render partial: "layouts/message", collection: @messages
