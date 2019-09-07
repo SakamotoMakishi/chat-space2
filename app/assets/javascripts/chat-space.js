@@ -56,8 +56,9 @@ $(function(){
   });
 });
 
-$(function(){
+$(function(){ 
   function messageHTML(message){
+    if (message.user_id === message.current_user){
     var image = message.image ? `<img class="content_image" src="${message.image}">` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="message_current_user">
@@ -90,6 +91,40 @@ $(function(){
                 </div>
                 `
     return html;
+    }else{
+    var image = message.image ? `<img class="content_image" src="${message.image}">` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
+    var html = `<div class="message" data-message-id="${message.id}">
+                  <div class="message_group_user">
+                    <div class="message__user">
+                    <div class="message__user__avatar">
+                      <img style="width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;" src="${message.user_avatar}">
+                    </div>
+                    <div class="message__user__name">
+                      ${message.name}
+                    </div>
+                    </div>
+                    <div class="message__content">
+                      <text class="message__content__tri">
+                      ◤
+                      </text>
+                      <div class="message__content__text">
+                      ${message.content}
+                    </>
+                    <div class="message__content__image">
+                      ${image}
+                    </div>
+                    </div>
+                    <div class="message__check">
+                    </div>
+                    <text class="message__time11">
+                      ${message.date}
+                    <i class="fas fa-trash-alt js-modal-open"></i>
+                    </text>
+                    </div>
+                </div>
+                `
+    return html;
+    }
   }
   $('#new_message').on('submit',function(e){
     e.preventDefault();     //submitされた処理を止める。
