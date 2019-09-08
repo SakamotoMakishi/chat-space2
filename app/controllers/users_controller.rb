@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   def root
     @members = current_user.groups
     @followre = current_user.followings
-    @followre.ids << current_user.id
-    @posts = Post.with_attached_image.where(user_id: @followre.ids).order("created_at DESC")
+    @posts = Post.with_attached_image.where(user_id: @followre.ids << current_user.id).order("created_at DESC")
   end
 
   def index
