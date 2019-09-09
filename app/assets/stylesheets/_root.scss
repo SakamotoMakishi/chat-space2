@@ -7,6 +7,9 @@
     height: 100vh;
     float: left;
     background:rgb(217, 254, 255);
+    position: fixed;
+    left:0;
+    top:50;
     &__link{
       li a{
         text-decoration: none;
@@ -21,6 +24,7 @@
     overflow: scroll;
     padding: 0px 50px 0 50px;
     margin-top: 50px;
+    padding-top:20px; 
     &__title{
       text-align: left;
       font-size:20px;
@@ -28,40 +32,61 @@
     }
     &__contents{
       &__list{
+        list-style: none;
         padding: 20px;
         border:1px solid gainsboro;
         margin-bottom:20px;
+        text-decoration: none;
         &__nickname{
-          font-size:12px;
-          margin-top:10px; 
+          font-size:13px;
+          margin-top:10px;
+          color: #26c1ff;
+          
         }
-        &__title{
-          font-size:18px;
-          word-wrap: break-word;
-          font-family: 'Courier New', Courier, monospace;
-          margin: 20px 0px 20px 0px;
-          position: relative;
-          left: 80px;
-          bottom: 15px;
+        a{
+          text-decoration: none;
         }
-        &__text{
-          word-wrap: break-word;
-        }
-        &__time{
-          font-size:12px;
-          color: rgb(167, 167, 167);
-        }
-        &__image{
-          .post_image{
-            width: 300px;
-            height: 200px;
+        &__post{
+          width: 80%;
+          height: 100%;
+          border: 1px solid gainsboro;
+          padding: 20px;
+          margin: 10px;
+          &__title{
+            font-size:18px;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0px 0px 20px 0px;
+            padding: 10px;
+            border-bottom:1px solid gainsboro; 
+          }
+          &__text{
+            font-size:13px;
+            margin: 10px;
+            word-wrap: break-word;
+          }
+          &__time{
+            font-size:12px;
+            color: rgb(167, 167, 167);
+            float: right;
+          }
+          &__image{
+            margin: 10px 0px 10px 0px;
+            
+            .post_image{
+              width: 300px;
+              height: 200px;
+              border-radius: 10px;
+              box-shadow: 0 1px 1px rgba(81, 82, 82, 0.16);
+            }
           }
         }
         &__like{
-          display: block;
           width: 50px;
           height: 20px;
           margin-top:10px;
+          display: inline-block;
+          vertical-align: top;
           .slideInRight{
             animation-name:fade-in2;
             animation-duration:0.5s;
@@ -82,7 +107,6 @@
           .like-link a{
             text-decoration: none;
             color:#ea352d;
-
             .heart-like{
               float: left;
               margin-right: 10px;
@@ -98,6 +122,143 @@
               .down{
                 float: right;
                 font-weight: bold;
+              }
+            }
+          }
+        }
+        &__comment{
+          display: inline-block;
+          transition: 3s all;
+          span.far{
+            color: #0d7eff;
+            margin-top:10px;
+            cursor:default;
+            transition: 3s all;
+            &:hover .comment_contents.slideInRight{
+              display: block;
+              animation-name:fade-in;
+              animation-duration:0.7s;
+              animation-delay:0s; //アニメーション開始させる時間
+              animation-iteration-count:1; //繰り返し回数
+              animation-direction:normal; //往復処理をするかどうか
+              animation-fill-mode: forwards; //アニメーション後のスタイルをどうするか
+              @keyframes fade-in {
+                0% {opacity: 0; transform: translate3d(0,0,0);}
+                25% {opacity: 0.12.5; transform: translate3d(0,2px,0);}
+                25% {opacity: 0.25; transform: translate3d(0,4px,0);}
+                50% {opacity: 0.5; transform: translate3d(0,6x,0);}
+                75% {opacity: 0.65; transform: translate3d(0,8px,0);}
+                75% {opacity: 0.88; transform: translate3d(0,9px,0);}
+                100% {opacity: 1; transform: translate3d(0,10px,0);}
+              }
+            }
+            .comment_contents.slideInRight{
+              transition: 3s all ;
+              display: none;
+              padding: 20px;
+              width: 600px;
+              height: 100%;
+              background: #ffffff;
+              border: 1px solid #b0d5ff;
+              border-radius: 10px;
+              .comment{
+                padding: 10px;
+                &__message{
+                  color: black;
+                  margin: 30px 30px;
+                  &__avatar{
+                    float:left;
+                  }
+                  &__nickname{
+                    font-size: 12px;
+                    float: left;
+                    position: relative;
+                    left: -33px;
+                    bottom: -49px;
+                  }
+                  &__tri{
+                    font-size:22px;
+                    text-align: left;
+                    position: relative;
+                    color:#cee5ff;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    list-style-type:none;
+                    top: 30px;
+                    left: -13px;
+                  }
+                  &__comment{
+                    width: 400px;
+                    height: 100%;
+                    position: relative;
+                    right: -65px;
+                    font-size: 20px;
+                    background: #cee5ff;
+                    padding: 15px 20px 30px 20px;
+                    border-radius:10px;
+                    &__comment{
+                      font-size:12px;
+                      text-align: left;
+                      position: relative;
+                      right: 4px;
+                    }
+                  }
+                  &__time{
+                    font-size:12px;
+                    float: right;
+                    position: relative;
+                    bottom: 19px;
+                    left: -54px;
+                  }
+                }
+              }
+              .comment__form{
+                &__text{
+                  .textbox{
+                    width: 60.5%;
+                    height: 17px;
+                    font-size:12px; 
+                    padding:15px;
+                    margin-left:30px;
+                    border-radius:10px;
+                    border: solid 1px gainsboro;
+                    box-shadow: 0 2px 6px rgba(81, 82, 82, 0.16);
+                    -webkit-appearance: none;
+                  }
+                  .textbox:focus {
+                    border: 2px solid rgba(73, 73, 73, 0.32);
+                    outline: none;
+                  }
+                }
+                &__submit{
+                  clear: both;
+                  float: right;
+                  position: relative;
+                  bottom: 86px;
+                  .submit{
+                    display       : inline-block;
+                    border-radius : 5%;          /* 角丸       */
+                    font-size     : 10pt;        /* 文字サイズ */
+                    text-align    : center;      /* 文字位置   */
+                    cursor        : pointer;     /* カーソル   */
+                    padding       : 12px 12px;   /* 余白       */
+                    background    : #26c1ff;     /* 背景色     */
+                    color         : #ffffff;     /* 文字色     */
+                    line-height   : 1em;         /* 1行の高さ  */
+                    transition    : .3s;         /* なめらか変化 */
+                    box-shadow    : 4px 4px 2px #666666;  /* 影の設定 */
+                    border        : 2px solid #277aff;
+                    position: relative;
+                    left: -36px;
+                    top: 37px;
+                  }
+                  .submit:hover {
+                    box-shadow    : none;        /* カーソル時の影消去 */
+                    color         : #189bf1;     /* 背景色     */
+                    background    : #ffffff;     /* 文字色     */
+                  }
+                }
               }
             }
           }

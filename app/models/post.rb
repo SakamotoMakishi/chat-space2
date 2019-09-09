@@ -3,7 +3,5 @@ class Post < ApplicationRecord
   has_one_attached :image
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
-  def like_user(user_id)
-    likes.find_by(user_id: user_id)
-  end
+  has_many :comments,foreign_key: :post_id, dependent: :destroy
 end
