@@ -55,12 +55,13 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
-$(function(){  
-  $(".user_page__right").scrollTop($("#auto_scroll")[0].scrollHeight);  
-});
-$(function(){ 
+if (window.location.href.match(/\/groups\/\d+\/messages/)){
+  $(function(){  
+    $(".user_page__right").scrollTop($("#auto_scroll")[0].scrollHeight);  
+  });
+}
+$(function(){
   function messageHTML(message){
-    if (message.user_id === message.current_user){
     var image = message.image ? `<img class="content_image" src="${message.image}">` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="message_current_user">
@@ -93,38 +94,6 @@ $(function(){
                 </div>
                 `
     return html;
-    }
-    else if(message.user_id == message.current_user){
-    var image = message.image ? `<img class="content_image" src="${message.image}">` : "";  //message.imageにtrueならHTML要素、faiseなら空の値を代入。
-    var html = `<div class="message" data-message-id="${message.id}">
-                  <div class="message_group_user">
-                    <div class="message__user">
-                    <div class="message__user__avatar">
-                      <img style="width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;" src="${message.user_avatar}">
-                    </div>
-                    <div class="message__user__name">
-                      ${message.name}
-                    </div>
-                    </div>
-                    <div class="message__content">
-                      <text class="message__content__tri">
-                      ◥
-                      </text>
-                      <div class="message__content__text">
-                      ${message.content}
-                    </>
-                    <div class="message__content__image">
-                      ${image}
-                    </div>
-                    </div>
-                    <text class="message__time22">
-                      ${message.date}
-                    </text>
-                    </div>
-                </div>
-                `
-    return html;
-    }
   }
   $('#new_message').on('submit',function(e){
     e.preventDefault();     //submitされた処理を止める。
@@ -152,7 +121,7 @@ $(function(){
       $('.submit').prop('disabled', false);
     })
   });
-  if (window.location.href.match(/\/groups\/\d+\/messages/)){  //現在いるグループにしか入力を影響させないための記述
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){ //現在いるグループにしか入力を影響させないための記述
   var reloadMessages = function(){
     var last_message_id = $('.message:last').data('message-id');//カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       $.ajax({
@@ -175,4 +144,56 @@ $(function(){
     }
   setInterval(reloadMessages, 3000);
 }
-})
+});
+$(function(){
+  function buildHTML(comment){
+    var comment_text = comment.comment ? `${comment.comment}` : "";
+    var html = `
+    <div class="comment__message"  data-comment-id="${comment.comment_id}">
+    <div class="comment__message__avatar">
+    <img style="width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;" src="${comment.user_avatar}">
+    </div>
+    <text class="comment__message__nickname">
+    ${comment.user_name}
+    </text>
+    <text class="comment__message__tri">
+    ◥
+    </text>
+    <div class="comment__message__comment">
+    <text class="comment__message__comment__comment">
+    ${comment_text}
+    </text>
+    </div>
+    <div class="comment__message__time">
+    <i class="far fa-clock"></i>
+    ${comment.time}
+    </div>
+    </div>`
+    return html;
+  }
+  $('#new_comment').on('submit',function(e){
+    e.preventDefault();
+    var comment = new FormData(this);
+    var url = $(this).attr('action');
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: comment,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.comment').append(html)
+      $('#new_comment')[0].reset(); 
+      return false
+    })
+    .fail(function(){
+      alert('コメントを入力してください');
+    })
+    .always(function(){
+      $('.submit').prop('disabled', false);
+    })
+  });
+});

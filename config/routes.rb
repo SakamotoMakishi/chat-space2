@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#root'
-  post   '/like/:post_id' => 'likes#like',   as: 'like'
-  delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
   resources :users do
     collection do
       get :root
@@ -11,6 +9,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :posts do
     resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   resources :groups do
     resources :messages
@@ -18,4 +17,6 @@ Rails.application.routes.draw do
       resources :messages, only: :index, defaults: { format: 'json' }
     end
   end
+  post   '/like/:post_id' => 'likes#like',   as: 'like'
+  delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
 end
