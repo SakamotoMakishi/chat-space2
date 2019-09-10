@@ -1,148 +1,216 @@
-.delete-contnet{
+.new-post{
   width:100vw;
   height: 100vh;
   overflow: auto;
   z-index: 300;
   position: fixed;;
-  background-color: rgba(7, 7, 7, 0.616);
+  background-color: rgba(0, 0, 0, 0.808);
+  h2{
+    font-weight:bold; 
+  }
   display: none;
   &__box{
     width: 600px;
     margin:auto;
-    height: 250px;
+    height: 600px;
     background-color:white;
     margin-top:30px;
-    &__btn{
-      background-color:white;
-      width: 100%;
-      height: 180px;
-      text-align: center;
-      line-height: 1.5;
-      padding-top:70px;
-      font-size:14px; 
-      text{
+    padding: 40px;
+    border-radius:10px; 
+    .js-modal-close{
+      clear: both;
+      float: right;
       font-weight: bold;
-      font-size:15px; 
+      cursor: pointer;
+      padding-bottom: 10px;
+      position: relative;
+      bottom:20px;
+      .fas.fa-times{
+        font-size:19px; 
       }
     }
-    &__cancel{
-      background-color:white;
-      width: 50%;
-      height: 70px;
-      border-top: 1px solid #ccc;
-      float: left;
-      font-size:14px; 
-      text-align: center;
-      line-height: 63px;
-      cursor: pointer;
-    }
-    &__delete{
-      background-color:white;
-      width: 50%;
-      height: 70px;
-      border-top: 1px solid #ccc;
-      border-left: 1px solid #ccc;
-      float: right;
-      position: relative;
-      bottom: 71px;
-      font-size:14px; 
-      text-align: center;
-      line-height: 63px;
-      color:#0099e8;
-      text-decoration: none;
+    .post_from{
+      &__image{
+        #img_field {
+          border-radius:10px;
+          font-size: 13px;
+          margin-top: 0px;
+          padding: 5px 8px;
+          border: solid 1px gainsboro;
+          color: #666;
+          padding: 0;
+          cursor: pointer;
+          width: 300px;
+          height: 200px;
+          background-image:url(https://www.shoshinsha-design.com/wp-content/uploads/2016/09/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2016-09-03-16.45.18.png);
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size:cover;
+          background-color: #fff;
+          overflow: hidden;
+          box-sizing: border-box;
+          transition: 0.3s ease-out;
+          .avatar_preview{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        #img_field:hover {
+          background-color: rgb(252, 251, 248);
+          transition: 0.3s ease-out;
+          opacity: 0.5;
+        }
+        #img_field:hover i {
+          transition: 0.3s ease-out;
+          display: block;
+          color: #fff;
+        }
+        &__input{
+          display: none;
+        }
+      }
+      &__title{
+        .text_field{
+          margin: 20px 0 20px 0;
+          font: 15px/24px sans-serif;
+          box-sizing: border-box;
+          width: 80%;
+          padding: 0.3em;
+          transition: 0.3s;
+          letter-spacing: 1px;
+          border: none;
+          border-bottom: 2px solid #192438;
+          background: transparent;
+        }
+        .text_field:focus{
+        border-bottom: 2px solid #28bbff;
+        outline: none;}
+        }
+        &__text {
+          position: relative;
+          width: 100%;
+          margin: 20px 0 20px;
+        }
+        &__text textarea{
+          font: 15px/24px sans-serif;
+          box-sizing: border-box;
+          width: 100%;
+          letter-spacing: 1px;
+          padding-left: 4em;
+          height: 200px;
+        }
+        &__text textarea:focus{
+          outline: none;
+        }
+        .ef {
+          padding: 7px 14px;
+          transition: 0.4s;
+          border: 1px solid #26334d;
+          background: transparent;
+        }
+        .ef ~ .focus_line:before,
+        .ef ~ .focus_line:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          content: '';
+          transition: 0.3s;
+          background-color: #28bbff;
+        }
+        .ef ~ .focus_line:after {
+          top: auto;
+          right: 0;
+          bottom: 0;
+          left: auto;
+        }
+        .ef ~ .focus_line i:before,
+        .ef ~ .focus_line i:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 0;
+          content: '';
+          transition: 0.4s;
+          background-color: #28bbff;
+        }
+        .ef ~ .focus_line i:after {
+          top: auto;
+          right: 0;
+          bottom: 0;
+          left: auto;
+        }
+        .ef:focus ~ .focus_line:before,
+        .ef:focus ~ .focus_line:after,
+        &__text.ef ~ .focus_line:before,
+        &__text.ef ~ .focus_line:after {
+          width: 100%;
+          transition: 0.3s;
+        }
+        .ef:focus ~ .focus_line i:before,
+        .ef:focus ~ .focus_line i:after,
+        &__text.ef ~ .focus_line i:before,
+        &__text.ef ~ .focus_line i:after {
+          height: 100%;
+          transition: 0.4s;
+        }
+        .ef ~ label {
+          position: absolute;
+          z-index: -1;
+          top: 10px;
+          left: 14px;
+          width: 100%;
+          transition: 0.3s;
+          letter-spacing: 0.5px;
+          color: #aaaaaa;
+        }
+        .ef:focus ~ label,
+        &__text.ef ~ label {
+          font-size: 12px;
+          top: -18px;
+          left: 0;
+          transition: 0.3s;
+          color: #da3c41;
+        }
+      &__submit{
+        .submit{
+          width: 100%;
+          display       : inline-block;
+          border-radius : 5%;          /* 角丸       */
+          font-size     : 13pt;        /* 文字サイズ */
+          text-align    : center;      /* 文字位置   */
+          cursor        : pointer;     /* カーソル   */
+          padding       : 24px 24px;   /* 余白       */
+          background    : #26c1ff;     /* 背景色     */
+          color         : #ffffff;     /* 文字色     */
+          line-height   : 1em;         /* 1行の高さ  */
+          transition    : .3s;         /* なめらか変化 */
+          box-shadow    : 4px 4px 2px #666666;  /* 影の設定 */
+          border        : 2px solid #277aff;
+        }
+        .submit:active {
+          box-shadow    : none;        /* カーソル時の影消去 */
+          color         : #189bf1;     /* 背景色     */
+          background    : #ffffff;     /* 文字色     */
+        }
+      }
     }
   }
 }
-// /*モーダル用*/
-// .js-modal__bg {
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0,0,0,0.6);
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   z-index: 10;
-//   display: none;
-// }
-// .js-modal__main {
-//   width: calc(100% - 32px);
-//   height: 80%;
-//   padding: 16px;
-//   bottom: -81%;
-//   left: 0;
-//   background: #fff;
-//   border-radius:4px 4px 0 0 ;
-//   position: fixed;
-//   z-index: 11;
-//   opacity: 0;
-// }
-// .js-modal__btn {
-//     color:#76952f;
-//   cursor: pointer;
-//   -webkit-tap-highlight-color:rgba(0,0,0,0);
-// }
-// .js-modal__btn--close {
-//     margin-top: 40px;
-//     text-align: center;
-//     text-decoration: underline;
-// }
-// .js-modal__btn--close--fix {
-//   width: 30px;
-//   height: 30px;
-//   //background: #333;
-//   border-radius: 50%;
-//   position: absolute;
-//   top: -50px;
-//   right: 5px;
-//   z-index: 101;
-//   cursor:pointer;
-//   -webkit-tap-highlight-color:rgba(0,0,0,0);
-// }
-// .js-modal__btn--close--fix:before{
-//   content:"";
-//   width: 20px;
-//   height: 20px;
-//   border-right:3px solid #fff;
-//   transform: rotate(-45deg);
-//   position: absolute;
-//   top:12px;
-//   left:-3px;
-// }
-// .js-modal__btn--close--fix:after{
-//   content:"";
-//   width: 20px;
-//   height: 20px;
-//   border-right:3px solid #fff;
-//   transform: rotate(45deg);
-//   position: absolute;
-//   top:-2px;
-//   left:-3px;
-// }
-// /*下から上*/
-// @keyframes SlideUp {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(-1%);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(-80%);
-//   }
-// }
-// /*上から下*/
-// @keyframes SlideDown {
-//   0% {
-//     opacity: 1;
-//     transform: translateY(-80%);
-//   }
-//   100% {
-//     opacity: 0;
-//     transform: translateY(-1%);
-//   }
-// }
-// .js-modal__main._slideUp {
-// animation: SlideUp .5s ease-in-out forwards;
-// }
-// .js-modal__main._slideDown {
-// animation: SlideDown .5s ease-in-out forwards;
-// }
+.new_post_btn{
+  float: right;
+  position: fixed;
+  right: 20px;
+  top: 7px;
+  z-index: 100;
+  padding: 10px;
+  background: #3fbfff;
+  color: aliceblue;
+  border-radius:20px;
+  cursor: pointer;
+  &__pen{
+    font-size:13px; 
+  } 
+}
