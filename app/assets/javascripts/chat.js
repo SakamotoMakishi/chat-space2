@@ -156,10 +156,10 @@ $(function(){
     <text class="comment__message__nickname">
     ${comment.user_name}
     </text>
-    <text class="comment__message__tri">
+    <div class="comment__message__comment">
+    <text class="comment__message__comment__tri">
     ◥
     </text>
-    <div class="comment__message__comment">
     <text class="comment__message__comment__comment">
     ${comment_text}
     </text>
@@ -197,3 +197,9 @@ $(function(){
     })
   });
 });
+$(function(){
+  setTimeout("$('.notice').fadeOut('slow')", 1500) 
+})
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 1500) 
+})

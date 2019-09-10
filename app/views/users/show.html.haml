@@ -7,7 +7,7 @@
       %li.user_page__left__link__list
         = form_with model: @group, local: true  do |f|
           %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
-          = f.hidden_field :name, value: "トークルーム"
+          = f.hidden_field :name, value: "#{@user.nickname}さん"
           = f.submit 'チャットする', class: "submit"
       %li.user_page__left__link__list
         = render "layouts/relationships"

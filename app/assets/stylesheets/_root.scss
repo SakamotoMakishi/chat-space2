@@ -3,17 +3,74 @@
   height: 100%; 
   &__left{
     width: calc(100% - 80%);
-    padding: 30px 10px 0 10px;
+    padding: 0px 0px 30px 0px;
     height: 100vh;
     float: left;
-    background:rgb(217, 254, 255);
+    background:rgb(255, 255, 255);
+    border-right:2px solid rgb(187, 187, 187);
     position: fixed;
     left:0;
     top:50;
-    &__link{
-      li a{
-        text-decoration: none;
-        color: black;
+    &__group{
+      &__users{
+        margin-top:2px; 
+        width: 100%;
+        height: 100%;
+        &__link{
+          background: #ffffff;
+          border-right: 1px solid gray;
+          border-left:1px solid gray;
+          border-top:1px solid gray;
+          border-bottom:1px solid gray;
+          padding: 10px;
+          display: block;
+          width:93%;
+          transition-duration: 1s;
+          a{
+            text-decoration: none;
+          }
+          &__avatar{
+          }
+          &__nickname{
+            color:black;
+            width: 100%;
+            font-size:12px;
+            position: relative;
+            left:50px;
+            bottom:40px;
+          }
+          &__last-message{
+            text-align: left;
+            color:rgb(102, 102, 102);
+            font-size:13px;
+            overflow: hidden;
+            width: 100%;
+            height: 13px;
+          }
+          .root_page__left__group__users__link__smrck{
+            background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
+            bottom: -13px;
+            height: 15px;
+            position: relative;
+            right: -235px;
+            width: 40px;
+            transition:1s;
+          }
+        }
+        &__link:hover{
+        border-top: 1px solid rgb(0, 162, 255);
+        border-right: 1px solid rgb(0, 162, 255);
+        border-bottom: 1px solid rgb(0, 162, 255);
+        width:125%;
+          .root_page__left__group__users__link__smrck{
+            background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
+            bottom: -13px;
+            height: 15px;
+            position: relative;
+            right: -330px;
+            width: 40px;
+          }
+        }
       }
     }
   }
@@ -21,10 +78,10 @@
     width: calc(100% - 30%);
     float: right;
     height: 100vh;
-    overflow: scroll;
     padding: 0px 50px 0 50px;
     margin-top: 50px;
     padding-top:20px; 
+
     &__title{
       text-align: left;
       font-size:20px;
@@ -168,25 +225,15 @@
                   margin: 30px 30px;
                   &__avatar{
                     float:left;
+                    position: relative;
+                    bottom:10px;
                   }
                   &__nickname{
                     font-size: 12px;
                     float: left;
                     position: relative;
-                    left: -33px;
-                    bottom: -49px;
-                  }
-                  &__tri{
-                    font-size:22px;
-                    text-align: left;
-                    position: relative;
-                    color:#cee5ff;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    list-style-type:none;
-                    top: 30px;
-                    left: -13px;
+                    bottom: 20px;
+                    left: 25px;
                   }
                   &__comment{
                     width: 400px;
@@ -202,6 +249,18 @@
                       text-align: left;
                       position: relative;
                       right: 4px;
+                    }
+                    &__tri{
+                      font-size:22px;
+                      text-align: left;
+                      position: relative;
+                      color:#cee5ff;
+                      -webkit-appearance: none;
+                      -moz-appearance: none;
+                      appearance: none;
+                      list-style-type:none;
+                      top: 0px;
+                      left: -57px;
                     }
                   }
                   &__time{
