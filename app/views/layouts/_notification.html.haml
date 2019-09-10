@@ -1,0 +1,10 @@
+- visiter=notification.visiter
+- post=notification.post
+.user-view.clearfix
+  = link_to user_path(notification.visiter.id) do
+    = image_tag avatar(visiter), class:"user-thumb", style:"width: 60px;"
+  != notification_form(notification)
+  %span.moderate-font= " (#{time_ago_in_words(notification.created_at)}前)"
+  %br/
+  - if !@comment.nil?
+    %p.moderate-font= @comment
