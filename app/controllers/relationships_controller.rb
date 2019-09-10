@@ -1,27 +1,22 @@
 class RelationshipsController < ApplicationController
-  before_action :set_user
 
   def create
-    user = User.find(params[:relationship][:follow_id])
-    following = current_user.follow(user)
-    if following.save
-      flash[:notice] = 'ユーザーをフォローしました'
-      redirect_to root_path
-    else
-      flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-      edirect_to root_path
+    followed=User.find(params[:follow_id])
+    @rel=current_user.follow(followed)
+    @user=User.find(params[:follow_id])
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js
     end
   end
 
   def destroy
-    user = User.find(params[:relationship][:follow_id])
-    following = current_user.unfollow(user)
-    if following.destroy
-      flash[:notice] = 'ユーザーをフォローしました'
-      edirect_to root_path
-    else
-      flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      edirect_to root_path
+    rel=current_user.relationships.find(params[:id])
+    @user=User.find(rel.follow_id)
+    rel.destroy
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js
     end
   end
 

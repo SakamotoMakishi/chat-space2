@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :likes, dependent: :destroy
   has_many :like_stories, through: :likes, source: :story
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   def follow(other_user)
     unless self == other_user
@@ -36,5 +38,19 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
-  
+  def follow_create_notification_by(current_user)
+    notification=current_user.active_notifications.new(
+      visited_id:self.id,
+      action:"follow"
+    )
+    notification.save if notification.valid?
+  end
+
+  def follow_delete_notification_by(current_user)
+    notification=current_user.active_notifications.find_by(
+      visited_id:self.id,
+      action:"follow"
+    )
+    notification.destroy if !notification.nil?
+  end
 end
