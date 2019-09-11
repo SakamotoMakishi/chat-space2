@@ -56,11 +56,11 @@
   }
 }
 .all_user{
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   &__contents{
-    margin: 100px auto;
-    width: 1120px;
+    margin: auto;
+    width: 1000px;
     height: 100%;
     padding-left: 35px;
     padding-right: 35px;
@@ -72,8 +72,8 @@
       display: inline-block;
       .contents{
         padding-top: 20px;
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
         background: rgb(250, 250, 250);
         margin:auto;
         float:left;

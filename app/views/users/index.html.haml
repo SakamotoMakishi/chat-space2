@@ -1,10 +1,15 @@
 = render 'layouts/header'
-.all_user
-  .all_user__contents
-    - @user.reverse_each do |user|
-      = link_to user_path(user),class:"all_user__contents__link" do
-        .contents
-          .user_image
-            = image_tag avatar(user),crass:"user_avatar",style: "width: 200px;height:200px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-          .user_name
-            = "#{user.nickname}"
+= render 'layouts/flash_message'
+.root_page
+  = render 'layouts/left_bar'
+  .root_page__right
+    .root_page__right__contents
+      .all_user
+        .all_user__contents
+          - @user.reverse_each do |user|
+            = link_to user_path(user),class:"all_user__contents__link" do
+              .contents
+                .user_image
+                  = image_tag avatar(user),crass:"user_avatar",style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                .user_name
+                  = "#{user.nickname}"

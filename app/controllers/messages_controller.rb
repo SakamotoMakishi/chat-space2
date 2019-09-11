@@ -1,10 +1,16 @@
 class MessagesController < ApplicationController
-  before_action :set_group
+  before_action :set_group,:talk_user 
   
   def index
     @message = Message.new
     @member = Group.find(params[:group_id]).members
     @messages = @group.messages.includes(:user)
+    unless @messages.nil?
+      if 
+      @messages.where(checked: false).each do |message|
+        message.update_attributes(checked: true)
+      end
+    end
   end
 
   def create
