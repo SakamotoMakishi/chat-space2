@@ -1,0 +1,50 @@
+.sub-title{
+  margin:20px;
+  font-size:20px;
+  font-weight: bold;
+}
+.user-view{
+  padding: 15px;
+  border: 1px solid gainsboro;
+  width: 80%;
+  .user_image{
+    text-decoration: none;
+  }
+  .notificatin_user{
+    font-size:15px;
+    text-decoration: none;
+    color: rgb(0, 153, 255);
+  }
+  .moderate-font{
+    margin-top:10px;
+    margin-left:10px;
+    margin-bottom:10px;
+    font-size: 13px;
+    height: 100%;
+    width: 100%; 
+  }
+  .moderate-font_time{
+    color: rgb(139, 139, 139);
+    font-size:13px;
+    float: right;
+    position: relative;
+    bottom:10px;
+  }
+  .your_post{
+    font-size:15px;
+    text-decoration: none;
+    color:rgb(0, 153, 255);
+  }
+  .your_group{
+    font-size:15px;
+    text-decoration: none;
+    color:rgb(0, 153, 255);
+  }
+  .notification_text{
+    display: inline;
+    position: relative;
+    bottom:40px;
+    font-size:13px; 
+    margin-left: 10px;
+  }
+}

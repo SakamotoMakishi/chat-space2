@@ -1,0 +1,13 @@
+.root_page__left{style:"margin-top:50px;"}
+  .root_page__left__group
+    .root_page__left__group__users
+      - @talk_user.each do |user|
+        %ul.root_page__left__group__users__link 
+          = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)) do
+            %li.root_page__left__group__users__link__avatar
+              = image_tag avatar(user),style: "width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+            %li.root_page__left__group__users__link__nickname
+              = "#{user.nickname}"
+            .root_page__left__group__users__link__smrck
+            %li.root_page__left__group__users__link__last-message
+              = user.groups.find_by(id: current_user.groups.ids).show_last_message

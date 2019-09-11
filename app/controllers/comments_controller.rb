@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
+
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      @comment.comment_create_notification_by(current_user)
+      @comment.comment_create_notification_by(current_user) if @comment.user_id != current_user.id
       respond_to do |format|
         format.html { redirect_to root_path } 
         format.json

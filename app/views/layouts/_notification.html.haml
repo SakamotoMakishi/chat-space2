@@ -1,12 +1,14 @@
 - visiter=notification.visiter
 - post=notification.post
 .user-view.clearfix
-  = link_to user_path(notification.visiter.id) do
-    = image_tag avatar(visiter), class:"user-thumb", style:"width: 60px;"
-  != notification_form(notification)
-  %span.moderate-font= " (#{time_ago_in_words(notification.created_at)}前)"
-  %br/
+  = link_to user_path(notification.visiter.id),class:"user_image" do
+    = image_tag avatar(visiter),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+  .notification_text
+    != notification_form(notification)
   - if !@comment.nil?
     %p.moderate-font= @comment
   - if !@message.nil?
     %p.moderate-font= @message
+  %br/
+  %span.moderate-font_time= " (#{time_ago_in_words(notification.created_at)}前)"
+  

@@ -7,7 +7,6 @@
           = image_tag avatar(current_user),style: "width: 150px;height:150px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
           = link_to "ログアウト",destroy_user_session_path , method: :delete
           = link_to '会員登録',new_user_registration_path
-          = link_to 'ユーザー一覧',users_path
   #js-hamburger.hamburger
     %span.hamburger__line.hamburger__line--1
     %span.hamburger__line.hamburger__line--2
@@ -27,11 +26,24 @@
       });
       }
     toggleNav();
-.notifications
-  = link_to notifications_path,class: "btn" do
-    %i.far.fa-bell
-    - if unchecked_notifications.any?
-      %i.fa.fa-circle.notification-circle
-.home_btn
-  = link_to root_path,class: "btn" do
-    %i.fas.fa-home
+-if user_signed_in?
+  .user_plus
+    = link_to users_path do
+      %i.fas.fa-user-plus
+      .user_plus__hover_message
+        ユーザーを追加
+  .notifications
+    = link_to notifications_path,class: "btn" do
+      %i.far.fa-bell
+      .notifications__hover_message
+        お知らせを見る
+      - if unchecked_notifications.any?
+        .nav-count1
+          = unchecked_notifications.count
+  .home_btn
+    = link_to root_path,class: "btn" do
+      %i.fas.fa-home
+      .hover_message
+        トップへ戻る
+  = render 'layouts/post_message'
+- else

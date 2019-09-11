@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:avatar])
   end
+  
+  def talk_user
+    @talk_user = User.with_attached_avatar.where(id: Member.where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id))
+  end
 
   def show_last_message
     if (last_message = messages.last).present?
