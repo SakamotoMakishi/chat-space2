@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @member = Group.find(params[:group_id]).members
     @messages = @group.messages.includes(:user)
     unless @messages.nil?
-      @messages.where(checked: false).each do |message|
+      @messages.where(checked: false).where.not(user_id: current_user.id).each do |message|
         message.update_attributes(checked: true)
       end
     end
