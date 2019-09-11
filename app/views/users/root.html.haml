@@ -1,11 +1,6 @@
 = render 'layouts/header'
 = render 'layouts/post_message'
 = render 'layouts/flash_message'
-.notifications
-  = link_to notifications_path,class: "btn" do
-    %i.far.fa-bell
-    - if unchecked_notifications.any?
-      %i.fa.fa-circle.notification-circle
 .root_page
   .root_page__left{style:"margin-top:50px;"}
     .root_page__left__group

@@ -199,18 +199,3 @@
     }
   }
 }
-.new_post_btn{
-  float: right;
-  position: fixed;
-  right: 20px;
-  top: 7px;
-  z-index: 100;
-  padding: 10px;
-  background: #3fbfff;
-  color: aliceblue;
-  border-radius:20px;
-  cursor: pointer;
-  &__pen{
-    font-size:13px; 
-  } 
-}

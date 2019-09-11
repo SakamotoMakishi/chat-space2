@@ -27,3 +27,11 @@
       });
       }
     toggleNav();
+.notifications
+  = link_to notifications_path,class: "btn" do
+    %i.far.fa-bell
+    - if unchecked_notifications.any?
+      %i.fa.fa-circle.notification-circle
+.home_btn
+  = link_to root_path,class: "btn" do
+    %i.fas.fa-home

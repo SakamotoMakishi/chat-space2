@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      @comment.comment_create_notification_by(current_user)
       respond_to do |format|
         format.html { redirect_to root_path } 
         format.json

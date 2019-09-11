@@ -5,15 +5,17 @@
     = image_tag avatar(@user),style: "width: 150px;height:150px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
     %ul.user_page__left__link
       %li.user_page__left__link__list
-        = form_with model: @group, local: true  do |f|
-          %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
-          = f.hidden_field :name, value: "#{@user.nickname}さん"
-          = f.submit 'チャットする', class: "submit"
-      %li.user_page__left__link__list#follow_botton
-        - if current_user.following?(@user)
-          = render "layouts/follow_botton"
-        -else
-          = render "layouts/follow_botton"
+        - unless current_user == @user
+          = form_with model: @group, local: true  do |f|
+            %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
+            = f.hidden_field :name, value: "#{@user.nickname}さん"
+            = f.submit 'チャットする', class: "submit"
+        %li.user_page__left__link__list#follow_botton
+          - unless current_user == @user
+            - if current_user.following?(@user)
+              = render "layouts/follow_botton"
+            -else
+              = render "layouts/follow_botton"
       %li.user_page__left__link__list
         = link_to "トーク"
   .root_page__right{style:"margin-top:20px;"}
