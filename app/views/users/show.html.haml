@@ -71,9 +71,9 @@
                           = image_tag avatar(c.user),style: "width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
                         %text.comment__message__nickname
                           = c.user.nickname
-                        %text.comment__message__tri
-                          &#9701;
                         .comment__message__comment
+                          %text.comment__message__comment__tri
+                            &#9701;
                           %text.comment__message__comment__comment
                             = c.comment
                         .comment__message__time

@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
   def create
     @message = @group.messages.new(message_params)
     if @message.save
-        @group.touch
         @user_notification = User.find_by(id: Member.where(group_id: @message.group_id).where.not(user_id: current_user.id).pluck(:user_id))
+        @user_notification.touch
         notification=current_user.active_notifications.new(
           message_id:@message.id,
           visited_id:@user_notification.id,

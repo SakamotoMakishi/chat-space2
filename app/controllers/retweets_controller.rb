@@ -1,12 +1,15 @@
 class RetweetsController < ApplicationController
   before_action :set_retweet_variables
 
+  def index
+  end
+
   def retweet
     retweet = current_user.retweets.new(post_id: @post.id)
     if retweet.save!
         @post.touch
         @post.retweet_create_notification_by(current_user) if @post.user_id != current_user.id
-        flash[:notice] = '投稿をシェアしました'
+        flash[:notice] = '投稿をリツイートしました'
         redirect_to request.referrer
     end  
   end

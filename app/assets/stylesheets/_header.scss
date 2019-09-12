@@ -10,14 +10,14 @@
 }
 .global-nav {
 position: fixed;
-left:-400px; /* これで隠れる */
+left:-330px; /* これで隠れる */
 top: 0;
-width: 350px;
+width: 288px;
 height: 100vh;
 padding-top: 50px;
 -moz-box-shadow: rgba(223, 217, 217, 0.2) 0px 0px 10px 10px;
-background-color: rgb(255, 255, 255);
-box-shadow:rgba(156, 154, 154, 0.7) 0px 0px 20px 20px;
+background-color: #2f3e51;
+box-shadow:rgba(154, 154, 156, 0.7) 0px 0px 20px 20px;
 transition: all .6s;
 z-index: 200;
 overflow-y: auto; /* メニューが多くなったらスクロールできるように */
@@ -229,6 +229,74 @@ top: 20px;
 }
 .user_plus:hover{
   .user_plus__hover_message{
+    opacity: 1;
+    transition: 0.5s;
+  }
+  a{
+    color: rgba(49, 49, 49, 0.733);
+    transition: 0.5s;
+  }
+}
+.like_show_btn{
+  position: fixed;
+  right: 431px;
+  top: 13px;
+  z-index:100;
+  font-size:25px;
+  a{
+    transition: 0.5s;
+    color: rgb(8, 8, 8);
+  }
+  .hover_message_star{
+    opacity: 0;
+    font-size:10px;
+    width: 70px;
+    background: #3fbfff;
+    position: absolute;
+    right: -26px;
+    top: 24px;
+    color: #eee;
+    border-radius:30px;
+    padding: 10px;
+    transition: 0.5s;
+  }
+}
+.like_show_btn:hover{
+  .hover_message_star{
+    opacity: 1;
+    transition: 0.5s;
+  }
+  a{
+    color: rgba(49, 49, 49, 0.733);
+    transition: 0.5s;
+  }
+}
+.group_show_btn{
+  position: fixed;
+  right: 367px;
+  top: 13px;
+  z-index:100;
+  font-size:25px;
+  a{
+    transition: 0.5s;
+    color: rgb(8, 8, 8);
+  }
+  .hover_message_group{
+    opacity: 0;
+    font-size:10px;
+    width: 70px;
+    background: #3fbfff;
+    position: absolute;
+    right: -26px;
+    top: 24px;
+    color: #eee;
+    border-radius:30px;
+    padding: 10px;
+    transition: 0.5s;
+  }
+}
+.group_show_btn:hover{
+  .hover_message_group{
     opacity: 1;
     transition: 0.5s;
   }

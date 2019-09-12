@@ -29,8 +29,8 @@
           a{
             text-decoration: none;
           }
-          &__avatar{
-          }
+          // &__avatar{
+          // }
           &__nickname{
             color:black;
             width: 100%;
@@ -46,6 +46,22 @@
             overflow: hidden;
             width: 100%;
             height: 13px;
+          }
+          &__check_box{
+              position: relative;
+              top: -94px;
+              left: 25px;          
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background: #0163ff;
+              text-align: center;
+              line-height: 20px;
+              font-size: 12px;
+              color: #fff;
+              animation: delayJump 3s ease-out;
+              animation-delay: 0.05s;
+
           }
           .root_page__left__group__users__link__smrck{
             background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
@@ -173,7 +189,7 @@
           }
           .like-link a{
             text-decoration: none;
-            color:#ea352d;
+            color:#fbc000;
             .heart-like{
               float: left;
               margin-right: 10px;
@@ -218,7 +234,7 @@
           }
           .retweet-link a{
             text-decoration: none;
-            color:#04ff26;
+            color:#00b327;
             .fas.fa-share-square{
               float: left;
               margin-right: 10px;
