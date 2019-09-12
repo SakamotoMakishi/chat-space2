@@ -1,5 +1,5 @@
-# どんなアプリ？
-画像投稿型のSNSアプリです。グループチャット機能もあります。（現在開発中です。）
+# どんなアプリ？（現在開発中です。）
+画像投稿型のSNSアプリです。チャット機能もあります。
 
 # URL
 https://chatapplismks.herokuapp.com
@@ -16,7 +16,8 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - 画像投稿・リサイズ(ストレージ:AWS S3, アップローダー:active strage)
 - フォロー機能
 - いいね機能
+- シェア機能
 - 投稿へののコメント機能（Ajaxによる非同期通信）
 - グループチャット機能（Ajaxによる非同期通信)
 
-実装期間 : 5日間, 40時間ほど
+実装期間 : ８日間, ８0時間ほど
