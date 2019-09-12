@@ -15,12 +15,15 @@ module NotificationsHelper
         "#{visiter}があなたをフォローしました。"
       when "like" then
         "#{visiter}が#{your_post}にいいね！しました。"
+      when "retweet" then
+        "#{visiter}が#{your_post}をリツイートしました。"
       when "comment" then
         @comment = Comment.find_by(id:notification.comment_id)&.comment
         "#{visiter}が#{your_post}にコメントしました。"
       when "message" then
         @message = Message.find_by(id:notification.message_id)&.messages
         "#{visiter}から#{your_group}にメッセージが届きました。"
+      
     end
   end
 end

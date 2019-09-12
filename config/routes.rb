@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   end
   post   '/like/:post_id' => 'likes#like',   as: 'like'
   delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
+  post   '/retweet/:post_id' => 'retweets#retweet',   as: 'retweet'
+  delete '/retweet/:post_id' => 'retweets#unretweet', as: 'unretweet'
 end
