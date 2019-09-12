@@ -21,8 +21,9 @@
             - unless current_user == @user
               = form_with model: @group, local: true  do |f|
                 %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
-                = f.hidden_field :name, value: "#{@user.nickname}さん"
+                = f.hidden_field :name, value: "#{@user.nickname}"
                 = f.submit "メッセージ送る", class: "btn-social-square btn-social-square--twitter"
+              = link_to "メッセージ送る",root_path, class:"btn-social-square4 btn-social-square--twitter4"
           %li.user_show__left__link__list#follow_botton
             - unless current_user == @user
               - if current_user.following?(@user)

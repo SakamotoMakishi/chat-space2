@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     @group = Group.new
     @user = User.with_attached_avatar.find(params[:id])
     @posts = @user.posts.with_attached_image
+    @user_msg = Group.where(name: @user.groups.name)
+    @current_user_msg = Group.where(name: current_user.groups.name)
+    @current_user_name = Group.where(name: @user.groups.name)
   end
 
 end
