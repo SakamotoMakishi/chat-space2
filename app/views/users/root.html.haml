@@ -1,5 +1,6 @@
 = render 'layouts/header'
 = render 'layouts/flash_message'
+= render 'layouts/post_message'
 .root_page
   = render 'layouts/left_bar'
   .root_page__right
@@ -10,6 +11,18 @@
             = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
             %text.root_page__right__contents__list__nickname
               = "#{post.user.nickname}"
+          .root_page__right__contents__list__retweet_user
+            - user_name = User.find_by(id: post.retweets_users.ids.last)
+            -if user_name == current_user
+              -if user_name
+                = image_tag avatar(current_user),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                = link_to "あなた",user_path(current_user),class:"root_page__right__contents__list__avatar"
+                %textがリツイートしました！
+            -else
+              -if user_name
+                = image_tag avatar(user_name),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                = link_to "#{user_name.nickname}",user_path(user_name),class:"root_page__right__contents__list__avatar"
+                %textさんがリツイートしました！
           .root_page__right__contents__list__post
             .root_page__right__contents__list__post__title
               = "#{post.title}" if post.title
@@ -21,6 +34,8 @@
               = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
           %li.root_page__right__contents__list__like
             = render 'likes/like', post: post
+          %li.root_page__right__contents__list__retweet
+            = render 'retweets/retweet', post: post
           .root_page__right__contents__list__comment
             %span.far.fa-comment
               = "#{post.comments.count}"
@@ -48,3 +63,4 @@
                         = f.text_area :comment, class: "textbox"
                       .comment__form__submit
                         = f.submit 'コメントする', class: "submit"
+          

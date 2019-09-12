@@ -4,7 +4,7 @@
   &__left{
     width: calc(100% - 80%);
     padding: 0px 0px 30px 0px;
-    height: 100vh;
+    height: 100%;
     float: left;
     background:rgb(255, 255, 255);
     border-right:2px solid rgb(187, 187, 187);
@@ -103,6 +103,16 @@
         a{
           text-decoration: none;
         }
+        &__retweet_user{
+          float: right;
+          a{vertical-align:50%;
+            color: #26c1ff;
+          }
+          text{
+            vertical-align:50%;
+            color: darkgrey;
+          }
+        }
         &__post{
           width: 80%;
           height: 100%;
@@ -174,6 +184,51 @@
               }
             }
             .heart-unlike{
+              float: left;
+              margin-right: 10px;
+              .down{
+                float: right;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+        &__retweet{
+          width: 50px;
+          height: 20px;
+          margin-top:10px;
+          display: inline-block;
+          vertical-align: top;
+          .slideInRight{
+            animation-name:fade-in2;
+            animation-duration:0.5s;
+            animation-delay:0s; //アニメーション開始させる時間
+            animation-iteration-count:1; //繰り返し回数
+            animation-direction:normal; //往復処理をするかどうか
+            animation-fill-mode: forwards; //アニメーション後のスタイルをどうするか
+          }
+          @keyframes fade-in2 {
+            0% {opacity: 0; transform: translate3d(0,-10px,0);}
+            25% {opacity: 0.12.5; transform: translate3d(0,-8px,0);}
+            25% {opacity: 0.25; transform: translate3d(0,-6px,0);}
+            50% {opacity: 0.5; transform: translate3d(0,-4x,0);}
+            75% {opacity: 0.65; transform: translate3d(0,-2px,0);}
+            75% {opacity: 0.88; transform: translate3d(0,-1px,0);}
+            100% {opacity: 1; transform: translate3d(0,0,0);}
+          }
+          .retweet-link a{
+            text-decoration: none;
+            color:#04ff26;
+            .fas.fa-share-square{
+              float: left;
+              margin-right: 10px;
+              .up{
+                float: right;
+                margin-left: 10px;
+                font-weight: bold;
+              }
+            }
+            .far.fa-share-square{
               float: left;
               margin-right: 10px;
               .down{

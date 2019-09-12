@@ -55,6 +55,25 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
+$(function(){
+  $fileField = $('#file_message')
+  $($fileField).on('change', $fileField, function(e) {
+    file = e.target.files[0]
+    reader = new FileReader(),
+    $preview = $("#img_field_message");
+    reader.onload = (function(file) {
+      return function(e) {
+        $preview.empty();
+        $preview.append($('<img>').attr({
+          src: e.target.result,
+          class: "avatar_preview",
+          title: file.name
+        }));
+      };
+    })(file);
+    reader.readAsDataURL(file);
+  });
+});
 if (window.location.href.match(/\/groups\/\d+\/messages/)){
   $(function(){  
     $(".user_page__right").scrollTop($("#auto_scroll")[0].scrollHeight);  

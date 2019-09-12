@@ -1,17 +1,10 @@
 class GroupsController < ApplicationController
-  
-  def show
-    @message = Message.new
-    @group = Group.find(params[:id])
-    @member = Group.find(params[:id]).members
-    @messages = @group.messages.with_attached_image
-  end
 
   def create
     @group = Group.new(group_params)
     @group.users << current_user
     if @group.save!(validate: false)
-      redirect_to group_path(@group)
+      redirect_to group_messages_path(@group)
     else
       render :show
     end
