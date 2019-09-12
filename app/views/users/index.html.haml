@@ -9,7 +9,7 @@
         .all_user__contents
           - @user.reverse_each do |user|
             = link_to user_path(user),class:"all_user__contents__link" do
-              .contents
+              .contents_users
                 .user_image
                   = image_tag avatar(user),crass:"user_avatar",style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
                 .user_name

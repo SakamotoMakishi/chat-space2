@@ -1,0 +1,32 @@
+.contents{
+  color: aliceblue;
+  .contents__list{
+    &__avatar{
+      text-align: center;
+    }
+    &__current_user{
+      a{text-decoration: none;
+        color: white;
+        padding:30px;
+        display: block;
+        border-bottom: 1px solid gainsboro;
+        font-weight:bold;
+        background: #2f3e51;
+        transition: 0.5s;
+      }
+      a:hover{
+        background: #495c75c7;
+        transition: 0.5s;
+      }
+      &__nickname{
+        text-align: center;
+      }
+      &__logout{
+
+      }
+      &__registration{
+
+      }
+    }
+  }
+}

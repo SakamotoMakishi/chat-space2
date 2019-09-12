@@ -1,11 +1,11 @@
 .like-link{:id => "like-link-#{post.id}"}
   - if current_user.likes.find_by(post_id: post.id)
     = link_to unlike_path(post.id), method: :delete, remote: true do
-      %i.fas.fa-heart.heart-like#keyvisual
+      %i.fas.fa-star.heart-like#keyvisual
       %P.up.slideInRight
         = "#{post.likes.count}"
   - else
     = link_to like_path(post.id), method: :post, remote: true do
-      %i.far.fa-heart.heart-unlike#keyvisual.slideInRight
+      %i.far.fa-star.heart-unlike#keyvisual.slideInRight
       %p.down.slideInRight
         ="#{post.likes.count}"
