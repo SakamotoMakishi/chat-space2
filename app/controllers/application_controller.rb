@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
   
   def talk_user
-    @talk_user = User.with_attached_avatar.where(id: Member.where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC")
+    @talk_user = User.includes(:messages,:groups,:members).with_attached_avatar.where(id: Member.includes(:user,:group,).where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC")
   end
 
   def show_last_message

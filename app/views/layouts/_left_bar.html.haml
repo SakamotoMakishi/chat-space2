@@ -2,7 +2,7 @@
   .root_page__left__group
     .root_page__left__group__users
       -if @talk_user
-        - @talk_user.each do |user|
+        - @talk_user.includes(:groups,:messages).each do |user|
           %ul.root_page__left__group__users__link 
             = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)) do
               %li.root_page__left__group__users__link__avatar

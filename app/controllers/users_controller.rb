@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def root
     @followre = current_user.followings
-    @posts = Post.with_attached_image.where(id:Retweet.where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_image.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC")
+    @posts = Post.with_attached_image.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_image.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
   end
 
   def index

@@ -14,7 +14,14 @@
     margin-bottom:30px;
     width: 50%;
     }
+    &__lists.show{
+      opacity: 1;
+      transform : translate(0, 0);
+    }
     &__lists{
+      opacity: 0;
+      transform : translate(0, 80px);
+      transition: 1s ease-out;
       &__no_group{
         margin-top:100px;
         font-family: 'Courier New', Courier, monospace; 
