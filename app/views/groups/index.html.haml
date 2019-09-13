@@ -1,0 +1,24 @@
+= render 'layouts/header'
+= render 'layouts/flash_message'
+= render 'layouts/post_message'
+.chat_all
+  .chat_all__space
+    .chat_all__space__title
+      トーク一覧
+    .chat_all__space__lists
+      -if @talk_user.nil?
+        - @talk_user.each do |user|
+          = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)),class:"chat_all__space__lists__li" do
+            %li.chat_all__space__lists__li__avatar
+              = image_tag avatar(user),style: "width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+            %li.chat_all__space__lists__li__nickname
+              = "#{user.nickname}"
+            %li.chat_all__space__lists__li__last_message
+              = user.groups.find_by(id: current_user.groups.ids).show_last_message
+            -check_box= (user.groups.find_by(id: current_user.groups.ids)).messages.where(checked: false).where.not(user_id: current_user.id)
+            -if check_box.any?
+              %li.root_page__left__group__users__link__check_box{style:"margin-top:10px;"}
+                = check_box.count
+      - else
+        .chat_all__space__lists__no_group
+          まだメッセージはありません。メッセージを送信、又は受信するとここに表示されます。

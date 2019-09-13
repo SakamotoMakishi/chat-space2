@@ -11,4 +11,5 @@
           .users-index
             = render partial: "layouts/notification",collection: @notifications
         - else
-          %p 通知はありません。
+          .notification_nil{style:"font-weight:bold;"}
+            %p 通知はありません。

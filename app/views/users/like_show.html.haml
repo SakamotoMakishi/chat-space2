@@ -4,8 +4,10 @@
 .root_page
   = render 'layouts/left_bar'
   .root_page__right
+    .root_page__right__favo
+      お気に入り一覧
     .root_page__right__contents
-      - @posts.each_with_index do |post,index|
+      - @like_posts.each_with_index do |post,index|
         .root_page__right__contents__list.fadein
           = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
             = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
@@ -68,4 +70,4 @@
                         = f.text_area :comment, class: "textbox"
                       .comment__form__submit
                         = f.submit 'コメントする', class: "submit"
-          
+  
