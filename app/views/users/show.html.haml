@@ -19,11 +19,13 @@
         %ul.user_show__left__link
           %li.user_show__left__link__list
             - unless current_user == @user
-              = form_with model: @group, local: true  do |f|
-                %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
-                = f.hidden_field :name, value: "#{@user.nickname}"
-                = f.submit "メッセージ送る", class: "btn-social-square btn-social-square--twitter"
-              = link_to "メッセージ送る",root_path, class:"btn-social-square4 btn-social-square--twitter4"
+              -if @ture_user_msg
+                = link_to "メッセージ送る",group_messages_path(@ture_user_msg), class:"btn-social-square4 btn-social-square--twitter4"
+              -else
+                = form_with model: @group, local: true  do |f|
+                  %input{name: "group[user_ids][]", type: "hidden", value: "#{@user.id}"}/
+                  = f.hidden_field :name, value: "#{current_user.nickname}"
+                  = f.submit "メッセージ送る", class: "btn-social-square btn-social-square--twitter"
           %li.user_show__left__link__list#follow_botton
             - unless current_user == @user
               - if current_user.following?(@user)
@@ -45,7 +47,7 @@
           -if user_name
             = image_tag avatar(user_name),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
             = link_to "#{user_name.nickname}",user_path(user_name),class:"root_page__right__contents__list__avatar"
-            %textさんがシェアしました！
+            %textさんがリツイートしました！
         .root_page__right__contents__list__post
           .root_page__right__contents__list__post__title
             = "#{post.title}" if post.title
