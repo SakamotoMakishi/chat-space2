@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :root
+      get :like_show
     end
   end
   resources :relationships, only: [:create, :destroy]

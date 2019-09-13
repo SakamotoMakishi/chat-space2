@@ -122,20 +122,19 @@ animation: SlideDown .5s ease-in-out forwards;
 }
 .js-modal__btn{
   color: rgb(0, 174, 255);
-  span.fa-comment{
+  span.fa-edit{
     position: fixed;
-    left: 0;
-    bottom: 0;
-    font-size:100px; 
-    z-index: 5;
-    margin-left: 35px;
+    right: 15px;
+    top: 0;
+    font-size:15px;
+    z-index: 15;
+    margin-top: 8px;
+    background: rgb(0, 174, 255);
+    padding: 10px;
+    border-radius:20px; 
+    color: #fff;
     text{
-      font-size: 32px;
-      display: block;
-      text-align: center;
-      position: relative;
-      z-index: 5;
-      bottom: 70px;
+      font-size: 8px;
       font-weight: bold;
     }
   }

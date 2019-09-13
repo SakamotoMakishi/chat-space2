@@ -13,8 +13,12 @@ class UsersController < ApplicationController
   def show
     @group = Group.new
     @user = User.with_attached_avatar.find(params[:id])
-    @posts = @user.posts.with_attached_image
+    @posts = Post.with_attached_image.where(id: @user.posts).or(Post.with_attached_image.where(id: @user.retweets.pluck(:post_id)))
     @ture_user_msg = Group.find_by(name: current_user.nickname, id: Member.where(user_id: @user.id).pluck(:group_id))
+  end
+
+  def like_show
+    @like_posts = Post.with_attached_image.where(id: current_user.likes.pluck(:post_id))
   end
 
 end

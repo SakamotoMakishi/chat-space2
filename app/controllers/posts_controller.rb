@@ -6,7 +6,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿完了しました'
       redirect_to root_path
     else
-      flash[:alert] = 'いずれか入力してください'
+      flash[:alert] = '入力してください'
       redirect_to root_path
   end
   end

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-
+  before_action :talk_user
   def create
       @group = Group.new(group_params)
       @group.users << current_user

@@ -43,11 +43,22 @@
           %text.root_page__right__contents__list__nickname
             = "#{post.user.nickname}"
         .root_page__right__contents__list__retweet_user
-          - user_name = User.find_by(id: post.retweets_users.ids.last)
-          -if user_name
-            = image_tag avatar(user_name),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-            = link_to "#{user_name.nickname}",user_path(user_name),class:"root_page__right__contents__list__avatar"
-            %textさんがリツイートしました！
+          - user_name = User.find_by(id: Retweet.where(id: post.retweets.last).pluck(:user_id))
+          - retweet_user = User.where(id: post.retweets_users.ids).where.not(id: user_name.id) if user_name
+          -if user_name == current_user
+            -if user_name
+              = image_tag avatar(current_user),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+              = link_to "あなた",user_path(current_user),class:"root_page__right__contents__list__avatar"
+              %textがリツイートしました！
+              .retweet_other_name
+                = "↪他#{retweet_user.ids.count}名" if retweet_user.ids.count >= 1
+          -else
+            -if user_name
+              = image_tag avatar(user_name),style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+              = link_to "#{user_name.nickname}",user_path(user_name),class:"root_page__right__contents__list__avatar"
+              %textさんがリツイートしました！
+              .retweet_other_name
+                = "↪他#{retweet_user.ids.count}名" if retweet_user.ids.count >= 1
         .root_page__right__contents__list__post
           .root_page__right__contents__list__post__title
             = "#{post.title}" if post.title
