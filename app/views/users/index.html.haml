@@ -6,11 +6,11 @@
   .root_page__right
     .root_page__right__contents
       .all_user
-        .all_user__contents
+        .all_user__contents.cardHolder
           - @user.reverse_each do |user|
-            = link_to user_path(user),class:"all_user__contents__link" do
+            = link_to user_path(user),class:"all_user__contents__link card" do
               .contents_users
                 .user_image
-                  = image_tag avatar(user),crass:"user_avatar",style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                  = image_tag avatar(user),crass:"user_avatar",style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
                 .user_name
                   = "#{user.nickname}"

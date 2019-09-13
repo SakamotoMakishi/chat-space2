@@ -31,7 +31,7 @@
           padding: 10px;
           display: block;
           width:93%;
-          height: 85px;
+          height: 88px;
           transition-duration: 1s;
           a{
             text-decoration: none;
@@ -81,9 +81,9 @@
           }
         }
         &__link:hover{
-        border-top: 1px solid rgb(0, 162, 255);
-        border-right: 1px solid rgb(0, 162, 255);
-        border-bottom: 1px solid rgb(0, 162, 255);
+        border-top: 1px outset rgb(0, 162, 255);
+        border-right: 1px outset rgb(0, 120, 190);
+        border-bottom: 1px outset rgb(0, 162, 255);
         width:125%;
           .root_page__left__group__users__link__smrck{
             background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
@@ -135,7 +135,7 @@
             color: #26c1ff;
           }
           text{
-            vertical-align:50%;
+            vertical-align:80%;
             color: darkgrey;
             font-size:13px;
           }

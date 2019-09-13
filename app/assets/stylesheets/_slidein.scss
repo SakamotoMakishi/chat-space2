@@ -1,0 +1,9 @@
+.root_page__right__contents_fadein{
+  opacity : 0;
+  transform : translate(0, 80px);
+  transition:all 1s ease-out;
+}
+.root_page__right__contents_fadein.scrollin{
+  opacity : 1;
+  transform : translate(0, 0);
+}
