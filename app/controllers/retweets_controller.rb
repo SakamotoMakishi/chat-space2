@@ -9,8 +9,9 @@ class RetweetsController < ApplicationController
     if retweet.save!
         @post.touch
         @post.retweet_create_notification_by(current_user) if @post.user_id != current_user.id
-        flash[:notice] = '投稿をリツイートしました'
-        redirect_to request.referrer
+    else
+      flash[:notice] = 'リツイート失敗しました'
+      redirect_to request.referrer
     end  
   end
 

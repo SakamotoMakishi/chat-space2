@@ -21,4 +21,7 @@ class UsersController < ApplicationController
     @like_posts = Post.with_attached_image.where(id: current_user.likes.pluck(:post_id))
   end
 
+  def test
+  end
+
 end

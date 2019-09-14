@@ -43,6 +43,8 @@
   .notifications
     = link_to notifications_path,class: "btn" do
       %i.far.fa-bell
+      %span.notification_border#notification
+      %span.notification_border1#notification
       .notifications__hover_message
         お知らせを見る
       - if unchecked_notifications.any?
@@ -63,4 +65,6 @@
       %i.fas.fa-star
       .hover_message_star
         お気に入り一覧
-- else
+.none_notify_retweet#show_notify{type: 'hidden'}
+.none_notify_like#like_notify{type: 'hidden'}
+.none_notify_follow#follow_notify{type: 'hidden'}

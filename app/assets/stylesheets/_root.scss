@@ -232,6 +232,9 @@
           margin-top:10px;
           display: inline-block;
           vertical-align: top;
+          %i.fas.fa-share-square{
+            z-index: 100;;
+          }
           .slideInRight{
             animation-name:fade-in2;
             animation-duration:0.5s;

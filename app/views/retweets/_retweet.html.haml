@@ -1,11 +1,23 @@
-.retweet-link{:id => "retweet-link-#{post.id}"}
+.retweet-link{id: "retweet-link-#{post.id}"}
   - if current_user.retweets.find_by(post_id: post.id)
-    = link_to unretweet_path(post.id), method: :delete, remote: true do
-      %i.fas.fa-share-square.heart-like#keyvisual
+    = link_to unretweet_path(post.id), method: :delete, remote: true  do
+      %i.fas.fa-share-square
       %P.up.slideInRight
         = "#{post.retweets.count}"
   - else
-    = link_to retweet_path(post.id), method: :post do
-      %i.far.fa-share-square.heart-unlike#keyvisual.slideInRight
+    = link_to retweet_path(post.id), method: :post, remote: true , class:"retweet-link-notify"do
+      %i.far.fa-share-square.heart-unlike.slideInRight
       %p.down.slideInRight
         ="#{post.retweets.count}"
+:javascript
+  $(document).ready(function () {
+  $("#notification").notify(); 
+  $("#show_notify").click(function() { $("#notification").notify("リツイートしました！"); return false;});
+  });
+  $(function(){
+    $(document).ready(function() {
+      $(".retweet-link-notify").click(function() {
+      setTimeout(function(){$(".none_notify_retweet").trigger('click');}, 100);
+      });
+    });
+  });

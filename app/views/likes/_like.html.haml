@@ -5,7 +5,19 @@
       %P.up.slideInRight
         = "#{post.likes.count}"
   - else
-    = link_to like_path(post.id), method: :post, remote: true do
+    = link_to like_path(post.id), method: :post, remote: true,class: "like-notify" do
       %i.far.fa-star.heart-unlike#keyvisual.slideInRight
       %p.down.slideInRight
         ="#{post.likes.count}"
+:javascript
+  $(document).ready(function () {
+  $("#notification").notify(); 
+  $("#like_notify").click(function() { $("#notification").notify("いいねしました！"); return false;});
+  });
+  $(function(){
+    $(document).ready(function() {
+      $(".like-notify").click(function() {
+      setTimeout(function(){$(".none_notify_like").trigger('click');}, 100);
+      });
+    });
+  });
