@@ -16,7 +16,7 @@
               -if check_box.any?
                 %li.root_page__left__group__users__link__check_box
                   = check_box.count
-      -else
+      -elsif @talk_user.nil?
         .root_page__left__group__users__no_group
           まだメッセージはありません。
           %br/
