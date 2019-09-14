@@ -19,6 +19,20 @@
         %li.actions_field
           = f.submit "Login",class:"actions_field__submit"
   .login_message
+    %br/
+    テストユーザーとしてログイン↓
+    %br/
+  = form_for(User.new, url:user_session_path) do |f|
+    = f.hidden_field :email, value: "test_user@test.com"
+    = f.hidden_field :password, value: "smks0801"
+    %ul.registration_body__container__field
+      %li.actions_field
+        = f.submit "かんたんログイン", class:"actions_field__submit",style:"background:orange;"
+  %br/
+  %br/
+  %br/
+  .login_message
     新規登録はこちら↓
   .login_btn
     = render "devise/shared/links"
+  
