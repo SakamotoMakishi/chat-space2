@@ -6,7 +6,7 @@
     .chat_all__space__title
       トーク一覧
     .chat_all__space__lists
-      -if @talk_user
+      -if @talk_user.exists?
         - @talk_user.each do |user|
           = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)),class:"chat_all__space__lists__li"  do
             %li.chat_all__space__lists__li__avatar

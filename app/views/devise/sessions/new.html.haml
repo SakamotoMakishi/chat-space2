@@ -1,17 +1,24 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.registration_header
+  .registration_header__title
+    Chat-Space ver.8.1
+.registration_body.chat_all__space__lists
+  .registration_body__main
+  .registration_body__header
+    ログイン
+  .registration_body__container
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      %ul.registration_body__container__field
+        %li.email_field{style:"text-align:center;"}
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス",class:"email_field__mail"
+        %li.password_field{style:"text-align:center;"}
+          = f.password_field :password,class:"password_field__pass", autocomplete: "current-password",placeholder:"パスワード"
+        - if devise_mapping.rememberable?
+          .field{style:"text-align:center;"}
+            = f.check_box :remember_me
+            = f.label :パスワードを記憶
+        %li.actions_field
+          = f.submit "Login",class:"actions_field__submit"
+  .login_message
+    新規登録はこちら↓
+  .login_btn
+    = render "devise/shared/links"

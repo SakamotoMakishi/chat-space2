@@ -222,3 +222,22 @@ $(function(){
 $(function(){
   setTimeout("$('.alert').fadeOut('slow')", 1500) 
 })
+$(function(){
+  $fileField = $('#file_avatar')
+  $($fileField).on('change', $fileField, function(e) {
+    file = e.target.files[0]
+    reader = new FileReader(),
+    $preview = $("#img_field_avatar");
+    reader.onload = (function(file) {
+      return function(e) {
+        $preview.empty();
+        $preview.append($('<img>').attr({
+          src: e.target.result,
+          class: "avatar_preview",
+          title: file.name
+        }));
+      };
+    })(file);
+    reader.readAsDataURL(file);
+  });
+});
