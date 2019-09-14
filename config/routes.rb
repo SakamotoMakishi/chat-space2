@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get :test
     end
   end
+  resources :testsessions, only: :create
+  resources :sessions, only: [:new,:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: :index
   resources :posts do
