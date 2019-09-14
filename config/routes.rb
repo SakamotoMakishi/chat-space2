@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :root
       get :like_show
+      get :test
     end
   end
   resources :relationships, only: [:create, :destroy]

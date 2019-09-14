@@ -2,3 +2,15 @@
   = link_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follow_id: @user.id)), method: :delete, class:"btn-social-square2 btn-social-square--twitter2", remote:true
 -else
   = link_to 'フォロー', relationships_path(params:{follow_id:@user.id}), method: :post, class:"btn-social-square3 btn-social-square--twitter3", remote: true
+:javascript
+  $(document).ready(function () {
+  $("#notification").notify(); 
+  $("#follow_notify").click(function() { $("#notification").notify("フォローしました！"); return false;});
+  });
+  $(function(){
+    $(document).ready(function() {
+      $(".btn-social-square--twitter3").click(function() {
+      setTimeout(function(){$(".none_notify_follow").trigger('click');}, 100);
+      });
+    });
+  });

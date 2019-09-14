@@ -154,6 +154,12 @@ top: 20px;
     animation: delayJump 3s ease-out;
     animation-delay: 0.05s;
   }
+  .notification_border{
+    border-bottom:1px solid gray;
+    position: relative;
+    top:30px;
+    left:-3px; 
+  }
   &__hover_message{
     opacity: 0;
     font-size:10px;
