@@ -61,7 +61,7 @@
               width: 20px;
               height: 20px;
               border-radius: 50%;
-              background: #0163ff;
+              background: #ffa601;
               text-align: center;
               line-height: 20px;
               font-size: 12px;
@@ -70,6 +70,22 @@
               animation-delay: 0.05s;
 
           }
+          &__check_box2{
+            position: relative;
+            top: -174px;
+            left: 25px;          
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ffa601;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            color: #fff;
+            animation: delayJump 3s ease-out;
+            animation-delay: 0.05s;
+
+        }
           .root_page__left__group__users__link__smrck{
             background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
             bottom: -13px;

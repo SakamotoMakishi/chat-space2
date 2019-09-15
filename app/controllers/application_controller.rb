@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
+  def after_sign_in_path_for(resource)
+    if current_user.email == "test_user@test.com"
+      flash[:notice] = "テストユーザーとしてログインしました" 
+      test_user_notify_users_path
+    else
+      flash[:notice] = "ログインしました" 
+      root_path
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:avatar])
   end

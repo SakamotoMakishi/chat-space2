@@ -17,7 +17,7 @@
               = user.groups.find_by(id: current_user.groups.ids).show_last_message
             -check_box= (user.groups.find_by(id: current_user.groups.ids)).messages.where(checked: false).where.not(user_id: current_user.id)
             -if check_box.any?
-              %li.root_page__left__group__users__link__check_box{style:"margin-top:10px;"}
+              %li.root_page__left__group__users__link__check_box2{style:"margin-top:10px;"}
                 = check_box.count
       - else
         .chat_all__space__lists__no_group
