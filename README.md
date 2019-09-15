@@ -20,5 +20,6 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - リツイート機能
 - 投稿へののコメント機能（Ajaxによる非同期通信）
 - メッセージ送信機能（Ajaxによる非同期通信)
+- ヘッダーサイドバーの解説チュートリアル（chardin.js使用）
 
-実装期間 : 10日間, 100時間ほど
+実装期間 : 12日間, 120時間ほど
