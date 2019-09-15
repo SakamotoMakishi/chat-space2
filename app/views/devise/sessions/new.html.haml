@@ -18,16 +18,17 @@
             = f.label :パスワードを記憶
         %li.actions_field
           = f.submit "Login",class:"actions_field__submit"
-  .login_message
+        .login_message
+        %br/
+    %p{style:"text-align:center;font-weight:bold;"}
+      テストユーザーとしてログイン↓
     %br/
-    テストユーザーとしてログイン↓
-    %br/
-  = form_for(User.new, url:user_session_path) do |f|
-    = f.hidden_field :email, value: "test_user@test.com"
-    = f.hidden_field :password, value: "smks0801"
-    %ul.registration_body__container__field
-      %li.actions_field
-        = f.submit "かんたんログイン", class:"actions_field__submit",style:"background:orange;"
+    = form_for(User.new, url:user_session_path) do |f|
+      = f.hidden_field :email, value: "test_user@test.com"
+      = f.hidden_field :password, value: "smks0801"
+      %ul.registration_body__container__field
+        %li.actions_field
+          = f.submit "かんたんログイン", class:"actions_field__submit",style:"background:orange;"
   %br/
   %br/
   %br/

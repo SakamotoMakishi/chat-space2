@@ -15,7 +15,7 @@
                 = link_to "フォロワー  #{current_user.reverse_of_relationships.count}",current_user
               %li.contents__list__current_user__logout
                 = link_to "ログアウト",destroy_user_session_path , method: :delete
-  #js-hamburger.hamburger
+  #js-hamburger.hamburger{"data-intro"=>"クリックするとサイドバーが開きます","data-position"=>"right"}
     %span.hamburger__line.hamburger__line--1
     %span.hamburger__line.hamburger__line--2
     %span.hamburger__line.hamburger__line--3
@@ -35,36 +35,37 @@
       }
     toggleNav();
 -if user_signed_in?
-  .user_plus
-    = link_to users_path do
-      %i.fas.fa-user-plus
-      .user_plus__hover_message
-        ユーザーを追加
-  .notifications
-    = link_to notifications_path,class: "btn" do
-      %i.far.fa-bell
-      %span.notification_border#notification
-      %span.notification_border1#notification
-      .notifications__hover_message
-        お知らせを見る
-      - if unchecked_notifications.any?
-        .nav-count1
-          = unchecked_notifications.count
-  .home_btn
-    = link_to root_path,class: "btn" do
-      %i.fas.fa-home
-      .hover_message
-        トップへ戻る
-  .group_show_btn
-    = link_to groups_path,class: "btn" do
-      %i.fas.fa-comments
-      .hover_message_group
-        トーク一覧
-  .like_show_btn
-    = link_to like_show_users_path,class: "btn" do
-      %i.fas.fa-star
-      .hover_message_star
-        お気に入り一覧
-.none_notify_retweet#show_notify{type: 'hidden'}
-.none_notify_like#like_notify{type: 'hidden'}
-.none_notify_follow#follow_notify{type: 'hidden'}
+  .mark_icon_5{"data-intro"=>"各ページへ飛べます。マウスオーバーで詳細出ます。","data-position"=>"bottom"}
+    .user_plus
+      = link_to users_path do
+        %i.fas.fa-user-plus
+        .user_plus__hover_message
+          ユーザーを追加
+    .notifications
+      = link_to notifications_path,class: "btn" do
+        %i.far.fa-bell
+        %span.notification_border#notification
+        %span.notification_border1#notification
+        .notifications__hover_message
+          お知らせを見る
+        - if unchecked_notifications.any?
+          .nav-count1
+            = unchecked_notifications.count
+    .home_btn
+      = link_to root_path,class: "btn" do
+        %i.fas.fa-home
+        .hover_message
+          トップへ戻る
+    .group_show_btn
+      = link_to groups_path,class: "btn" do
+        %i.fas.fa-comments
+        .hover_message_group
+          トーク一覧
+    .like_show_btn
+      = link_to like_show_users_path,class: "btn" do
+        %i.fas.fa-star
+        .hover_message_star
+          お気に入り一覧
+  .none_notify_retweet#show_notify{type: 'hidden'}
+  .none_notify_like#like_notify{type: 'hidden'}
+  .none_notify_follow#follow_notify{type: 'hidden'}

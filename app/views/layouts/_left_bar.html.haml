@@ -1,7 +1,7 @@
-.root_page__left{style:"margin-top:50px;"}
+.root_page__left{style:"margin-top:50px;","data-intro"=>"メッセージを送る、又は受け取ると新着７件表示されます。","data-position"=>"right"}
   .root_page__left__group
     .root_page__left__group__users
-      -if @talk_user
+      -unless @talk_user.blank?
         - @talk_user.includes(:groups,:messages).each do |user|
           %ul.root_page__left__group__users__link 
             = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)) do
@@ -16,7 +16,7 @@
               -if check_box.any?
                 %li.root_page__left__group__users__link__check_box
                   = check_box.count
-      -elsif @talk_user.nil?
+      -else
         .root_page__left__group__users__no_group
           まだメッセージはありません。
           %br/
