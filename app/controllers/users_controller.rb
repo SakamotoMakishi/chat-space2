@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.with_attached_avatar.where.not(id: current_user.id)
+    @user = User.with_attached_avatar.where.not(id: current_user.id).limit(30)
   end
 
   def show
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
   end
 
   def test
+  end
+
+  def test_user_notify
   end
 
 end

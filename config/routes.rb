@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :root
+      get :test_user_notify
       get :like_show
       get :test
     end
   end
-  resources :testsessions, only: :create
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: :index
   resources :posts do

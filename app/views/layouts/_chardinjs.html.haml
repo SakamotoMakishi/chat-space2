@@ -1,13 +1,16 @@
 .container_jumbotron
   .jumbotron
     %h1.jumbotron__title{style:"font-size:30px;font-weight:bold;","data-intro" => "ご登録ありがとうございます。簡単にヘッダー、サイドバーについて解説します！", "data-position" => "right"} ようこそ！
-    %img.jumbotron__imag{style:"width:400px;height:150px","data-intro" => "Github公開してます！", "data-position" => "right", :src => "assets/index.jpg"}/
-    %a.btn.btn-large.primary{"data-intro" => "クリックで閉じます。", "data-position" => "right", "data-toggle" => "chardinjs", :href => "#"} チュートリアルを見る
-    %a#opentour{style:"display:none;","data-toggle" => "chardinjs", :href => ""} もう一度チュートリアル見る
+    %img.jumbotron__imag{style:"width:400px;height:150px","data-intro" => "Github公開してます！", "data-position" => "right", :src => "/assets/index.jpg"}/
+    %a.btn.btn-large.primary{"data-intro" => "クリックで閉じます。閉じた後Github詳細ページへのリンクが出ます。", "data-position" => "right", "data-toggle" => "chardinjs", :href => "#"} チュートリアルを見る
+    %a#opentour{style:"display:none;","data-toggle" => "chardinjs", :href => ""} もう一度チュートリアルを見る
     .credits
       %p{"data-intro" => "チュートリアル参考Github", "data-position" => "right"}
         = succeed "." do
           %a{:href => "https://github.com/heelhook/chardin.js"} @heelhook
+    .credits_link{"data-intro" => "ユーザをフォローすると投稿一覧が表示されます。", "data-position" => "left"}
+      %i.fas.fa-home
+      = link_to "トップページへ",root_path
   :javascript
     (function() {
       $(function() {
@@ -25,7 +28,7 @@
           }
         });
         return $('body').on('chardinJs:stop', function() {
-          $('a.btn.primary').off('click').text('Githubで詳細を見る').attr('href', 'https://github.com/SakamotoMakishi');
+          $('a.btn.primary').off('click').text('Githubで詳細を見る').attr('href', 'https://github.com/SakamotoMakishi/chat-space2');
           return $('a#opentour').css({
             display: 'block'
           });
