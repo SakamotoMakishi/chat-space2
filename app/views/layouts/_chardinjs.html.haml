@@ -1,0 +1,35 @@
+.container_jumbotron
+  .jumbotron
+    %h1.jumbotron__title{style:"font-size:30px;font-weight:bold;","data-intro" => "ご登録ありがとうございます。簡単にヘッダー、サイドバーについて解説します！", "data-position" => "right"} ようこそ！
+    %img.jumbotron__imag{style:"width:400px;height:150px","data-intro" => "Github公開してます！", "data-position" => "right", :src => "assets/index.jpg"}/
+    %a.btn.btn-large.primary{"data-intro" => "クリックで閉じます。", "data-position" => "right", "data-toggle" => "chardinjs", :href => "#"} チュートリアルを見る
+    %a#opentour{style:"display:none;","data-toggle" => "chardinjs", :href => ""} もう一度チュートリアル見る
+    .credits
+      %p{"data-intro" => "チュートリアル参考Github", "data-position" => "right"}
+        = succeed "." do
+          %a{:href => "https://github.com/heelhook/chardin.js"} @heelhook
+  :javascript
+    (function() {
+      $(function() {
+        $('body').chardinJs();
+        $('a[data-toggle="chardinjs"]').on('click', function(e) {
+          e.preventDefault();
+          if ($('.jumbotron img').is(':visible')) {
+            return ($('body').data('chardinJs')).toggle();
+          } else {
+            return $('.jumbotron img').animate({
+              height: 250
+            }, 600, function() {
+              return ($('body').data('chardinJs')).toggle();
+            });
+          }
+        });
+        return $('body').on('chardinJs:stop', function() {
+          $('a.btn.primary').off('click').text('Githubで詳細を見る').attr('href', 'https://github.com/SakamotoMakishi');
+          return $('a#opentour').css({
+            display: 'block'
+          });
+        });
+      });
+    }).call(this);
+

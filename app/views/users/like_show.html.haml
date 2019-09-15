@@ -7,7 +7,7 @@
     .root_page__right__favo
       お気に入り一覧
     .root_page__right__contents
-      -if !@like_posts.nil?
+      -if @like_posts.exists?
         - @like_posts.each_with_index do |post,index|
           .root_page__right__contents__list.root_page__right__contents_fadein
             = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
@@ -71,5 +71,5 @@
                           = f.text_area :comment, class: "textbox"
                         .comment__form__submit
                           = f.submit 'コメントする', class: "submit"
-      -elsif @like_posts.nil?
+      -else
         お気に入りはまだありません。
