@@ -75,4 +75,7 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem 'mini_magick'
 gem 'rails-i18n'
 gem 'devise'
+gem 'acts-as-taggable-on'
+gem 'gon'
+gem 'jquery-ui-rails'
 gem "aws-sdk-s3", require: false

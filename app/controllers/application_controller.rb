@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_available_tags_to_gon
 
   def after_sign_in_path_for(resource)
     if current_user.email == "test_user@test.com"
@@ -10,6 +11,10 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "ログインしました" 
       root_path
     end
+  end
+
+  def set_available_tags_to_gon
+    gon.available_tags = Post.tags_on(:tags).pluck(:name)
   end
 
   def configure_permitted_parameters

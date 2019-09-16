@@ -12,9 +12,9 @@
   &__box{
     width: 600px;
     margin:auto;
-    height: 600px;
+    height: 680px;
     background-color:white;
-    margin-top:30px;
+    margin-top:15px;
     padding: 40px;
     border-radius:10px; 
     .js-modal-close{
@@ -67,6 +67,29 @@
         }
         &__input{
           display: none;
+        }
+      }
+      &__tags{
+        margin-top:5px;
+        margin-bottom:5px;
+        cursor: text;
+        &__placeholder{
+          color: darkgray;
+          padding: 15px;
+          text{
+            font-size:13px; 
+            color: rgb(114, 114, 114);
+          }
+        }
+        #article-tags{
+          border:1px solid #192438;
+          transition: all 0.5s;
+          padding: 5px;
+          font-size:13px;
+          color: #26334d;
+        }
+        #article-tags:hover{
+          border:1px solid #28bbff;
         }
       }
       &__title{
@@ -198,4 +221,7 @@
       }
     }
   }
+}
+.ui-helper-hidden-accessible {
+  display: none;
 }

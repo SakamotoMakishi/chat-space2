@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_taggable
   belongs_to :user
   has_one_attached :image
   has_many :retweets, dependent: :destroy
@@ -8,6 +9,7 @@ class Post < ApplicationRecord
   has_many :comments,foreign_key: :post_id, dependent: :destroy
   has_many :notifications,dependent: :destroy
   validates :posts, presence: true
+  
 
   def posts
     text.presence || image.attached? || title.presence

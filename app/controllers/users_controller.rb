@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :talk_user 
+  before_action :talk_user
+  before_action :set_available_tags_to_gon
 
   def root
     @followre = current_user.followings
     @posts = Post.with_attached_image.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_image.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
   end
-
+  
   def index
     @user = User.with_attached_avatar.where.not(id: current_user.id).limit(30)
   end

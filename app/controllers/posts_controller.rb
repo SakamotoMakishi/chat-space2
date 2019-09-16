@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
-  before_action :talk_user, only: [:show]
+  before_action :talk_user, only: [:show,:index]
   before_action :post_show, only: [:show]
+  
+  def index
+    @tags_post_name = params[:tag]
+    post_name = params[:tag].present? ? Post.tagged_with(params[:tag]) : Post.all
+    @tags_post = post_name.includes(:tags)
+  end
 
   def show
   end
@@ -18,7 +24,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.permit(:text,:title,:image).merge(user_id: current_user.id)
+    params.permit(:text,:title,:image,:tag_list).merge(user_id: current_user.id)
   end
 
   def post_show

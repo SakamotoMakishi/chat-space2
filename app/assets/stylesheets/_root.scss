@@ -169,7 +169,6 @@
           border: 1px solid gainsboro;
           padding: 20px;
           margin: 10px;
-          transition: all 0.5s;
           background: hsl(0, 20%, 99%);
           &__title{
             font-size:18px;
@@ -177,7 +176,21 @@
             font-family: 'Courier New', Courier, monospace;
             margin: 0px 0px 20px 0px;
             padding: 10px;
-            border-bottom:1px solid gainsboro; 
+            border-bottom:1px solid gainsboro;
+            .post_tagt_sharp{
+              margin-right:-10px;
+              display: inline;
+            }
+            .post_tagt_link{
+              color: #2b8eff;
+              text-decoration: underline;
+              font-size:15px;
+              transition: all 0.5s;
+            }
+            .post_tagt_link:hover{
+              opacity: 0.7;
+              font-weight:bold;
+            }
           }
           &__text{
             font-size:13px;
@@ -191,17 +204,18 @@
           }
           &__image{
             margin: 10px 0px 10px 0px;
-            
             .post_image{
               width: 300px;
               height: 200px;
               border-radius: 10px;
               box-shadow: 0 1px 1px rgba(81, 82, 82, 0.16);
+              transition: all 0.5s;
+            }
+            .post_image:hover{
+              opacity: 0.8;
+              cursor: pointer;
             }
           }
-        }
-        &__post:hover{
-          opacity: 0.7;
         }
         &__like{
           width: 50px;
