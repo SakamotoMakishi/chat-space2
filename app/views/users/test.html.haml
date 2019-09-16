@@ -1,44 +1,97 @@
-= render 'layouts/header'
-= render 'layouts/flash_message'
-= render 'layouts/post_message'
-.container
-  .jumbotron
-    %h1{"data-intro" => "Project title", "data-position" => "right"} Chardin.js
-    %p.lead
-      Simple overlay instructions for your apps.
-    %img{"data-intro" => "An awesome 18th-century painter, who found beauty in everyday, common things.", "data-position" => "right", :src => "img/chardin.png"}/
-    %a.btn.btn-large.primary{"data-intro" => "This button toggles the overlay, you can click it, even when the overlay is visible", "data-position" => "left", "data-toggle" => "chardinjs", :href => "#"} テスト
-    %a#opentour.hide{"data-toggle" => "chardinjs", :href => ""} Or open it again
-    .credits
-      %p{"data-intro" => "Author of this plugin, aka Pablo Fernandez", "data-position" => "right"}
-        Baked with
-        %b &lt;3
-        by
-        = succeed "." do
-          %a{:href => "https://github.com/heelhook"} @heelhook
-%p{style: "text-align:center;color:black;margin-top:400px;"}
-  %text.test TESTbtn
-:javascript
-  $(function() {
-  $(function() {
-    $('body').chardinJs();
-      $('a[data-toggle="chardinjs"]').on('click', function(e) {
-        e.preventDefault();
-        if ($('.jumbotron img').is(':visible')) {
-          return ($('body').data('chardinJs')).toggle();
-        } else {
-          return $('.jumbotron img').animate({
-            height: 250
-          }, 600, function() {
-            return ($('body').data('chardinJs')).toggle();
-          });
-        }
-      });
-      return $('body').on('chardinJs:stop', function() {
-        $('a.btn.primary').off('click').text('See more on Github').attr('href', 'https://github.com/heelhook/chardin.js');
-        return $('a#opentour').css({
-          display: 'block'
-        });
-      });
-    });
-  }).call(this);
+-# .cardHolder
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-#   .card
+-# :javascript
+-#   var boxes = document.querySelectorAll('.card');
+-#   var delay = .05; // seconds
+
+-#   var last = boxes[0].offsetTop;
+-#   var col = 0;
+-#   var row = 0;
+-#   for (var i = 0; i < boxes.length; i++) {
+-#     if(boxes[i].offsetTop > last) {
+-#       row = row+1;
+-#       col = 0;
+-#     }
+-#     var last = boxes[i].offsetTop;
+    
+-#     boxes[i].style.animationDelay = (row + col) * delay + 's';  
+-#     col = col+1;
+-#   }

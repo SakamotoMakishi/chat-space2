@@ -23,10 +23,10 @@
       position: relative;
       bottom: 100px;
       left:450px;
-      color: rgb(149, 149, 149);
+      color: rgb(223, 223, 223);
       .fas{
         font-size: 20px;
-        color: rgb(149, 149, 149);
+        color: rgb(223, 223, 223);
         font-weight:bold;
         margin-left:10px;
         cursor: pointer;
@@ -48,20 +48,21 @@
       }
     }
     .message__content{
-      background: rgb(203, 252, 255);
+      background: #00aeffe1;
       box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
       width: 600px;
       height:100%;
       padding: 5px 30px 30px 30px;
       border-radius: 30px;
       margin-right: 100px;
-      margin-bottom: 70px; 
+      margin-bottom: 70px;
+      color: white;
       &__tri{
         font-size:25px;
         position: relative;
         right: -625px;
         top: 20px;
-        color: rgb(203, 252, 255);
+        color: #00aeffe1;
       }
       &__text{
         margin-bottom:10px; 
@@ -100,14 +101,15 @@
       }
     }
     .message__time{
-      color: rgb(149, 149, 149);
+      color: gb(223, 223, 223);
       font-size: 13px;
       float:right;
       position: relative;
       bottom: 105px;
+      color: #959595;
     }
     .message__time22{
-      color: rgb(149, 149, 149);
+      color: gb(223, 223, 223);
       font-size: 13px;
       float:right;
       position: relative;
@@ -115,7 +117,7 @@
       left: -60px;
     }
     .message__content{
-      background: rgb(203, 252, 255);
+      background: #00aeffe1;
       box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
       width: 500px;
       height:100%;
@@ -129,11 +131,12 @@
         position: relative;
         right: 50px;
         top: 20px;
-        color: rgb(203, 252, 255);
+        color: #00aeffe1;
       }
       &__text{
         margin-bottom:10px; 
-        font-size:13px; 
+        font-size:13px;
+        color: white;
       }
       &__image{
         .content_image{

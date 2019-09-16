@@ -14,3 +14,21 @@
                   = image_tag avatar(user),crass:"user_avatar",style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
                 .user_name
                   = "#{user.nickname}"
+                -if current_user.following?(user)
+                  .user_follow
+                    フォロー中
+:javascript
+  var boxes = document.querySelectorAll('.card');
+  var delay = .1; // seconds
+  var col = 0;
+  var row = 0;
+  for (var i = 0; i < boxes.length; i++) {
+    if(boxes[i].offsetTop > last) {
+      row = row+1;
+      col = 0;
+    }
+    var last = boxes[i].offsetTop;
+    
+    boxes[i].style.animationDelay = (row + col) * delay + 's';  
+    col = col+1;
+  }
