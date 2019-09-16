@@ -7,16 +7,28 @@
     .post_from
       = form_with url: "/posts#create", method: :post, local: true do |f|
         .post_from__title
-          = f.text_field :title,class:"text_field",placeholder:"タイトル"
+          = f.text_field :title,class:"text_field",placeholder:"Title"
         .post_from__image
           #img_field{onclick: "$('#file').click()"}
           = f.file_field :image,class: "post_from__image__input", id:"file",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+        .post_from__tags
+          .post_from__tags__placeholder
+            Tags:
+            %textエンターキーを押すとタグ変換（複数可)
+          %ul#article-tags
         .post_from__text
-          = f.text_area  :text, class: "ef",placeholder:"テキスト"
+          = f.text_area  :text, class: "ef",placeholder:"Text"
           %span.focus_line
             %i
         .post_from__submit
-          = f.submit '投稿する', class: "submit"
+          = f.submit '投稿する', class: "submit", type:"button" ,onclick:"submit();"
+:coffee
+  $(document).on 'ready page:load', ->
+  $('.post_from__tags #article-tags').tagit
+    fieldName:   'tag_list'
+    singleField: true
+    removeConfirmation: true
+    availableTags: gon.available_tags
 .js-modal-open.new_post_btn{"data-intro"=>"こちらから投稿できます。","data-position"=>"bottom"}
   %i.fas.fa-pen
   %text.new_post_btn__pen
