@@ -5,11 +5,11 @@
   .root_page
     = render 'layouts/left_bar'
     .root_page__right
-      .root_page__right__contents__list__post__title{style:"color:black;"}
+      .root_page__right__contents__list__post__title{style:"color:black;width:calc(100% - 12%);"}
         Home:
         .post_tagt_sharp
         -# =link_to "/", root_path, class:"post_tagt_link"
-      .root_page__right__contents
+      .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
         - @posts.includes(:user,:likes,:retweets).each_with_index do |post,index|
           .root_page__right__contents__list.root_page__right__contents_fadein
             = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
@@ -47,7 +47,7 @@
                     =link_to "#{tag}", posts_path(tag: tag), class:"post_tagt_link"
               %text.root_page__right__contents__list__post__text{style:"color:black;"}
                 = "#{post.text}"
-              .root_page__right__contents__list__post__image
+              =link_to post_path(post), class:"root_page__right__contents__list__post__image" do
                 = image_tag post.image,class:"post_image" if post.image.attached?
               %text.root_page__right__contents__list__post__time
                 = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
@@ -82,6 +82,9 @@
                           = f.text_area :comment, class: "textbox"
                         .comment__form__submit
                           = f.submit 'コメントする', class: "submit"
+      .root_page__right__online_user
+        #users-list.logbox
+          = render partial: 'layouts/online_users', collection: @online_users, as: :member
 -else 
   = render 'layouts/header'
   = render 'layouts/flash_message'
@@ -89,5 +92,8 @@
   .root_page
     = render 'layouts/left_bar'
     .root_page__right{style:"height:100%;"}
-      .root_page__right__contents
+      .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
         =render 'layouts/chardinjs'
+      .root_page__right__online_user{style:"margin-top:50px;","data-intro"=>"ユーザーのログイン状況が表示されます。","data-position"=>"left"}
+        #users-list.logbox
+          = render partial: 'layouts/online_users', collection: @online_users, as: :member

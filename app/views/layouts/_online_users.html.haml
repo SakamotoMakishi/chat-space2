@@ -1,0 +1,18 @@
+-if member.online == true
+  =link_to user_path(member),class:"user-login" do
+    .user-login__avatar
+      = image_tag avatar(member),crass:"user_avatar",style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+    .user-login__nickname
+      = member.nickname
+    .user-login__online
+      %i.fas.fa-check-circle
+      Online
+- elsif member.online == false
+  =link_to user_path(member),class:"user-login" do
+    .user-login__avatar
+      = image_tag avatar(member),crass:"user_avatar",style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+    .user-login__nickname
+      = member.nickname
+    .user-login__time
+      %i.far.fa-clock
+      = " #{time_ago_in_words(member.online_at)}前"
