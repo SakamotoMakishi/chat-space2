@@ -94,6 +94,6 @@
     .root_page__right{style:"height:100%;"}
       .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
         =render 'layouts/chardinjs'
-      .root_page__right__online_user{style:"margin-top:50px;","data-intro"=>"ユーザーのログイン状況が表示されます。","data-position"=>"left"}
+      .root_page__right__online_use
         #users-list.logbox
           = render partial: 'layouts/online_users', collection: @online_users, as: :member
