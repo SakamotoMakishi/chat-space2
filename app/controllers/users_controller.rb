@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :talk_user
   before_action :set_available_tags_to_gon
+  require 'date'
 
   def root
     @followre = current_user.followings
@@ -23,6 +24,8 @@ class UsersController < ApplicationController
   end
 
   def test
+    cookies.encrypted[:user_id] = @current_user.id
+    @online_users = User.where.not(online_at: nil).order(online_at: :desc)
   end
 
   def test_user_notify

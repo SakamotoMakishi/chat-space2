@@ -55,4 +55,12 @@ class User < ApplicationRecord
     )
     notification.destroy if !notification.nil?
   end
+
+  after_update_commit :watchonline_self
+
+  def watchonline_self
+    if saved_change_to_online?
+      AppearanceBroadcastJob.perform_later(self)
+    end
+  end
 end
