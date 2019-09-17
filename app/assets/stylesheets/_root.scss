@@ -451,5 +451,49 @@
         }
       }
     }
+    &__online_user{
+      float:right;
+      background:rgb(255, 254, 254);
+      border: 1px solid gainsboro;
+      display: block;
+      position: absolute;;
+      width:130px; 
+      right: 0;
+      top:50px;
+      #users-list.logbox{
+          background:white;
+        .user-login{
+          padding: 10px 20px 10px 20px;
+          display: block;
+          transition: all 0.5s;
+          text-decoration: none;
+          &__nickname{
+            font-size:15px;
+            color: #666666;
+            font-weight: bold;
+            word-wrap: break-word;
+          }
+          i.fas.fa-check-circle{
+            color: #00b327;
+            font-size:18px; 
+          }
+          &__online{
+            color:rgb(77, 77, 77);
+            font-size:15px;
+            
+            display:block;
+          }
+          &__time{
+            color:gray;
+            font-size:12px;
+            margin:10px 10px 10px 0;
+            display:block;
+          }
+        }
+        .user-login:hover{
+          background: #cee5ff;
+        }
+      }
+    }
   }
 }
