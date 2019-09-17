@@ -6,18 +6,18 @@
   .root_page__right{style:"height:100%;"}
     .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
       =render 'layouts/chardinjs'
-    .root_page__right__online_user
+    .root_page__right__online_user{style:"position:absolute;"}
       #users-list.logbox
         .login_box
           =link_to user_path(current_user),class:"user-login" do
             .user-login__avatar
-              = image_tag avatar(current_user),crass:"user_avatar",style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+              = image_tag src="/assets/github.png",crass:"user_avatar",style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
             .user-login__nickname
-              = current_user.nickname
+              test
             .user-login__online
               %i.fas.fa-check-circle
               online
-      #users-list.logbox{"data-intro"=>"ユーザーのログイン履歴が表示されます。","data-position"=>"left"}
+      #users-list.logbox
         .login_box
           =link_to user_path(current_user),class:"user-login" do
             .user-login__avatar
@@ -25,4 +25,15 @@
             .user-login__nickname
               gitcat
             .user-login__time
+              %i.far.fa-clock
               2時間前
+      #users-list.logbox{"data-intro"=>"ユーザーのログイン履歴が表示されます。","data-position"=>"left"}
+        .login_box
+          =link_to user_path(current_user),class:"user-login" do
+            .user-login__avatar
+              = image_tag src="/assets/github.png",crass:"user_avatar",style: "width: 30px;height:30px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+            .user-login__nickname
+              ギット猫
+            .user-login__time
+              %i.far.fa-clock
+              5時間前
