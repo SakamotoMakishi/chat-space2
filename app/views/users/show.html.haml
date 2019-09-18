@@ -9,6 +9,10 @@
         = image_tag avatar(@user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
         .user_show__left__nickname
           = "#{@user.nickname}"
+          -if !@user.profile.blank?
+            .user_show__left__nickname__profile
+              %div profile:
+              = "#{@user.profile}"
         .user_show__left__fff
           .user_show__left__fff__followings
             = link_to "#{@user.followings.count}",root_path

@@ -1,47 +1,61 @@
-%h2
-  アカウント情報編集
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :名前
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  %li.avatar_field
-    #img_field_avatar{onclick: "$('#file_avatar').click()"}
-      = image_tag avatar(current_user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-    %textアバター画像【任意】
-    = f.file_field :avatar,class: "image_input", id:"file_avatar",accept: '.jpeg, .jpg, .gif, .png, .bmp',style:"display:none;"
-  .field
-    = f.text_field :profile
-  -# .field
-  -#   = f.label :password
-  -#   %i (leave blank if you don't want to change it)
-  -#   %br/
-  -#   = f.password_field :password, autocomplete: "new-password"
-  -#   - if @minimum_password_length
-  -#     %br/
-  -#     %em
-  -#       = @minimum_password_length
-  -#       characters minimum
-  -# .field
-  -#   = f.label :password_confirmation
-  -#   %br/
-  -#   = f.password_field :password_confirmation, autocomplete: "new-password"
-  -# .field
-  -#   = f.label :current_password
-  -#   %i (we need your current password to confirm your changes)
-  -#   %br/
-  -#   = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.registration_header
+  .registration_header__title
+    Chat-Space2
+.registration_body.chat_all__space__lists
+  .registration_body__main
+  .registration_body__header
+    アカウント情報編集
+  .registration_body__container
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      %ul.registration_body__container__field
+        %li.nickname_field
+          %div{style:"margin-bottom:10px;color:#28d;"}
+            %i.fas.fa-user-tag
+            ：ニックネーム
+          = f.text_field :nickname,class:"nickname_field__nickname"
+        %li.email_field
+          %div{style:"margin-bottom:10px;color:#28d;"}
+            %i.fas.fa-envelope
+            ：メールアドレス
+          = f.email_field :email, autofocus: true, autocomplete: "email",class:"email_field__mail"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        %li.avatar_field
+          .avatar_field_iamge{style:"color:#28d;"}
+            %i.fas.fa-image
+            ：アバター画像
+          #img_field_avatar{onclick: "$('#file_avatar').click()"}
+            = image_tag avatar(current_user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+          = f.file_field :avatar,class: "image_input", id:"file_avatar",accept: '.jpeg, .jpg, .gif, .png, .bmp',style:"display:none;"
+        %li.profile_field
+          %div{style:"margin-bottom:10px;color:#28d;"}
+            %i.fas.fa-edit
+            ：プロフィール
+          = f.text_area :profile,class:"plofile_field_text",placeholder:"プロフィールを書こう！(１２０文字以内)"
+        %li.actions_field
+          = f.submit "更新する",class:"actions_field__submit"
+      -# .field
+      -#   = f.label :password
+      -#   %i (leave blank if you don't want to change it)
+      -#   %br/
+      -#   = f.password_field :password, autocomplete: "new-password"
+      -#   - if @minimum_password_length
+      -#     %br/
+      -#     %em
+      -#       = @minimum_password_length
+      -#       characters minimum
+      -# .field
+      -#   = f.label :password_confirmation
+      -#   %br/
+      -#   = f.password_field :password_confirmation, autocomplete: "new-password"
+      -# .field
+      -#   = f.label :current_password
+      -#   %i (we need your current password to confirm your changes)
+      -#   %br/
+      -#   = f.password_field :current_password, autocomplete: "current-password"
+    .login_btn.actions_field
+      = link_to "←戻る", :back,class:"actions_field__submit",style:"background:orange;"
+  .login_btn.actions_field
+    #{button_to "退会する", registration_path(resource_name), data: { confirm: "アカウントを削除しますか？" }, method: :delete,class:"actions_field__submit",style:"background:#2f3e51;border-radius:10px;color:white;padding:10px 20px 10px 20px;margin:20px;cursor: pointer;"}

@@ -1,10 +1,11 @@
 .user_show{
-  width: 50%;
+  width: 70%;
   height: 150px;
   border-radius:90px; 
   margin-bottom:35px; 
   padding: 50px;
   border: 1px solid rgba(103, 225, 255, 0.787);
+  background: white;
   &__left{
     &__nickname{
       font-size:20px; 
@@ -12,6 +13,18 @@
       position: relative;
       bottom: 80px;
       font-weight:bold; 
+      &__profile{
+        margin:10px;
+        margin-bottom:-65px;
+        div{
+          font-size:15px;
+          margin-bottom:10px;
+          border-bottom:1px solid #22b8ff; 
+        }
+        text-align:left;
+        font-size:13px;
+        margin-left: 120px;
+      }
     }
     &__fff{
       position: relative;

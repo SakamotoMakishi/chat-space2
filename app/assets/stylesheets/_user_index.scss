@@ -78,13 +78,35 @@ $card-size: 150px;
         border-radius:10px;
         transition:  0.5s;
         z-index: 1;
+        .user_follow_count{
+          font-size:10px;
+          text-align: left;
+          float:left;
+          margin: 2.5px;
+          width: 85px;
+          overflow: hidden;
+          .count_color{
+            font-weight:bold;
+            color: #0099e8;
+            font-size: 12px;  
+          }
+        }
         .user_name{
           font-size:12px; 
           text-align: left;
           font-weight: bold;
+          display:block;
+          word-wrap: break-word;
+          overflow: hidden; 
+          width: 130px;
+          height: 12px;
+          padding-top: 6px;
+          margin-bottom: 5px;
         }
         .user_image{
           text-align: left;
+          display:inline;
+          float: left;
         }
         .user_follow{
           float: left;
@@ -93,8 +115,15 @@ $card-size: 150px;
           font-weight: bold;
           font-size:12px; 
           padding: 7px;
-          margin: 5px 0 5px 0;
+          margin: 0px 0 5px 0;
           border-radius:25px; 
+        }
+        .user_profile{
+          width: 130px;
+          height: 20px;
+          font-size:10px;
+          text-align: left;
+          overflow: hidden; 
         }
       }
       .contents_users:hover{
