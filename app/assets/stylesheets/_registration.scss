@@ -109,6 +109,15 @@ body {
           font-size:15px; 
         }
       }
+      .profile_field{
+        .plofile_field_text{
+          width: 400px;
+          height: 150px;
+          padding:10px;
+          font-size:15px;
+          border: 0.5px solid rgb(199, 199, 199);
+        }
+      }
       .password_field{
         &__pass{
           width: 350px;
@@ -168,6 +177,7 @@ body {
     padding: 15px;
     width: 200px;
     transition: all 0.5s;
+    
   }
   a:hover{
     opacity: 0.8;

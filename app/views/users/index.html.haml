@@ -11,12 +11,23 @@
             = link_to user_path(user),class:"all_user__contents__link card" do
               .contents_users
                 .user_image
-                  = image_tag avatar(user),crass:"user_avatar",style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                  = image_tag avatar(user),crass:"user_avatar",style: "width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+                .user_follow_count
+                  %text フォロー
+                  %text.count_color
+                    = "#{user.followings.count}"
+                .user_follow_count
+                  %text フォロワー
+                  %text.count_color
+                    = "#{user.reverse_of_relationships.count}"
                 .user_name
                   = "#{user.nickname}"
                 -if current_user.following?(user)
                   .user_follow
                     フォロー中
+                -if !user.profile.blank?
+                  .user_profile
+                    = "#{user.profile}"
 :javascript
   var boxes = document.querySelectorAll('.card');
   var delay = .1; // seconds
