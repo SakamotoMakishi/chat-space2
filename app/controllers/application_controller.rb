@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
   def set_available_tags_to_gon
     gon.available_tags = Post.tags_on(:tags).pluck(:name)
   end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:avatar])
-  end
   
   def talk_user
     @talk_user = User.includes(:messages,:groups,:members).with_attached_avatar.where(id: Member.includes(:user,:group,).where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC")
@@ -35,5 +31,12 @@ class ApplicationController < ActionController::Base
     else
       'まだメッセージはありません。'
     end
+  end
+  
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname,:avatar,:profile])
   end
 end
