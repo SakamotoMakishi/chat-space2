@@ -38,17 +38,17 @@
       position: relative;
       bottom: -18px;
       left: 442px;
-      color: #959595;
+      color: rgb(223, 223, 223);
       .fas{
         font-size: 20px;
-        color: rgb(149, 149, 149);
+        color: rgb(223, 223, 223);
         font-weight:bold;
         margin-left:10px;
         cursor: pointer;
       }
     }
     .message__content{
-      background: #00aeffe1;
+      background: #1bb7ff;
       box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
       width: 600px;
       height:100%;
@@ -62,7 +62,7 @@
         position: relative;
         right: -625px;
         top: 20px;
-        color: #00aeffe1;
+        color: #1bb7ff;
       }
       &__text{
         margin-bottom:10px; 
@@ -106,7 +106,7 @@
       float:right;
       position: relative;
       bottom: 105px;
-      color: #959595;
+      color: rgb(223, 223, 223);
     }
     .message__time22{
       color: gb(223, 223, 223);
@@ -117,7 +117,7 @@
       left: -60px;
     }
     .message__content{
-      background: #00aeffe1;
+      background: #1bb7ff;
       box-shadow: 0 3px 6px rgba(102, 102, 102, 0.16);
       width: 500px;
       height:100%;
@@ -131,7 +131,7 @@
         position: relative;
         right: 50px;
         top: 20px;
-        color: #00aeffe1;
+        color: #1bb7ff;
       }
       &__text{
         margin-bottom:10px; 

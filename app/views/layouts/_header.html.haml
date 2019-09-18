@@ -15,6 +15,9 @@
                 = link_to "フォロワー  #{current_user.reverse_of_relationships.count}",current_user
               %li.contents__list__current_user__logout
                 = link_to "チュートリアル",test_user_notify_users_path
+              = link_to edit_user_registration_path(current_user) do
+                %i.fas.fa-cog
+                %text アカウント編集
               %li.contents__list__current_user__logout
                 = link_to "ログアウト",destroy_user_session_path , method: :delete
   #js-hamburger.hamburger{"data-intro"=>"クリックするとサイドバーが開きユーザー情報を確認できます。","data-position"=>"right"}

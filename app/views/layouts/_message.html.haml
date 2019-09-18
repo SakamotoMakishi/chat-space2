@@ -3,7 +3,8 @@
     .message_current_user
       .message__user
         .message__user__avatar
-          = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+          =link_to user_path(message.user) do
+            = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
         .message__user__name
           = message.user.nickname
       .message__content
@@ -25,7 +26,8 @@
     .message_group_user
       .message__user
         .message__user__avatar
-          = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+          =link_to user_path(message.user) do
+            = image_tag avatar(message.user),style: "width: 70px;height:70px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
         .message__user__name
           = message.user.nickname
       .message__content
