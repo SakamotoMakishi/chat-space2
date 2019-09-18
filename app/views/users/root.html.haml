@@ -4,6 +4,12 @@
   = render 'layouts/post_message'
   .root_page
     = render 'layouts/left_bar'
+    .root_page__weather
+      .root_page__weather__news
+        .left-weather
+          #city-name
+          %text 大阪の今日の天気
+          #weather
     .root_page__right
       .root_page__right__contents__list__post__title{style:"color:black;width:calc(100% - 12%);"}
         Home:
@@ -91,6 +97,12 @@
   = render 'layouts/post_message'
   .root_page
     = render 'layouts/left_bar'
+    .root_page__weather
+      .root_page__weather__news
+        .left-weather
+          #city-name
+          %text 大阪の今日の天気
+          #weather
     .root_page__right{style:"height:100%;"}
       .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
         =render 'layouts/chardinjs'
