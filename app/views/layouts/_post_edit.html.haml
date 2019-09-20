@@ -1,0 +1,61 @@
+.js-modal-edit.new-post
+  .new-post__box
+    %h2投稿フォーム
+    .js-modal-close-edit
+      %i.fas.fa-times
+      %text 閉じる
+    .post_from
+      = form_with(model: @post, local: true)  do |f|
+        .post_from__title
+          = f.text_field :title,class:"text_field",placeholder:"Title"
+        .post_from__image
+          -if @post.image.attached?
+            #img_field-edit{onclick: "$('#file-edit').click()",style:"background-image: url(#{url_for(@post.image)})"}
+          -else
+            #img_field-edit{onclick: "$('#file-edit').click()"}
+          = f.file_field :image,class: "post_from__image__input", id:"file-edit",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+        .post_from__tags
+          .post_from__tags__placeholder
+            Tags:
+            %textエンターキーを押すとタグ変換（複数可)
+          %ul#article-tags
+        .post_from__text
+          = f.text_area  :text, class: "ef",placeholder:"Text",value:"#{@post.text}"
+          %span.focus_line
+            %i
+        .post_from__submit
+          = f.submit '編集する', class: "submit", type:"button" ,onclick:"submit();"
+:javascript
+  $(function(){
+  $fileField = $('#file-edit')
+  $($fileField).on('change', $fileField, function(e) {
+    file = e.target.files[0]
+    reader = new FileReader(),
+    $preview = $("#img_field-edit");
+    reader.onload = (function(file) {
+      return function(e) {
+        $preview.empty();
+        $preview.append($('<img>').attr({
+          src: e.target.result,
+          class: "avatar_preview",
+          title: file.name
+        }));
+      };
+    })(file);
+    reader.readAsDataURL(file);
+  });
+  });
+:coffee
+  $(document).on 'ready page:load', ->
+  $('.post_from__tags #article-tags').tagit
+    fieldName:   'tag_list'
+    singleField: true
+    removeConfirmation: true
+    availableTags: gon.available_tags
+  if gon.post_tags?
+    for tag in gon.post_tags
+      $('#article-tags').tagit 'createTag', tag
+.js-modal-open-edit.new_post_btn{"data-intro"=>"こちらから投稿できます。","data-position"=>"bottom"}
+  %i.fas.fa-pen
+  %text.new_post_btn__pen
+    編集する

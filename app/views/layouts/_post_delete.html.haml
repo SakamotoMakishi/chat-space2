@@ -1,0 +1,23 @@
+.js-modal-delete-close
+  .delete-contnet__box
+    .delete-contnet__box__btn
+      %text 確認
+      %br/
+      削除すると2度と復活できません。
+      %br/
+      削除する代わりに停止することができます。
+      %br/
+      %br/
+      本当に削除しますか？
+    .js-modal-delete-close.delete-contnet__box__cancel
+      キャンセル
+    = link_to '削除する',post_path(@post.id),class: "delete-contnet__box__delete",method: :delete
+:javascript
+  $(function(){
+    $('.js-modal-open-delete').on('click',function(){
+        $('.js-modal-delete').fadeIn();
+    });
+    $('.js-modal-close-delete').on('click',function(){
+        $('.js-modal-delete').fadeOut();
+    });
+  });

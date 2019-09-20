@@ -1,0 +1,147 @@
+.root_page__right__contents__tabs{
+  display: flex;
+  justify-content: center;
+  &__tab{
+    flex-grow: 1;
+    padding:20px;
+    list-style:none;
+    border:solid 1px #CCC;
+    text-align:center;
+    cursor:pointer;
+    font-weight:bold; 
+  }
+}
+.root_page__right__contents__panels{
+  border:solid 1px #CCC;
+  border-top:none;
+  background:rgb(255, 255, 255);
+  margin-bottom:50px; 
+  &__panel{
+    display:none;
+    &__link{
+      display: block;
+      text-decoration: none;
+      padding:10px;
+      transition: all 0.5s;
+      border-bottom: 1px solid gainsboro;
+      height: 63px;
+      overflow: hidden;
+      &__nickname{
+        display: inline;
+        text-align: left;
+        vertical-align: top;
+        color:black;
+        font-size:12px;
+        font-weight: bold;
+      }
+      &__avatar{
+        display: inline;
+        text-align: left;
+      }
+      &__following{
+        display: inline;
+        float: right;
+        background: #3fbfff;
+        color: white;
+        font-weight: bold;
+        font-size:12px; 
+        padding: 7px;
+        margin: 0px 0 5px 0;
+        border-radius:25px; 
+      }
+      &__profile{
+        font-size:13px;
+        padding:10px;
+        line-height: 15px;
+        color: gray;
+      }
+    }
+    &__link:hover{
+      background: rgb(221, 255, 252);
+    }
+    &__edit{
+      width: 50%;
+      float: left;
+      text-align: center;
+      padding-top:70px;
+      height: 100px;
+      background: #FFF;
+      .edit_btn{
+        padding:30px 125px 30px 125px;
+        border-radius:10px; 
+        background: crimson;
+        color: #FFF;
+        font-weight:bold; 
+        text-decoration: none;
+        transition: all 0.3s;
+        
+      }
+      .edit_btn:hover{
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    }
+    &__delete{
+      width: 50%;
+      float: right;
+      text-align: center;
+      padding-top:70px;
+      height: 100px;
+      background: #FFF;
+      .delete_btn{
+        padding:30px 125px 30px 125px;
+        border-radius:10px; 
+        background: #2f3e51;
+        color: #FFF;
+        font-weight:bold; 
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .delete_btn:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+}
+.is-active{
+  background:rgb(0, 174, 255);
+  color:#FFF;
+  transition: all 0.5s ease-out;
+}
+.is-show{
+  display:block
+}
+#img_field-edit {
+  border-radius:10px;
+  font-size: 13px;
+  margin-top: 0px;
+  padding: 5px 8px;
+  border: solid 1px gainsboro;
+  color: #666;
+  padding: 0;
+  cursor: pointer;
+  width: 300px;
+  height: 200px;
+  background-image:url(https://www.shoshinsha-design.com/wp-content/uploads/2016/09/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2016-09-03-16.45.18.png);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: 0.3s ease-out;
+  .avatar_preview{
+    width: 100%;
+    height: 100%;
+  }
+}
+#img_field-edit:hover {
+  background-color: rgb(252, 251, 248);
+  transition: 0.3s ease-out;
+  opacity: 0.5;
+}
+#img_field-edit:hover i {
+  transition: 0.3s ease-out;
+  display: block;
+  color: #fff;
+}

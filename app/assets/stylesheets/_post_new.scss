@@ -29,6 +29,18 @@
         font-size:19px; 
       }
     }
+    .js-modal-close-edit{
+      clear: both;
+      float: right;
+      font-weight: bold;
+      cursor: pointer;
+      padding-bottom: 10px;
+      position: relative;
+      bottom:20px;
+      .fas.fa-times{
+        font-size:19px; 
+      }
+    }
     .post_from{
       &__image{
         #img_field {

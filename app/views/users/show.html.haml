@@ -72,6 +72,17 @@
             = image_tag post.image,class:"post_image" if post.image.attached?
           %text.root_page__right__contents__list__post__time
             = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
+        %li.root_page__right__contents__list__icon
+          -if post.user_id == current_user.id
+            =link_to edit_post_path(post) ,class:"link_icon" do
+              %i.fas.fa-external-link-alt
+              .hover_icon
+                詳細ページへ
+          -else
+            =link_to post_path(post) ,class:"link_icon" do
+              %i.fas.fa-external-link-alt
+              .hover_icon
+                詳細ページへ
         %li.root_page__right__contents__list__like
           = render 'likes/like', post: post
         %li.root_page__right__contents__list__retweet
