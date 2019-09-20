@@ -1,6 +1,5 @@
 = render 'layouts/header'
 = render 'layouts/flash_message'
-= render 'layouts/post_message'
 = render 'layouts/post_edit'
 .root_page
   = render 'layouts/left_bar'
@@ -73,6 +72,8 @@
         いいね
       %li.root_page__right__contents__tabs__tab
         リツイート
+      %li.root_page__right__contents__tabs__tab
+        編集・削除
     .root_page__right__contents__panels.root_page__right__contents_fadein
       .root_page__right__contents__panels__panel.is-show        
         -@like_user.each do |like_user|
@@ -100,6 +101,15 @@
             -if !retweet_user.profile.blank?
               .root_page__right__contents__panels__panel__link__profile
                 = "#{retweet_user.profile}"
+      .root_page__right__contents__panels__panel
+        .root_page__right__contents__panels__panel__edit
+          %text.edit_btn.js-modal-open-edit
+            %i.fas.fa-edit
+            編集
+        .root_page__right__contents__panels__panel__delete
+          = link_to post_path(@post),class:"delete_btn",method: :delete do
+            %i.fas.fa-trash-alt
+            削除
     :javascript
       $(function($){
         $('.root_page__right__contents__tabs__tab').click(function(){
@@ -109,4 +119,12 @@
           const index = $(this).index();
           $('.root_page__right__contents__panels__panel').eq(index).addClass('is-show');
         });
+      });
+      $(function(){
+      $('.js-modal-open-edit').on('click',function(){
+          $('.js-modal-edit').fadeIn();
+      });
+      $('.js-modal-close-edit').on('click',function(){
+          $('.js-modal-edit').fadeOut();
+      });
       });

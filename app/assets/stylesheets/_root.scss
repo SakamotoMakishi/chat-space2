@@ -277,10 +277,36 @@
               transition: all 0.5s;
               display: block;
             }
-            .post_image:hover{
-              opacity: 0.8;
-              cursor: pointer;
+          }
+        }
+        &__icon{
+          width: 30px;
+          height: 20px;
+          margin-top:10px;
+          display: inline-block;
+          vertical-align: top;
+          .link_icon{
+            color:rgb(255, 110, 53);
+            font-size:15px;
+            width: 20px;
+          }
+          .link_icon:hover{
+            .hover_icon{
+              opacity: 1;
             }
+          }
+          .hover_icon{
+            text-align: center;
+            border-radius:15px; 
+            width: 80px;
+            padding: 5px;
+            font-size:12px;
+            margin-top:5px; 
+            margin-left:-40px; 
+            background: #fff;
+            border: 1px solid gainsboro;
+            opacity: 0;
+            transition: all 0.5s;
           }
         }
         &__like{
@@ -314,7 +340,7 @@
               margin-right: 10px;
               .up{
                 float: right;
-                margin-left: 10px;
+                margin-left: 0px;
                 font-weight: bold;
               }
             }
@@ -522,7 +548,7 @@
       background:rgb(255, 254, 254);
       border: 1px solid gainsboro;
       display: block;
-      position: fixed;
+      position: absolute;
       width:130px; 
       right: 0;
       top:50px;

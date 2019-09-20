@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :talk_user, only: [:show,:index]
-  before_action :post_show, only: [:show]
+  before_action :talk_user, only: [:show,:index,:edit]
+  before_action :post_show, only: [:show,:edit,:update,:destroy]
   
   def index
     @tags_post_name = params[:tag]
@@ -21,6 +21,42 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def edit
+    gon.post_tags = @post.tag_list
+    if @post.user_id != current_user.id
+      flash[:notice] = '無効なリンクです。'
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if @post.user_id == current_user.id
+      if @post.update(post_params)
+        flash[:notice] = '投稿を編集しました'
+        redirect_to root_path
+      else
+        flash[:alert] = '入力してください'
+        redirect_to root_path
+      end
+    else
+      redirect_to action: :edit
+    end
+  end
+
+  def destroy
+    if @post.user_id == current_user.id
+      if @post.destroy
+        flash[:notice] = '投稿を削除しました。'
+        redirect_to root_path
+      else
+        flash[:alert] = '投稿削除失敗しました。'
+        redirect_to action: :edit
+      end
+    else
+      redirect_to action: :edit
+    end
+  end
   
   private
   def post_params
@@ -29,5 +65,8 @@ class PostsController < ApplicationController
 
   def post_show
     @post = Post.with_attached_image.find(params[:id])
+    @like_user = @post.liking_users
+    @retweet_user = @post.retweets_users
   end
+
 end
