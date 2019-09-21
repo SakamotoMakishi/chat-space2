@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
     if @comment.save
       @comment.comment_create_notification_by(current_user) if @comment.user_id != current_user.id
       respond_to do |format|
+        flash[:notice] = 'コメントしました'
         format.html { redirect_to root_path } 
         format.json
       end
     else
+      flash[:notice] = 'コメント失敗しました'
       redirect_to root_path
     end
   end

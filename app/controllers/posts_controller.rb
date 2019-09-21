@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿完了しました'
       redirect_to root_path
     else
-      flash[:alert] = '入力してください'
+      flash[:alert] = '画像、又はテキストを入力してください'
       redirect_to root_path
     end
   end
@@ -33,10 +33,10 @@ class PostsController < ApplicationController
   def update
     if @post.user_id == current_user.id
       if @post.update(post_params)
-        flash[:notice] = '投稿を編集しました'
+        flash[:notice] = '編集しました'
         redirect_to root_path
       else
-        flash[:alert] = '入力してください'
+        flash[:alert] = '画像、又はテキストを入力してください'
         redirect_to root_path
       end
     else
