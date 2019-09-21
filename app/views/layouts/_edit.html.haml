@@ -1,0 +1,11 @@
+%li.root_page__right__contents__list__icon
+  -if post.user_id == current_user.id
+    =link_to edit_post_path(post) ,class:"link_icon" do
+      %i.fas.fa-external-link-alt
+      .hover_icon
+        詳細ページへ
+  -else
+    =link_to post_path(post) ,class:"link_icon" do
+      %i.fas.fa-external-link-alt
+      .hover_icon
+        詳細ページへ

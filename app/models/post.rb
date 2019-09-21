@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   
 
   def posts
-    text.presence || image.attached? || title.presence
+    text.presence || image.attached? 
   end
 
   def create_notification_by(current_user)
