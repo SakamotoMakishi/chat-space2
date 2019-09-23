@@ -18,7 +18,7 @@
       .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
         - @posts.includes(:user,:likes,:retweets).each_with_index do |post,index|
           .root_page__right__contents__list.root_page__right__contents_fadein
-            = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
+            = link_to user_path(post.user),class:"root_page__right__contents__list__avatar" do
               = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
               %text.root_page__right__contents__list__nickname
                 = "#{post.user.nickname}"
@@ -53,8 +53,12 @@
                     =link_to "#{tag}", posts_path(tag: tag), class:"post_tagt_link"
               %text.root_page__right__contents__list__post__text{style:"color:black;"}
                 = "#{post.text}"
-              .root_page__right__contents__list__post__image
-                = image_tag post.image,class:"post_image" if post.image.attached?
+              .root_page__right__contents__list__post__image.clearfix
+                - if post.images.attached?
+                  - post.images.each_with_index do |image,i|
+                    %div{class: "wrap#{i}"}
+                      %a.luminous{href: "#{url_for(image)}"}
+                        = image_tag image,class:"post_image#{i}"
               %text.root_page__right__contents__list__post__time
                 = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
             = render 'layouts/edit', post: post
@@ -112,3 +116,25 @@
             .user-login__time
               %i.fas.fa-sign-out-alt
               5時間前
+:javascript
+  $(function($){
+    $('.root_page__right__contents__tabs__tab').click(function(){
+      $('.is-active').removeClass('is-active');
+      $(this).addClass('is-active');
+      $('.is-show').removeClass('is-show');
+      const index = $(this).index();
+      $('.root_page__right__contents__panels__panel').eq(index).addClass('is-show');
+    });
+  });
+  $(function(){
+  $('.js-modal-open-edit').on('click',function(){
+      $('.js-modal-edit').fadeIn();
+  });
+  $('.js-modal-close-edit').on('click',function(){
+      $('.js-modal-edit').fadeOut();
+  });
+  });
+  var luminousTrigger = document.querySelectorAll('.luminous');
+  if( luminousTrigger !== null ) {
+    new LuminousGallery(luminousTrigger);
+  }

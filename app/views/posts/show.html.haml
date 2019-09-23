@@ -30,43 +30,31 @@
         .root_page__right__contents__list__post
           .root_page__right__contents__list__post__title{style:"color:black;"}
             = "#{@post.title}" if @post.title
+          .root_page__right__contents__list__post
+            -if !post.title.blank?
+              .root_page__right__contents__list__post__title{style:"color:black;"}
+                Title:
+                = "#{post.title}"
+            -if !post.tag_list.blank?
+              .root_page__right__contents__list__post__title{style:"color:black;"}
+                Tag:
+                - post.tag_list.each do |tag|
+                  .post_tagt_sharp
+                    = "#"
+                  =link_to "#{tag}", posts_path(tag: tag), class:"post_tagt_link"
           %text.root_page__right__contents__list__post__text{style:"color:black;"}
             = "#{@post.text}"
           .root_page__right__contents__list__post__image
-            = image_tag @post.image,class:"post_image" if @post.image.attached?
+            - if @post.images.attached?
+              - @post.images.each do |image|
+                = image_tag image,class:"post_image"
           %text.root_page__right__contents__list__post__time
             = "#{@post.created_at.strftime("%Y/%m/%d %H:%M")}"
         %li.root_page__right__contents__list__like
           = render 'likes/like', post: @post
         %li.root_page__right__contents__list__retweet
           = render 'retweets/retweet', post: @post
-        .root_page__right__contents__list__comment
-          %span.far.fa-comment
-            = "#{@post.comments.count}"
-            - if user_signed_in?
-              .comment_contents.slideInRight
-                .comment
-                  - if @post.comments
-                    - @post.comments.includes(:user).to_enum.with_index.reverse_each do |c,index|
-                      .comment__message{"data-comment-id": "#{c.id}"}
-                        .comment__message__avatar
-                          = image_tag avatar(c.user),style: "width: 40px;height:40px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-                        %text.comment__message__nickname
-                          = c.user.nickname
-                        .comment__message__comment
-                          %text.comment__message__comment__tri
-                            &#9701;
-                          %text.comment__message__comment__comment
-                            = c.comment
-                        .comment__message__time
-                          %i.far.fa-clock
-                          = " #{time_ago_in_words(c.created_at)}前"
-                .comment__form
-                  = form_with url: post_comments_path(@post.id), method: :post,local: true, id: "new_comment" do |f|
-                    .comment__form__text
-                      = f.text_area :comment, class: "textbox"
-                    .comment__form__submit
-                      = f.submit 'コメントする', class: "submit"
+        = render 'layouts/comment', post: @post
     .root_page__right__contents__tabs.root_page__right__contents_fadein
       %li.root_page__right__contents__tabs__tab.is-active
         いいね
@@ -109,3 +97,4 @@
           $('.root_page__right__contents__panels__panel').eq(index).addClass('is-show');
         });
       });
+      
