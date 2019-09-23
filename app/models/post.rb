@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   acts_as_taggable
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_many :retweets, dependent: :destroy
   has_many :retweets_users, through: :retweets, source: :user
   has_many :likes, dependent: :destroy
@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   
 
   def posts
-    text.presence || image.attached? 
+    text.presence || images.attached? 
   end
 
   def create_notification_by(current_user)

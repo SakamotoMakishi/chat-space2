@@ -5,7 +5,7 @@
   = render 'layouts/left_bar'
   .root_page__right
     .root_page__right__contents
-      .root_page__right__contents__list.root_page__right__contents_fadein
+      .root_page__right__contents__list
         = link_to user_path(@post.user),class:".root_page__right__contents__list__avatar" do
           = image_tag avatar(@post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
           %text.root_page__right__contents__list__nickname
@@ -32,8 +32,12 @@
             = "#{@post.title}" if @post.title
           %text.root_page__right__contents__list__post__text{style:"color:black;"}
             = "#{@post.text}"
-          .root_page__right__contents__list__post__image
-            = image_tag @post.image,class:"post_image" if @post.image.attached?
+          .root_page__right__contents__list__post__image.clearfix
+            - if @post.images.attached?
+              - @post.images.each_with_index do |image,i|
+                %div{class: "wrap#{i}"}
+                  %a.luminous{href: "#{url_for(image)}"}
+                    = image_tag image,class:"post_image#{i}"
           %text.root_page__right__contents__list__post__time
             = "#{@post.created_at.strftime("%Y/%m/%d %H:%M")}"
         %li.root_page__right__contents__list__like
@@ -41,15 +45,15 @@
         %li.root_page__right__contents__list__retweet
           = render 'retweets/retweet', post: @post
         = render 'layouts/comment', post: @post
-    .root_page__right__contents__tabs.root_page__right__contents_fadein
+    .root_page__right__contents__tabs
       %li.root_page__right__contents__tabs__tab.is-active
         いいね
       %li.root_page__right__contents__tabs__tab
         リツイート
       %li.root_page__right__contents__tabs__tab
         編集・削除
-    .root_page__right__contents__panels.root_page__right__contents_fadein
-      .root_page__right__contents__panels__panel.is-show        
+    .root_page__right__contents__panels
+      .root_page__right__contents__panels__panel.is-show
         -@like_user.each do |like_user|
           = link_to user_path(like_user) ,class:"root_page__right__contents__panels__panel__link" do
             .root_page__right__contents__panels__panel__link__avatar
@@ -102,3 +106,7 @@
           $('.js-modal-edit').fadeOut();
       });
       });
+      var luminousTrigger = document.querySelectorAll('.luminous');
+      if( luminousTrigger !== null ) {
+        new LuminousGallery(luminousTrigger);
+      }

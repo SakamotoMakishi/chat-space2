@@ -32,6 +32,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.user_id == current_user.id
+        @post.images.detach
       if @post.update(post_params)
         flash[:notice] = '編集しました'
         redirect_to root_path
@@ -57,16 +58,36 @@ class PostsController < ApplicationController
       redirect_to action: :edit
     end
   end
-  
-  private
-  def post_params
-    params.permit(:text,:title,:image,:tag_list).merge(user_id: current_user.id)
+
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    respond_to do |format|
+      format.json { @image_blob.id }
+    end
   end
 
+  
+  private
+
   def post_show
-    @post = Post.with_attached_image.find(params[:id])
+    @post = Post.with_attached_images.find(params[:id])
     @like_user = @post.liking_users
     @retweet_user = @post.retweets_users
+  end
+
+  def post_params
+    params.require(:post).permit(:text,:title).merge(tag_list: params[:tag_list], images: uploaded_images, user_id: current_user.id)
+  end
+
+  def uploaded_images
+    params[:post][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+  end
+
+  def create_blob(uploading_file)
+    ActiveStorage::Blob.create_after_upload! \
+      io: uploading_file.open,
+      filename: uploading_file.original_filename,
+      content_type: uploading_file.content_type
   end
 
 end

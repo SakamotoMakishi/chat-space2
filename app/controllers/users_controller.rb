@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   require 'date'
 
   def root
+    @post = Post.new
     @followre = current_user.followings
-    @posts = Post.with_attached_image.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_image.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
+    @posts = Post.with_attached_images.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_images.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
     cookies.encrypted[:user_id] = @current_user.id
     @online_users = User.with_attached_avatar.where(id: @followre.ids << current_user.id).where.not(online_at: nil).order(online_at: :desc)
   end
@@ -17,17 +18,16 @@ class UsersController < ApplicationController
   def show
     @group = Group.new
     @user = User.with_attached_avatar.find(params[:id])
-    @posts = Post.with_attached_image.where(id: @user.posts).or(Post.with_attached_image.where(id: @user.retweets.pluck(:post_id)))
+    @posts = Post.with_attached_images.where(id: @user.posts).or(Post.with_attached_images.where(id: @user.retweets.pluck(:post_id)))
     @ture_user_msg = Group.find_by(name: current_user.nickname, id: Member.where(user_id: @user.id).pluck(:group_id))
   end
 
   def like_show
-    @like_posts = Post.includes(:user,:comments).with_attached_image.where(id: current_user.likes.pluck(:post_id))
+    @like_posts = Post.includes(:user,:comments).with_attached_images.where(id: current_user.likes.pluck(:post_id))
   end
 
   def test
-    cookies.encrypted[:user_id] = @current_user.id
-    @online_users = User.where.not(online_at: nil).order(online_at: :desc)
+    @post = Post.new
   end
 
   def test_user_notify

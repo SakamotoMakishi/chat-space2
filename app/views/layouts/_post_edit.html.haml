@@ -5,46 +5,132 @@
       %i.fas.fa-times
       %text 閉じる
     .post_from
-      = form_with(model: @post, local: true)  do |f|
+      = form_with(model: @post, local: true) do |f|
         .post_from__title
           = f.text_field :title,class:"text_field",placeholder:"Title"
-        .post_from__image
-          -if @post.image.attached?
-            #img_field-edit{onclick: "$('#file-edit').click()",style:"background-image: url(#{url_for(@post.image)})"}
-          -else
-            #img_field-edit{onclick: "$('#file-edit').click()"}
-          = f.file_field :image,class: "post_from__image__input", id:"file-edit",accept: '.jpeg, .jpg, .gif, .png, .bmp'
+        .post_from__image.images-field.clearfix
+          .post_from__image__icon{onclick: "$('#post_images').click()"}
+            %i.fas.fa-camera
+            ファイルを選択
+          = f.file_field :images, multiple: true, class: "file-input", style: "display: none;"
+          - if @post.images.attached?
+            - @post.images.each do |image|
+              .image-box
+                = image_tag image,class:"post_from__image__edit"
+                = f.hidden_field :images , name: "post[images][]", value: "#{image.blob.id}", style: "display: none;", class: "post-images-input"
+                = link_to "↪", "", class: "btn-edit",style:"padding:5px;"
+                = file_field "edit-image","" , class: "edit-image-file-input file-input", style: "display: none;"
+                = link_to "✖︎", "", class: "btn-delete"
         .post_from__tags
           .post_from__tags__placeholder
             Tags:
             %textエンターキーを押すとタグ変換（複数可)
           %ul#article-tags
         .post_from__text
-          = f.text_area  :text, class: "ef",placeholder:"Text",value:"#{@post.text}"
+          = f.text_area  :text, class: "ef",placeholder:"Text"
           %span.focus_line
             %i
         .post_from__submit
           = f.submit '編集する', class: "submit", type:"button" ,onclick:"submit();"
 :javascript
-  $(function(){
-  $fileField = $('#file-edit')
-  $($fileField).on('change', $fileField, function(e) {
-    file = e.target.files[0]
-    reader = new FileReader(),
-    $preview = $("#img_field-edit");
-    reader.onload = (function(file) {
-      return function(e) {
-        $preview.empty();
-        $preview.append($('<img>').attr({
-          src: e.target.result,
-          class: "avatar_preview",
-          title: file.name
-        }));
-      };
-    })(file);
-    reader.readAsDataURL(file);
+  $('#post_images').on('change',function(e){
+    var files = e.target.files;
+    var d = (new $.Deferred()).resolve();
+    $.each(files,function(i,file){
+      d = d.then(function() {
+          return Uploader.upload(file)})
+        .then(function(data){
+          return previewImage(file, data.image_id);
+      });
+    });
+    $('#post_images').val('');
   });
+
+  $('.images-field').on('click','.btn-edit', function(e){
+    e.preventDefault();
+    $(this).parent().find('.edit-image-file-input').trigger("click");
   });
+
+  $('.images-field').on('change','.edit-image-file-input', function(e){
+    var file = e.target.files[0];
+    var image_box = $(this).parent();
+    Uploader.upload(file).done(function(data){
+      replaceImage(file, data.image_id, image_box);
+    });
+  });
+
+  $('.images-field').on('click','.btn-delete', function(e){
+    e.preventDefault();
+    $(this).parent().remove();
+  });
+
+  var replaceImage = function(imageFile, image_id, element){
+    var reader = new FileReader();
+    var img = element.find('img');
+    var input = element.find('.post-images-input');
+    var filename = element.find('p');
+    reader.onload = function(e){
+      input.attr({value: image_id});
+      filename.html(imageFile.name);
+      img.attr("src", e.target.result);
+    };
+    reader.readAsDataURL(imageFile);
+  }
+
+  var previewImage = function(imageFile, image_id){
+    var reader = new FileReader();
+    var img = new Image();
+    var def =$.Deferred();
+    reader.onload = function(e){
+      var image_box = $('<div>',{class: 'image-box'});
+      image_box.append($(img).attr({
+        style: `width:100px;
+                height:100px;
+                animation-name:fade-in4;
+                animation-duration: .3s;
+                animation-delay:0s;
+                animation-iteration-count:1;
+                animation-direction:normal;
+                animation-fill-mode:forwards;`
+      }));
+      image_box.append($('<input>').attr({
+            name: "post[images][]",
+            value: image_id,
+            style: "display: none;",
+            type: "hidden",
+            class: "post-images-input"}));
+      image_box.append('<a href="" class= "btn-edit">&#x21aa</a>');
+      image_box.append($('<input>').attr({
+            name: "edit-image[]",
+            style: "display: none;",
+            type: "file",
+            class: "edit-image-file-input file-input"}));
+      image_box.append('<a href="" class="btn-delete">✖︎</a>');
+      $('.images-field').append(image_box);
+      img.src = e.target.result;
+      def.resolve();
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+  }
+
+  var Uploader = {
+    upload: function(imageFile){
+      var def =$.Deferred();
+      var formData = new FormData();
+      formData.append('image', imageFile);
+      $.ajax({
+        type: "POST",
+        url: '/posts/upload_image',
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: def.resolve
+      })
+      return def.promise();
+    }
+  }
 :coffee
   $(document).on 'ready page:load', ->
   $('.post_from__tags #article-tags').tagit

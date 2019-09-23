@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: :index
   resources :posts do
+    collection do
+      post :upload_image
+    end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end

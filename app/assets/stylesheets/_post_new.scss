@@ -10,9 +10,8 @@
   }
   display: none;
   &__box{
-    width: 600px;
+    width: 60%;
     margin:auto;
-    height: 680px;
     background-color:white;
     margin-top:15px;
     padding: 40px;
@@ -43,6 +42,25 @@
     }
     .post_from{
       &__image{
+        &__icon{
+          color: #fff;
+          background: #26c1ff;
+          padding:10px;
+          border-radius:20px;
+          width: 200px;
+          text-align: center;
+          cursor: pointer;
+        }
+        &__edit{
+          width:100px;
+          height:100px;
+          animation-name:fade-in4;
+          animation-duration: .3s;
+          animation-delay:0s;
+          animation-iteration-count:1;
+          animation-direction:normal;
+          animation-fill-mode:forwards;
+        }
         #img_field {
           border-radius:10px;
           font-size: 13px;
@@ -82,9 +100,12 @@
         }
       }
       &__tags{
-        margin-top:5px;
-        margin-bottom:5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         cursor: text;
+        float: left;
+        display: block;
+        width: 100%;
         &__placeholder{
           color: darkgray;
           padding: 15px;
@@ -123,8 +144,10 @@
         }
         &__text {
           position: relative;
+          height: 200px;
           width: 100%;
           margin: 20px 0 20px;
+          clear: both;
         }
         &__text textarea{
           font: 15px/24px sans-serif;
@@ -210,11 +233,11 @@
           color: #da3c41;
         }
       &__submit{
+        text-align: right;
         .submit{
-          width: 100%;
-          display       : inline-block;
-          border-radius : 5%;          /* 角丸       */
-          font-size     : 13pt;        /* 文字サイズ */
+          width: 30%;
+          border-radius : 20px;          /* 角丸       */
+          font-size     : 10pt;        /* 文字サイズ */
           text-align    : center;      /* 文字位置   */
           cursor        : pointer;     /* カーソル   */
           padding       : 24px 24px;   /* 余白       */
@@ -236,4 +259,43 @@
 }
 .ui-helper-hidden-accessible {
   display: none;
+}
+.image-box{
+  float: left;
+  margin: 20px;
+  background: rgb(255, 254, 254);
+  border-radius:10px; 
+  .btn-edit{
+    float: left;
+    text-align: left;
+    display: block;
+    padding: 5px 10px 5px 0;
+    width: 20px;
+    height: 20px;
+    border-radius:50%; 
+    font-size:20px;
+    background: rgb(214, 214, 214);
+    color: white;
+    text-decoration: none;
+    font-weight:bold;
+    position: relative;
+    left: 15px;
+    top:60px;
+  }
+  .btn-delete{
+    float: left;
+    text-align: center;
+    display: block;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    background: rgb(214, 214, 214);
+    color: white;
+    text-decoration: none;
+    font-weight:bold;
+    position: relative;
+    right: 15px;
+    top:10px;
+  }
 }
