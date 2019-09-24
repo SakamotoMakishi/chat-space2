@@ -80,4 +80,5 @@ gem 'acts-as-taggable-on'
 gem 'gon'
 gem 'jquery-ui-rails'
 gem 'mini_magick'
+gem 'kaminari'
 gem "aws-sdk-s3", require: false

@@ -40,7 +40,7 @@
           .user_show__left__link__follower
         %ul.user_show__left__link__followe
           .user_show__left__link__follow
-    - @posts.each_with_index do |post,index|
+    - @posts.reverse_each do |post|
       .root_page__right__contents__list
         = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
           = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
@@ -68,8 +68,12 @@
             = "#{post.title}" if post.title
           %text.root_page__right__contents__list__post__text
             = "#{post.text}"
-          .root_page__right__contents__list__post__image
-            = image_tag post.image,class:"post_image" if post.image.attached?
+          .root_page__right__contents__list__post__image.clearfix
+            - if post.images.attached?
+              - post.images.each_with_index do |image,i|
+                %div{class: "wrap#{i}"}
+                  %a.luminous{href: "#{url_for(image)}"}
+                    = image_tag image,class:"post_image#{i}"
           %text.root_page__right__contents__list__post__time
             = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
         = render 'layouts/edit', post: post
@@ -78,3 +82,8 @@
         %li.root_page__right__contents__list__retweet
           = render 'retweets/retweet', post: post
         = render 'layouts/comment', post: post
+    :javascript
+      var luminousTrigger = document.querySelectorAll('.luminous');
+      if( luminousTrigger !== null ) {
+        new LuminousGallery(luminousTrigger);
+      }

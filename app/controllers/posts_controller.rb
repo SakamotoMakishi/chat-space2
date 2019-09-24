@@ -38,7 +38,7 @@ class PostsController < ApplicationController
         redirect_to root_path
       else
         flash[:alert] = '画像、又はテキストを入力してください'
-        redirect_to root_path
+        render :edit
       end
     else
       redirect_to action: :edit

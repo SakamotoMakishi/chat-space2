@@ -9,7 +9,8 @@ class Post < ApplicationRecord
   has_many :comments,foreign_key: :post_id, dependent: :destroy
   has_many :notifications,dependent: :destroy
   validates :posts, presence: true
-  
+  validates :images, length: { maximum: 5}
+    
 
   def posts
     text.presence || images.attached? 

@@ -44,7 +44,7 @@
                   =link_to "#{tag}", posts_path(tag: tag), class:"post_tagt_link"
           %text.root_page__right__contents__list__post__text{style:"color:black;"}
             = "#{@post.text}"
-          .root_page__right__contents__list__post__image
+          .root_page__right__contents__list__post__image.clearfix
             - if @post.images.attached?
               - @post.images.each do |image|
                 = image_tag image,class:"post_image"

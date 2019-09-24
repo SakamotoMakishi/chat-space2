@@ -12,6 +12,8 @@
           .post_from__image__icon{onclick: "$('#post_images').click()"}
             %i.fas.fa-camera
             ファイルを選択
+            %text{style: "font-size:10px;"}
+              (最大5枚)
           = f.file_field :images, multiple: true, class: "file-input", style: "display: none;"
         - if @post.images.attached?
           - @post.images.each do |image|
