@@ -8,8 +8,23 @@
       .root_page__right__notification.chat_all__space__lists
         %h4.sub-title 通知
         - if @notifications.exists?
-          .users-index
+          #menus.users-index
             = render partial: "layouts/notification",collection: @notifications
+          - unless @notifications.include?(@notifications_last)
+            .page-load-status
+              .infinite-scroll-request
+                = image_tag src="/assets/loading-1.gif",style:"width:60px;height:30px;"
+          = paginate @notifications
         - else
           .notification_nil{style:"font-weight:bold;"}
             %p 通知はありません。
+      :javascript
+        $(function() {
+          $('#menus').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
+            path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
+            append : '.users-index',  // 読まれたら追加していくタグのクラス
+            history: false,  // ページが読まれてもURLを変えない
+            prefill: true,  // 一番下まで読まれる前にpathを読み込む
+            status: '.page-load-status'  // 読み込み中表示したいタグのクラス
+          })
+        })

@@ -15,4 +15,5 @@
 //= require jquery-ui
 //= require tag-it
 //= require activestorage
+//= require infinite-scroll.pkgd.min
 //= require_tree .

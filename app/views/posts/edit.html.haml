@@ -34,7 +34,7 @@
             = "#{@post.text}"
           .root_page__right__contents__list__post__image.clearfix
             - if @post.images.attached?
-              - @post.images.each_with_index do |image,i|
+              - @post.images.first(5).each_with_index do |image,i|
                 %div{class: "wrap#{i}"}
                   %a.luminous{href: "#{url_for(image)}"}
                     = image_tag image,class:"post_image#{i}"
