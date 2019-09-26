@@ -11,13 +11,11 @@
           %text 大阪の今日の天気
           #weather
     .root_page__right
-      .root_page__right__contents__list__post__title{style:"color:black;width:calc(100% - 12%);"}
+      .root_page__right__contents__list__post__title{style:"color:black;width:calc(100% - 25%);"}
         Home:
-        .post_tagt_sharp
-        -# =link_to "/", root_path, class:"post_tagt_link"
-      #menus.root_page__right__contents_fadein.root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
+      #menus.root_page__right__contents_fadein.root_page__right__contents{style:"width:calc(100% - 25%);"}
         - @posts.includes(:user,:likes,:retweets).each_with_index do |post,index|
-          .root_page__right__contents__list
+          .root_page__right__contents__list.root_page__right__contents_fadein
             = link_to user_path(post.user),class:"root_page__right__contents__list__avatar" do
               = image_tag avatar(post.user),style: "width: 50px;height:50px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
               %text.root_page__right__contents__list__nickname
@@ -39,7 +37,7 @@
                   %textさんがリツイートしました！
                   .retweet_other_name
                     = "↪他#{retweet_user}名" if retweet_user >= 1
-            .root_page__right__contents__list__post
+            .root_page__right__contents__list__post{style:"color:black;width:95%;"}
               -if !post.title.blank?
                 .root_page__right__contents__list__post__title{style:"color:black;"}
                   Title:
@@ -67,23 +65,31 @@
             %li.root_page__right__contents__list__retweet
               = render 'retweets/retweet', post: post
             = render 'layouts/comment', post: post
+      -# - unless @posts.include?(@posts_last)
+      -#   .page-load-status
+      -#     .infinite-scroll-request
+      -#       = image_tag src="/assets/loading-1.gif",style:"width:60px;height:30px;"
+      -# = paginate @posts
+      :javascript
+        var luminousTrigger = document.querySelectorAll('#luminous')
+          if( luminousTrigger !== null ) {
+          new LuminousGallery(luminousTrigger);
+        }
       .root_page__right__online_user
         #users-list.logbox
           = render partial: 'layouts/online_users', collection: @online_users, as: :member
--else 
+          = link_to users_path,class:"user-show-more" do
+            .user-show-more__nickname
+              %i.fas.fa-user-plus
+              show more
+-else
   = render 'layouts/header'
   = render 'layouts/flash_message'
   = render 'layouts/post_message'
   .root_page
     = render 'layouts/left_bar'
-    .root_page__weather
-      .root_page__weather__news
-        .left-weather
-          #city-name
-          %text 大阪の今日の天気
-          #weather
     .root_page__right{style:"height:100%;"}
-      .root_page__right__contents{style:"width:calc(100% - 12%);float:left;"}
+      .root_page__right__contents{style:"width:calc(100% - 25%);float:left;"}
         =render 'layouts/chardinjs'
     .root_page__right__online_user{style:"position:absolute;"}
       #users-list.logbox
@@ -134,7 +140,3 @@
       $('.js-modal-edit').fadeOut();
   });
   });
-  var luminousTrigger = document.querySelectorAll('#luminous')
-    if( luminousTrigger !== null ) {
-      new LuminousGallery(luminousTrigger);
-  }

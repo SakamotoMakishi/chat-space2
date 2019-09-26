@@ -6,13 +6,17 @@ class UsersController < ApplicationController
   def root
     @post = Post.new
     @followre = current_user.followings
-    @posts = Post.with_attached_images.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_images.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
+    posts = Post.with_attached_images.where(id:Retweet.includes(:user,:post).where(user_id: @followre.ids << current_user.id).pluck(:post_id)).or(Post.with_attached_images.where(user_id: @followre.ids << current_user.id)).order("updated_at DESC").includes(:user,:likes,:retweets)
+    @posts_last =  posts.last
+    @posts = posts#.page(params[:page]).per(5)
     cookies.encrypted[:user_id] = @current_user.id
-    @online_users = User.with_attached_avatar.where(id: @followre.ids << current_user.id).where.not(online_at: nil).order(online_at: :desc)
+    @online_users = User.with_attached_avatar.where(id: @followre.ids << current_user.id).where.not(online_at: nil).order(online_at: :desc).limit(10)
   end
   
   def index
-    @user = User.with_attached_avatar.where.not(id: current_user.id).limit(30)
+    user = User.with_attached_avatar.where.not(id: current_user.id)
+    @user_last =  user.last
+    @user = user.page(params[:page]).per(30)
   end
 
   def show
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def test
-    @post = Post.new
+    @posts = Post.all.page(params[:page])
   end
 
   def test_user_notify

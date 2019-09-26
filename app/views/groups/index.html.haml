@@ -5,7 +5,7 @@
   .chat_all__space
     .chat_all__space__title
       トーク一覧
-    .chat_all__space__lists
+    #menus.chat_all__space__lists
       -if @talk_user.exists?
         - @talk_user.each do |user|
           = link_to group_messages_path(user.groups.find_by(id: current_user.groups.ids)),class:"chat_all__space__lists__li"  do
@@ -19,6 +19,21 @@
             -if check_box.any?
               %li.root_page__left__group__users__link__check_box2{style:"margin-top:10px;"}
                 = check_box.count
+        - unless @talk_user.include?(@talk_user_last)
+          .page-load-status
+            .infinite-scroll-request
+              = image_tag src="/assets/loading-1.gif",style:"width:60px;height:30px;margin-left:150px;"
+        = paginate @talk_user
       - else
         .chat_all__space__lists__no_group
           まだメッセージはありません。メッセージを送信、又は受信するとここに表示されます。
+:javascript
+  $(function() {
+    $('#menus').infiniteScroll({// 監視してほしい範囲のタグのクラス
+    path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
+     append : '.chat_all__space__lists__li',  // 読まれたら追加していくタグのクラス
+     history: false,  // ページが読まれてもURLを変えない
+     prefill: true,  // 一番下まで読まれる前にpathを読み込む
+     status: '.page-load-status'  // 読み込み中表示したいタグのクラス
+    })
+  })

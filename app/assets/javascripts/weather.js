@@ -37,6 +37,6 @@
       $('#weather').html(insertHTML);
     })
     .fail(function(data) {
-      console.log("失敗しました");
+      console.log("天気情報の取得に失敗しました。広告ブロック解除で取得できる場合があります。");
     });
   });

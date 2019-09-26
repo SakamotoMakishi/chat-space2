@@ -574,7 +574,7 @@
 				"padding": "13px",
 				"color":"white",
 				"text-shadow": "0 1px 0 rgba(255, 255, 255, 0.5)",
-				"background-color": "#3fbfffdf",
+				"background-color": "#3fbfff",
 				"border": "5px solid #fbc000",
 				"border-bottom": "2px solid #fbc000",
 				"padding-left": "26px",

@@ -37,11 +37,11 @@ $(function(){
   });
 });
 $(function(){
-  $fileField = $('#file_message')
+  $fileField = $('#file')
   $($fileField).on('change', $fileField, function(e) {
     file = e.target.files[0]
     reader = new FileReader(),
-    $preview = $("#img_field_message");
+    $preview = $("#img_field");
     reader.onload = (function(file) {
       return function(e) {
         $preview.empty();
@@ -222,3 +222,24 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
+// $(window).on( 'load', function() {
+//   var luminousTrigger = document.querySelectorAll('#luminous')
+//   if( luminousTrigger !== null ) {
+//     new LuminousGallery(luminousTrigger);
+//   }
+// });
+// $(document).on( 'append.infiniteScroll', function() {
+//   var luminousTrigger = document.querySelectorAll('#luminous')
+//   if( luminousTrigger !== null ) {
+//     new LuminousGallery(luminousTrigger);
+//   }
+// });
+// $(function() {
+//   $('#menus').infiniteScroll({// 監視してほしい範囲のタグのクラス
+//     path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
+//     append : '.root_page__right__contents__list',  // 読まれたら追加していくタグのクラス
+//     history: false,  // ページが読まれてもURLを変えない
+//     prefill: true,  // 一番下まで読まれる前にpathを読み込む
+//     status: '.page-load-status'  // 読み込み中表示したいタグのクラス
+//   })
+// })
