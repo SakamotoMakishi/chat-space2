@@ -5,7 +5,7 @@
   = render 'layouts/left_bar'
   .root_page__right
     .root_page__right__contents
-      .all_user
+      #menus.all_user
         .all_user__contents.cardHolder
           - @user.reverse_each do |user|
             = link_to user_path(user),class:"all_user__contents__link card" do
@@ -28,7 +28,21 @@
                 -if !user.profile.blank?
                   .user_profile
                     = "#{user.profile}"
+        - unless @user.include?(@user_last)
+          .page-load-status
+            .infinite-scroll-request
+              = image_tag src="/assets/loading-1.gif",style:"width:60px;height:30px;"
+        = paginate @user
 :javascript
+  $(function() {
+    $('#menus').infiniteScroll({// 監視してほしい範囲のタグのクラス
+    path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
+     append : '.all_user__contents.cardHolder',  // 読まれたら追加していくタグのクラス
+     history: false,  // ページが読まれてもURLを変えない
+     prefill: true,  // 一番下まで読まれる前にpathを読み込む
+     status: '.page-load-status'  // 読み込み中表示したいタグのクラス
+    })
+  })
   var boxes = document.querySelectorAll('.card');
   var delay = .1; // seconds
   var col = 0;

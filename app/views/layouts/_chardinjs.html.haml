@@ -11,6 +11,11 @@
     .credits_link{"data-intro" => "ユーザをフォローすると投稿一覧が表示されます。", "data-position" => "left"}
       %i.fas.fa-home
       = link_to "トップページへ",root_path
+    %br/
+    %br/
+    .credits_link{"data-intro" => "まずはユーザーをフォローしましょう。", "data-position" => "right"}
+      %i.fas.fa-user-plus
+      = link_to "ユーザーをフォローする",users_path
   :javascript
     (function() {
       $(function() {

@@ -20,7 +20,7 @@
             %p 通知はありません。
       :javascript
         $(function() {
-          $('#menus').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
+          $('#menus').infiniteScroll({// 監視してほしい範囲のタグのクラス
             path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
             append : '.users-index',  // 読まれたら追加していくタグのクラス
             history: false,  // ページが読まれてもURLを変えない

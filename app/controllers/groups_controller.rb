@@ -1,5 +1,11 @@
 class GroupsController < ApplicationController
   before_action :talk_user
+
+  def index
+    @talk_user_last =  @talk_user.last
+    @talk_user = @talk_user.page(params[:page]).per(10)
+  end
+
   def create
       @group = Group.new(group_params)
       @group.users << current_user

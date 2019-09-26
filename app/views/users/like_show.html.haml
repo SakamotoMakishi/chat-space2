@@ -36,10 +36,12 @@
                 = "#{post.title}" if post.title
               %text.root_page__right__contents__list__post__text
                 = "#{post.text}"
-              .root_page__right__contents__list__post__image
+              .root_page__right__contents__list__post__image.clearfix
                 - if post.images.attached?
-                  - post.images.each do |image|
-                    = image_tag image,class:"post_image"
+                  - post.images.each_with_index do |image,i|
+                    %div{class: "wrap#{i}"}
+                      %a#luminous{href: "#{url_for(image)}"}
+                        = image_tag image,class:"post_image#{i}"
               %text.root_page__right__contents__list__post__time
                 = "#{post.created_at.strftime("%Y/%m/%d %H:%M")}"
             = render 'layouts/edit', post: post

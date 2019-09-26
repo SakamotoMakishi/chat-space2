@@ -543,7 +543,7 @@
               transition: 3s all ;
               display: none;
               padding: 20px;
-              width: 600px;
+              width: 500px;
               height: 100%;
               background: #ffffff;
               border: 1px solid #b0d5ff;
@@ -566,7 +566,7 @@
                     left: 25px;
                   }
                   &__comment{
-                    width: 400px;
+                    width: 300px;
                     height: 100%;
                     position: relative;
                     right: -65px;
@@ -605,7 +605,7 @@
               .comment__form{
                 &__text{
                   .textbox{
-                    width: 60.5%;
+                    width: 55.5%;
                     height: 17px;
                     font-size:12px; 
                     padding:15px;
@@ -656,46 +656,95 @@
     }
     &__online_user{
       float:right;
-      background:rgb(255, 254, 254);
-      border: 1px solid gainsboro;
+      background:rgba(255, 254, 254, 0);
       display: block;
-      position: absolute;
-      width:130px; 
+      position: fixed;;
+      width: 16%; 
       right: 0;
       top:50px;
+      height: 100%;
       #users-list.logbox{
-          background:white;
+          background:rgba(255, 255, 255, 0);
         .user-login{
           padding: 10px 15px 10px 15px;
           display: block;
           transition: all 0.5s;
           text-decoration: none;
+          border-radius:25px;
           &__nickname{
             margin:5px 5px 5px 0;
             font-size:12px;
             color: #666666;
             font-weight: bold;
             word-wrap: break-word;
+            display: inline;
+            vertical-align: top;
+            transition: all 0.5s;
           }
           i.fas.fa-check-circle{
             color: #00b327;
-            font-size:18px; 
+            font-size:15px;
+            margin:5px 5px 5px 0;
+          }
+          &__avatar{
+            display: inline;
           }
           &__online{
             color:rgb(77, 77, 77);
-            font-size:15px;
-            
+            font-size:13px;
             display:block;
           }
           &__time{
             color:gray;
             font-size:12px;
-            margin:10px 10px 10px 0;
+            margin:5px 5px 0px 0;
             display:block;
+            text-align: right;
           }
         }
         .user-login:hover{
-          background: #cee5ff;
+          background: #51c5ff;;
+          border-radius:55px;
+          .user-login__nickname{
+            transition: all 0.7s;
+            color:white;
+          }
+          i.fas.fa-check-circle{
+            color: #71ff90;
+          }
+          .user-login__online{
+            transition: all 0.7s;
+            color:white;
+          }
+          .user-login__time{
+            transition: all 0.7s;
+            color:white;
+          }
+        }
+        .user-show-more{
+          padding: 22px;
+          display: block;
+          transition: all 0.7s;
+          text-decoration: none;
+          text-align: center;
+          border-radius:55px;
+          &__nickname{
+            margin:5px 5px 5px 0;
+            font-size:12px;
+            color: #1990ff;
+            font-weight: bold;
+            word-wrap: break-word;
+            display: inline;
+            vertical-align: top;
+          }
+        }
+        .user-show-more:hover{
+          background: #51c5ff;;
+          border-radius:55px;
+          .user-show-more__nickname{
+            transition: all 0.7s;
+            color:white;
+          }
         }
       }
     }

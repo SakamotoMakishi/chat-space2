@@ -40,6 +40,8 @@
           .user_show__left__link__follower
         %ul.user_show__left__link__followe
           .user_show__left__link__follow
+    .root_page__right__contents__list__post__title
+      = "#{@user.nickname}の投稿一覧"
     - @posts.reverse_each do |post|
       .root_page__right__contents__list
         = link_to user_path(post.user),class:".root_page__right__contents__list__avatar" do
