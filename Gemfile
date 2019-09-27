@@ -81,4 +81,6 @@ gem 'gon'
 gem 'jquery-ui-rails'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'chartkick'
+gem 'chartable'
 gem "aws-sdk-s3", require: false

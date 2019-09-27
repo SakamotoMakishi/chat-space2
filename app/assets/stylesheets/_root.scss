@@ -7,23 +7,17 @@
     bottom:0;
     height: 53.1%;
     width: calc(100% - 79%);
-    z-index: 5;
-    background: rgb(245, 245, 245);
-    border: 1px solid rgb(245, 245, 245);
     &__news{
-      border: 1px solid rgb(121, 121, 121);
       border-radius: 10px;
       padding-top:30px;
       width:90%;
       height: 380px;
-      margin: 10px;
-      background: rgb(255, 255, 255);
+      margin: 30px;
       position: absolute;
       left:0;
       bottom:0;
       font-size:13px;
       .left-weather {
-        background: #fff;
         text-align: center;
         text{
           font-weight:bold; 

@@ -1,0 +1,158 @@
+.left_bar{
+  position: fixed;
+  left:0;
+  top:70px;
+  padding-left:100px; 
+  width:calc(100% - 90%);
+  &__main{
+    a{text-decoration: none;
+      color: rgb(51, 51, 51);
+    }
+    li{
+      margin: 20px 10px 20px 10px;
+    }
+    font-size:13px;
+    &__avatar{
+    }
+    &__nickname{
+      width: 100px;
+      word-wrap: break-word;
+    }
+    &__follow{
+      &__follow_count{
+        font-weight:bold; 
+        color: darkcyan;
+      }
+      &__following_count{
+        font-weight:bold; 
+        color: darkcyan;
+      }
+    }
+    &__mypage{
+      transition: all 0.5s;
+      display: block;
+      margin: 10px;
+      width: 130px;
+      padding: 3px;
+    }
+    &__mypage:hover{
+      font-size:15px;
+      background: rgb(255, 166, 0);
+      padding: 15px;
+      border-radius:15px;
+      color:white;
+    }
+    &__eng{
+      transition: all 0.5s;
+      display: block;
+      margin: 10px;
+      width: 150px;
+      padding: 3px;
+      cursor: pointer;
+    }
+    &__eng:hover{
+      font-size:15px;
+      background: rgb(255, 166, 0);
+      padding: 15px;
+      width: 150px;
+      border-radius:15px;
+      color:white; 
+    }
+    &__help{
+      transition: all 0.5s;
+      display: block;
+      margin: 10px;
+      width: 130px;
+      padding: 3px;
+    }
+    &__help:hover{
+      font-size:15px;
+      background: rgb(255, 166, 0);
+      padding: 15px;
+      width: 130px;
+      border-radius:15px;
+      color:white;
+    }
+    &__edit{
+      transition: all 0.5s;
+      display: block;
+      margin: 10px;
+      width: 130px;
+      padding: 3px;
+    }
+    &__edit:hover{
+      font-size:15px;
+      background: rgb(255, 166, 0);
+      padding: 15px;
+      width: 130px;
+      border-radius:15px;
+      color:white; 
+    }
+    &__logout{
+      transition: all 0.5s;
+      display: block;
+      margin: 10px;
+      width: 130px;
+      padding: 3px;
+    }
+    &__logout:hover{
+      font-size:15px;
+      background: rgb(255, 166, 0);
+      padding: 15px;
+      width: 130px;
+      border-radius:15px;
+      color:white; 
+    }
+  }
+}
+#close {
+  cursor: pointer;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 12px;
+  margin: 16px auto 0;
+  background: #03afff;
+  color: white;
+  font-weight:bold; 
+}
+#mask {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100000;
+}
+
+#modal {
+  background: #fff;
+  color: #555;
+  width: 100%;
+  border-radius: 4px;
+  position: fixed;
+  margin-top:130px; 
+  padding-top:20px; 
+  padding-bottom:20px; 
+  top: 130px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 100001;
+  transition: 0.5s;
+}
+
+#modal p {
+  margin: 0 0 20px;
+}
+
+#mask.hidden {
+  display: none;
+}
+
+
+#modal.hidden {
+  transform: translate(0px, -900px);
+}

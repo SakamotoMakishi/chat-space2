@@ -1,0 +1,2 @@
+.line_chart
+  = line_chart([{ name: "フォローされた数", data: @post_date_relationship },{ name: "投稿に対するお気に入り数", data: @post_date_likes },{ name: "投稿に対するリツイート数", data: @post_date_retweet },{ name: "投稿に対するコメント数", data: @post_date_comment }])

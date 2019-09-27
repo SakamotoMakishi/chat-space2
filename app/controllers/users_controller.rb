@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   end
 
   def test
-    @posts = Post.all.page(params[:page])
+    @post_date_relationship = Relationship.where(follow_id: current_user.id).analytics(:daily)
+    @post_date_likes =  Like.where(post_id: current_user.post_ids).analytics(:daily)
+    @post_date_retweet = Retweet.where(post_id: current_user.post_ids).analytics(:daily)
+    @post_date_comment = Comment.where(post_id: current_user.post_ids).analytics(:daily)
+    @post_date = [@post_date_relationship,@post_date_likes,@post_date_retweet,@post_date_comment]
   end
 
   def test_user_notify

@@ -16,4 +16,6 @@
 //= require tag-it
 //= require activestorage
 //= require infinite-scroll.pkgd.min
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
