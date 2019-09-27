@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
   end
   
   def talk_user
+    @post_date_relationship = Relationship.where(follow_id: current_user.id).analytics(:daily)
+    @post_date_likes =  Like.where(post_id: current_user.post_ids).analytics(:daily)
+    @post_date_retweet = Retweet.where(post_id: current_user.post_ids).analytics(:daily)
+    @post_date_comment = Comment.where(post_id: current_user.post_ids).analytics(:daily)
     @post = Post.new
     @talk_user = User.includes(:messages,:groups,:members).with_attached_avatar.where(id: Member.includes(:user,:group,).where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC")
   end

@@ -1,0 +1,61 @@
+#mask.hidden
+%section#modal.hidden
+  = line_chart([{ name: "フォローされた数", data: @post_date_relationship },{ name: "投稿に対するお気に入り数", data: @post_date_likes },{ name: "投稿に対するリツイート数", data: @post_date_retweet },{ name: "投稿に対するコメント数", data: @post_date_comment }])
+  #close
+    閉じる
+.left_bar
+  %ul.left_bar__main
+    %li.left_bar__main__avatar
+      = image_tag avatar(current_user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
+    -# %li.left_bar__main__nickname
+    -#   = link_to "#{current_user.nickname}",current_user
+    -# %li.left_bar__main__follow
+    -#   %text フォロー
+    -#   %text.left_bar__main__follow__follow_count
+    -#     = "#{current_user.followings.count}"
+    -# %li.left_bar__main__following
+    -#   %text フォロワー
+    -#   %text.left_bar__main__follow__following_count
+    -#     = "#{current_user.reverse_of_relationships.count}"
+    = link_to current_user,class:"li left_bar__main__mypage" do
+      %i.fas.fa-user
+      %text マイページ
+    .left_bar__main__eng#open
+      %i.fas.fa-chart-line
+      %text エンゲージメント
+    = link_to test_user_notify_users_path,class:"li left_bar__main__help" do
+      %i.fas.fa-question-circle
+      %text チュートリアル
+    = link_to edit_user_registration_path(current_user),class:"left_bar__main__edit" do
+      %i.fas.fa-cog
+      %text アカウント編集
+    = link_to destroy_user_session_path,class:"left_bar__main__logout",method: :delete do
+      %i.fas.fa-sign-out-alt
+      %text ログアウト
+.root_page__weather
+  .root_page__weather__news
+    .left-weather
+      #city-name
+      %text 大阪の今日の天気
+      #weather
+:javascript
+  'use strict';
+  {
+    const open = document.getElementById('open');
+    const close = document.getElementById('close');
+    const modal = document.getElementById('modal');
+    const mask = document.getElementById('mask');
+
+    open.addEventListener('click', function () {
+      modal.classList.remove('hidden');
+      mask.classList.remove('hidden');
+    });
+    close.addEventListener('click', function () {
+      modal.classList.add('hidden');
+      mask.classList.add('hidden');
+    });
+    mask.addEventListener('click', function () {
+      modal.classList.add('hidden');
+      mask.classList.add('hidden');
+    });
+  }
