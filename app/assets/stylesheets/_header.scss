@@ -14,13 +14,12 @@ left:-330px; /* これで隠れる */
 top: 0;
 width: 288px;
 height: 100vh;
-padding-top: 50px;
+padding-top: 20px;
 -moz-box-shadow: rgba(223, 217, 217, 0.2) 0px 0px 10px 10px;
 background-color: #2f3e51;
 box-shadow:rgba(154, 154, 156, 0.7) 0px 0px 20px 20px;
 transition: all .6s;
 z-index: 200;
-overflow-y: auto; /* メニューが多くなったらスクロールできるように */
 }
 .hamburger {
 position: absolute;
@@ -60,12 +59,15 @@ transition: all .6s;
 }
 .hamburger__line--1 {
 top: 14px;
+opacity: 0;
 }
 .hamburger__line--2 {
 top: 20px;
+opacity: 0;
 }
 .hamburger__line--3 {
 top: 26px;
+opacity: 0;
 }
 .black-bg {
 position: fixed;
@@ -90,6 +92,9 @@ visibility: visible;
 .nav-open .hamburger__line--1 {
 transform: rotate(45deg);
 top: 20px;
+left: 300px;
+color: #fff;
+opacity: 1;
 }
 .nav-open .hamburger__line--2 {
 width: 0;
@@ -98,6 +103,9 @@ right: 50%;
 .nav-open .hamburger__line--3 {
 transform: rotate(-45deg);
 top: 20px;
+left: 300px;
+color: #fff;
+opacity: 1;
 }
 .home_btn{
   position: fixed;
@@ -139,6 +147,13 @@ top: 20px;
   top: 13px;
   z-index:100;
   font-size:25px;
+  i.fas.fa-envelope-open-text{
+    position: fixed;
+    left:10px;
+    top:10px;
+    cursor: pointer;
+    pointer-events: none;
+  }
   .nav-count1{
     position: absolute;
     top: -7px;

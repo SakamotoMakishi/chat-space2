@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     @post_date_retweet = Retweet.where(post_id: current_user.post_ids).analytics(:daily)
     @post_date_comment = Comment.where(post_id: current_user.post_ids).analytics(:daily)
     @post = Post.new
-    @talk_user = User.includes(:messages,:groups,:members).with_attached_avatar.where(id: Member.includes(:user,:group,).where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC")
+    @talk_user = User.includes(:messages,:groups,:members).with_attached_avatar.where(id: Member.includes(:user,:group,).where(group_id: current_user.groups.ids).where.not(user_id: current_user.id).pluck(:user_id)).order("updated_at DESC").limit(7)
   end
 
   def show_last_message
