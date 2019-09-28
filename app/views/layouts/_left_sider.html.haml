@@ -7,16 +7,6 @@
   %ul.left_bar__main
     %li.left_bar__main__avatar
       = image_tag avatar(current_user),style: "width: 100px;height:100px;border-radius:50%;box-shadow:rgba(133, 241, 255, 0.856)0px 0px 2px 2px;"
-    -# %li.left_bar__main__nickname
-    -#   = link_to "#{current_user.nickname}",current_user
-    -# %li.left_bar__main__follow
-    -#   %text フォロー
-    -#   %text.left_bar__main__follow__follow_count
-    -#     = "#{current_user.followings.count}"
-    -# %li.left_bar__main__following
-    -#   %text フォロワー
-    -#   %text.left_bar__main__follow__following_count
-    -#     = "#{current_user.reverse_of_relationships.count}"
     = link_to current_user,class:"li left_bar__main__mypage" do
       %i.fas.fa-user
       %text マイページ

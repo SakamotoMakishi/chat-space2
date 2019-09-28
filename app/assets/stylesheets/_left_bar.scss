@@ -7,6 +7,7 @@
   &__main{
     a{text-decoration: none;
       color: rgb(51, 51, 51);
+      font-weight:bold;
     }
     li{
       margin: 20px 10px 20px 10px;
@@ -48,6 +49,8 @@
       margin: 10px;
       width: 150px;
       padding: 3px;
+      color: rgb(51, 51, 51);
+      font-weight:bold;
       cursor: pointer;
     }
     &__eng:hover{

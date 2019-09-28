@@ -1,6 +1,11 @@
 .root_page{
   width:100%;
   height: 100%;
+  .chardinjs_help{
+    width: calc(100% - 80%);
+    height: 100%;
+    float: left;
+  }
   &__weather{
     position: fixed;
     left:0;
@@ -61,15 +66,15 @@
     }
   }
   &__left{
-    width: calc(100% - 80%);
+    width: 100%;
     padding: 0px 0px 30px 0px;
-    height: 100%;
-    float: left;
-    background:rgb(255, 255, 255);
     border-right:2px solid rgb(187, 187, 187);
-    position: fixed;
-    left:0;
-    top:50;
+    .hed_text{
+      display: block;
+      margin: 0px auto;
+      padding-bottom: 5px;
+      text-align: center;
+    }
     &__group{
       &__users{
         margin-top:2px; 
@@ -95,8 +100,6 @@
           a{
             text-decoration: none;
           }
-          // &__avatar{
-          // }
           &__nickname{
             color:black;
             width: 100%;
@@ -115,8 +118,8 @@
           }
           &__check_box{
               position: relative;
-              top: -94px;
-              left: 25px;          
+              top: -80px;
+              left: 25px;
               width: 20px;
               height: 20px;
               border-radius: 50%;
@@ -127,12 +130,11 @@
               color: #fff;
               animation: delayJump 3s ease-out;
               animation-delay: 0.05s;
-
           }
           &__check_box2{
             position: relative;
             top: -174px;
-            left: 25px;          
+            left: 25px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -143,31 +145,10 @@
             color: #fff;
             animation: delayJump 3s ease-out;
             animation-delay: 0.05s;
-
-        }
-          .root_page__left__group__users__link__smrck{
-            background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
-            bottom: -13px;
-            height: 15px;
-            position: relative;
-            right: -235px;
-            width: 40px;
-            transition:1s;
           }
         }
         &__link:hover{
-        border-top: 1px outset rgb(0, 162, 255);
-        border-right: 1px outset rgb(0, 120, 190);
-        border-bottom: 1px outset rgb(0, 162, 255);
-        width:125%;
-          .root_page__left__group__users__link__smrck{
-            background: linear-gradient(90deg, rgba(246, 246, 246, 0), #ffffff 70%);
-            bottom: -13px;
-            height: 15px;
-            position: relative;
-            right: -330px;
-            width: 40px;
-          }
+          background: #cee5ff;
         }
       }
     }
