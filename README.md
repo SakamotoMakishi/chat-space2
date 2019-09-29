@@ -16,7 +16,7 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - ユーザログイン・ログアウト機能
 - ユーザかんたんログイン機能
 - 複数枚画像投稿(ストレージ:AWS S3, アップローダー:active strage)
-- タグ付け機能（tag-it.js使用）
+- タグ付け機能（tag-it.js,acts-as-taggable-on使用）
 - 投稿の編集、削除機能
 - 画像拡大機能（luminous.js使用）
 - フォロー機能（Ajaxによる非同期通信）
@@ -162,5 +162,60 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 ### Association
 - belongs_to :user
 - belongs_to :follow, class_name: 'User'
+
+## commentsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|user_id          |integer    |                                |
+|post_id          |integer    |                                |
+|comment          |text       |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :post,optional: true
+- belongs_to :user,optional: true
+
+## notificationsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|visiter_id       |integer    |                                |
+|visited_id       |integer    |                                |
+|group_id         |integer    |                                |
+|post_id          |integer    |                                |
+|message_id       |integer    |                                |
+|comment_id       |integer    |                                |
+|action           |string     |                                |
+|checked          |boolean    |default: false                  |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :visiter, class_name: 'User'
+- belongs_to :visited, class_name: 'User'
+- belongs_to :post, optional: true
+- belongs_to :group, optional: true
  
+## tagsテーブル(acts-as-taggable-onによる自動生成)
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|name             |string     |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+## taggingsテーブル(acts-as-taggable-onによる自動生成)
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|tag_id           |integer    |                                |
+|taggable_type    |string     |                                |
+|taggable_id      |integer    |                                |
+|tagger_type      |string     |                                |
+|tagger_id        |integer    |                                |
+|context          |string     |limit: 128                      |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
 
