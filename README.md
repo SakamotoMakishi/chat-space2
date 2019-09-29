@@ -92,12 +92,23 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 
 
 ### Association
-- has_many :retweets, dependent: :destroy
-- has_many :retweets_users, through: :retweets, source: :user
-- has_many :likes, dependent: :destroy
-- has_many :liking_users, through: :likes, source: :user
-- has_many :comments,foreign_key: :post_id, dependent: :destroy
+- has_many :members
+- has_many :users, through: :members
+- has_many :messages
 - has_many :notifications,dependent: :destroy
+
+## membersテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|group_id         |integer    |                                |
+|user_id          |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :group
+- belongs_to :user
 
 ## likesテーブル
 
