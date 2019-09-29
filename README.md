@@ -110,6 +110,20 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - belongs_to :group
 - belongs_to :user
 
+## messagesテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|content          |text       |                                |
+|group_id         |integer    |                                |
+|user_id          |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
 ## likesテーブル
 
 |Column           |Type       |Options                         |
@@ -122,3 +136,31 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 ### Association
 - belongs_to :post, counter_cache: :likes_count
 - belongs_to :user
+
+## retweetsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|user_id          |integer    |                                |
+|post_id          |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :post, counter_cache: :retweets_count
+- belongs_to :user
+
+## relationshipsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|user_id          |integer    |                                |
+|post_id          |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :user
+- belongs_to :follow, class_name: 'User'
+ 
+
