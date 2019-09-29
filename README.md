@@ -33,3 +33,81 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 実装期間 : 24日間, 200時間ほど
 
 
+## usersテーブル
+
+|Column           |Type    |Options                         |
+|-----------------|--------|--------------------------------|
+|nickname         |string  |null: false                     |
+|email            |string  |null: false,unique: true        |
+|password         |string  |null: false                     |
+|online           |boolean |default: false                  |
+|online_at        |datetime|                                |
+|profile          |text    |default: "", null: fals         |
+|created_at       |datetime   |null: false                  |
+|updated_at       |datetime   |null: false                  |
+
+### Association
+- has_many :members
+- has_many :groups, through: :members
+- has_many :messages
+- has_many :posts
+- has_many :relationships
+- has_many :followings, through: :relationships, source: :follow
+- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+- has_many :followers, through: :reverse_of_relationships, source: :user
+- has_many :likes, dependent: :destroy
+- has_many :like_stories, through: :likes, source: :post
+- has_many :retweets, dependent: :destroy
+- has_many :retweets_posts, through: :retweets, source: :post
+- has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+- has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
+## postsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|title            |string     |null: false                     |
+|text             |string     |null: false                     |
+|user_id          |integer    |null: false                     |
+|likes_count      |integer    |                                |
+|retweets_count   |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- has_many :retweets, dependent: :destroy
+- has_many :retweets_users, through: :retweets, source: :user
+- has_many :likes, dependent: :destroy
+- has_many :liking_users, through: :likes, source: :user
+- has_many :comments,foreign_key: :post_id, dependent: :destroy
+- has_many :notifications,dependent: :destroy
+
+## groupsテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|name             |string     |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+
+### Association
+- has_many :retweets, dependent: :destroy
+- has_many :retweets_users, through: :retweets, source: :user
+- has_many :likes, dependent: :destroy
+- has_many :liking_users, through: :likes, source: :user
+- has_many :comments,foreign_key: :post_id, dependent: :destroy
+- has_many :notifications,dependent: :destroy
+
+## likesテーブル
+
+|Column           |Type       |Options                         |
+|-----------------|-----------|--------------------------------|
+|user_id          |integer    |                                |
+|post_id          |integer    |                                |
+|created_at       |datetime   |null: false                     |
+|updated_at       |datetime   |null: false                     |
+
+### Association
+- belongs_to :post, counter_cache: :likes_count
+- belongs_to :user
