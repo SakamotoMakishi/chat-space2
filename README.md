@@ -16,7 +16,7 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - ユーザログイン・ログアウト機能
 - ユーザかんたんログイン機能
 - 複数枚画像投稿(ストレージ:AWS S3, アップローダー:active strage)
-- タグ付け機能（tag-it.js,acts-as-taggable-on使用）
+- タグ付け機能（tag-it.js,gem'acts-as-taggable-on'使用）
 - 投稿の編集、削除機能
 - 画像拡大機能（luminous.js使用）
 - フォロー機能（Ajaxによる非同期通信）
@@ -26,7 +26,7 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - メッセージ送信機能（Ajaxによる非同期通信)
 - ヘッダーサイドバーの解説チュートリアル（chardin.js使用）
 - 一部スクロールでページネーション自動ロード（infinite-scroll.js,gem'kaminari'使用）
-- weatherAPIから天気情報の取得（広告ブロック等で表示されない可能性あり）
+- weatherAPIから天気情報の取得（広告ブロック等で表示されない可能性あります。）
 - ログインユーザーに対するエンゲージメント機能（「ある投稿に対してどれくらいのエンゲージ（反応：お気に入り、リツイート、フォローなど）があったかを計る指標、折れ線グラフで表示）
 - ユーザーのオンライン状態,ログイン履歴表示（ActionCable使用）
 
@@ -43,8 +43,8 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 |online           |boolean |default: false                  |
 |online_at        |datetime|                                |
 |profile          |text    |default: "", null: fals         |
-|created_at       |datetime   |null: false                  |
-|updated_at       |datetime   |null: false                  |
+|created_at       |datetime|null: false                     |
+|updated_at       |datetime|null: false                     |
 
 ### Association
 - has_many :members
