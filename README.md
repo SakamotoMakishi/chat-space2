@@ -198,7 +198,7 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 - belongs_to :post, optional: true
 - belongs_to :group, optional: true
  
-## tagsテーブル(acts-as-taggable-onによる自動生成)
+## tagsテーブル(acts-as-taggable-onによる作成)
 
 |Column           |Type       |Options                         |
 |-----------------|-----------|--------------------------------|
@@ -206,7 +206,7 @@ Ruby、JavaScript、Ruby on Rails、VScode、PostgreSQL、MacOS
 |created_at       |datetime   |null: false                     |
 |updated_at       |datetime   |null: false                     |
 
-## taggingsテーブル(acts-as-taggable-onによる自動生成)
+## taggingsテーブル(acts-as-taggable-onによる作成)
 
 |Column           |Type       |Options                         |
 |-----------------|-----------|--------------------------------|
