@@ -8,6 +8,8 @@
       = form_with(model: @post, local: true) do |f|
         .post_from__title
           = f.text_field :title,class:"text_field",placeholder:"Title"
+        .image_load#overlay
+          = image_tag src="/assets/loading.gif",style:"width:60px;height:30px;"
         .post_from__image.images-field.clearfix
           .post_from__image__icon{onclick: "$('#post_images').click()"}
             %i.fas.fa-camera
@@ -122,12 +124,14 @@
     reader.readAsDataURL(imageFile);
     return def.promise();
   }
-
   var Uploader = {
     upload: function(imageFile){
       var def =$.Deferred();
       var formData = new FormData();
       formData.append('image', imageFile);
+      $(document).ajaxSend(function() {
+        $("#overlay").fadeIn(300);　
+      });
       $.ajax({
         type: "POST",
         url: '/posts/upload_image',
@@ -137,6 +141,11 @@
         contentType: false,
         success: def.resolve
       })
+      .done(function() {
+        setTimeout(function(){
+          $("#overlay").fadeOut(300);
+        },500);
+      });
       return def.promise();
     }
   }

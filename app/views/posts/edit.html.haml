@@ -85,6 +85,7 @@
             %i.fas.fa-edit
             編集
         .root_page__right__contents__panels__panel__delete
+        
           = link_to post_path(@post),class:"delete_btn",method: :delete, data: { confirm: '本当に削除しますか？' }  do
             %i.fas.fa-trash-alt
             削除
